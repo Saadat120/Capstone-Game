@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://mc7qvthaiy4y"]
+
+[ext_resource type="Texture2D" uid="uid://crtuyrwb83tuj" path="res://assets/UI/Circle01.png" id="1_5fms7"]
+[ext_resource type="Texture2D" uid="uid://c3ystt0vj3loq" path="res://assets/Entities/stag/critter_stag_SE_idle.png" id="2_knh2n"]
+
+[node name="Passive" type="NinePatchRect"]
+offset_right = 130.0
+offset_bottom = 130.0
+texture = ExtResource("1_5fms7")
+
+[node name="Stag" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -47.0
+offset_right = 50.0
+offset_bottom = 53.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_knh2n")
+region_rect = Rect2(0, 0, 31, 41)

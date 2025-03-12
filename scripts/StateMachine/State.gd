@@ -1,6 +1,5 @@
 class_name State extends Node
 
-var entity
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -23,3 +22,7 @@ func Physics(_delta: float) -> State:
 #What happens with input events in this state
 func handleInput(_event: InputEvent) -> State:
 	return null
+
+# Helper function to access entity through StateMachine
+func get_entity():
+	return get_parent().entity if get_parent() is StateMachine else null

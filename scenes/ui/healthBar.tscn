@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://c8411fpc13xh8"]
 
-[ext_resource type="Script" path="res://scripts/PlayerScripts/healthBar.gd" id="1_2w24f"]
+[ext_resource type="Script" path="res://Common/scripts/healthBar.gd" id="1_2w24f"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cbuun"]
 
@@ -17,21 +17,23 @@ shadow_color = Color(0, 0, 0, 0.27451)
 shadow_offset = Vector2(0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_my7gb"]
-bg_color = Color(1, 1, 1, 1)
+bg_color = Color(0.575961, 1.69661e-06, 3.36915e-07, 1)
 
-[node name="HealthBar" type="ProgressBar"]
+[node name="HealthBar" type="ProgressBar" node_paths=PackedStringArray("timer")]
 z_index = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -8.0
+offset_top = -12.0
 offset_right = 250.0
 grow_vertical = 0
 theme_override_styles/background = SubResource("StyleBoxEmpty_cbuun")
 theme_override_styles/fill = SubResource("StyleBoxFlat_4rbqn")
+max_value = 1000.0
 value = 60.0
 show_percentage = false
 script = ExtResource("1_2w24f")
+timer = NodePath("Timer")
 
 [node name="DamageBar" type="ProgressBar" parent="."]
 z_index = -1

@@ -1,26 +1,30 @@
 [gd_scene load_steps=7 format=3 uid="uid://bhsf7csnrfcne"]
 
-[ext_resource type="Script" path="res://scripts/Main.gd" id="1_ph1be"]
 [ext_resource type="PackedScene" uid="uid://ba6wa2ow0hi85" path="res://scenes/map.tscn" id="1_u38of"]
-[ext_resource type="PackedScene" uid="uid://cu0dol3wgdf3j" path="res://scenes/player.tscn" id="2_7vsiy"]
-[ext_resource type="PackedScene" uid="uid://m7c11xmobi3y" path="res://scenes/wolfBoss.tscn" id="3_138ro"]
-[ext_resource type="PackedScene" uid="uid://co8ifx6ujv5c5" path="res://scenes/ui/Menu.tscn" id="4_uerqy"]
-[ext_resource type="PackedScene" uid="uid://7uv4wjpm161c" path="res://scenes/ui/HUD.tscn" id="5_plscu"]
+[ext_resource type="PackedScene" uid="uid://dtkvgch8g7nbi" path="res://World/Areas/Haven.tscn" id="1_v46tq"]
+[ext_resource type="PackedScene" uid="uid://cu0dol3wgdf3j" path="res://scenes/Player/player.tscn" id="2_7vsiy"]
+[ext_resource type="PackedScene" uid="uid://m7c11xmobi3y" path="res://Entities/bosses/wolfBoss/wolfBoss.tscn" id="3_138ro"]
+[ext_resource type="PackedScene" uid="uid://crrx0ak4hnwai" path="res://Entities/bosses/badgerBoss/badgerBoss.tscn" id="4_5pv8s"]
+[ext_resource type="PackedScene" uid="uid://7uv4wjpm161c" path="res://scenes/UI/UI.tscn" id="5_plscu"]
 
 [node name="Main" type="Node2D"]
 position = Vector2(0, -1)
-script = ExtResource("1_ph1be")
+
+[node name="Haven" parent="." instance=ExtResource("1_v46tq")]
 
 [node name="Map" parent="." instance=ExtResource("1_u38of")]
+visible = false
 position = Vector2(960, 540)
 
-[node name="Player" parent="." groups=["player"] instance=ExtResource("2_7vsiy")]
+[node name="Player" parent="." instance=ExtResource("2_7vsiy")]
 position = Vector2(966, 530)
 
 [node name="WolfBoss" parent="." groups=["enemy"] instance=ExtResource("3_138ro")]
+visible = false
 position = Vector2(966, 1054)
 
-[node name="Menu" parent="." instance=ExtResource("4_uerqy")]
+[node name="BadgerBoss" parent="." groups=["enemy"] instance=ExtResource("4_5pv8s")]
 visible = false
+position = Vector2(2059, 555)
 
-[node name="HUD" parent="." instance=ExtResource("5_plscu")]
+[node name="UI" parent="." instance=ExtResource("5_plscu")]

@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://dm13bkfdseof0"]
+
+[node name="Hurtbox" type="Area2D"]

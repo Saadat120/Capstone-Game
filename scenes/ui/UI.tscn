@@ -1,0 +1,78 @@
+[gd_scene load_steps=7 format=3 uid="uid://7uv4wjpm161c"]
+
+[ext_resource type="StyleBox" uid="uid://dm2uppek7evjx" path="res://Resources/Themes/Button.tres" id="1_lfu4f"]
+[ext_resource type="StyleBox" uid="uid://detsw3iqyp0r1" path="res://Resources/Themes/hoverButton.tres" id="1_tbaon"]
+[ext_resource type="Script" path="res://scripts/UI/menu.gd" id="4_uiw2k"]
+[ext_resource type="Texture2D" uid="uid://1ech5ty6322" path="res://assets/UI/GUI.png" id="5_hy0xi"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gw7b4"]
+
+[sub_resource type="Theme" id="Theme_h3r57"]
+Button/font_sizes/font_size = 32
+Button/styles/focus = SubResource("StyleBoxEmpty_gw7b4")
+Button/styles/hover = ExtResource("1_tbaon")
+Button/styles/normal = ExtResource("1_lfu4f")
+
+[node name="UI" type="CanvasLayer"]
+
+[node name="HUD" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.0062, 1)
+
+[node name="Menu" type="NinePatchRect" parent="HUD"]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -925.216
+offset_top = -346.0
+offset_right = -475.216
+offset_bottom = 104.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_h3r57")
+texture = ExtResource("5_hy0xi")
+region_rect = Rect2(1, 33, 46, 46)
+script = ExtResource("4_uiw2k")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/Menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -135.5
+offset_top = -128.0
+offset_right = 135.5
+offset_bottom = 128.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 32
+
+[node name="Resume" type="Button" parent="HUD/Menu/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+text = "Resume
+"
+
+[node name="Restart" type="Button" parent="HUD/Menu/VBoxContainer"]
+layout_mode = 2
+text = "Restart
+"
+
+[node name="Quit" type="Button" parent="HUD/Menu/VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+
+[connection signal="button_down" from="HUD/Menu/VBoxContainer/Resume" to="HUD/Menu" method="_on_resume_button_down"]
+[connection signal="button_down" from="HUD/Menu/VBoxContainer/Restart" to="HUD/Menu" method="_on_restart_button_down"]
+[connection signal="button_down" from="HUD/Menu/VBoxContainer/Quit" to="HUD/Menu" method="_on_quit_button_down"]

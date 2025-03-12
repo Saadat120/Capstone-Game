@@ -1,0 +1,145 @@
+[gd_scene load_steps=8 format=3 uid="uid://doslp77la0i1f"]
+
+[ext_resource type="Script" path="res://scripts/UI/playerHud.gd" id="1_hsh3e"]
+[ext_resource type="PackedScene" uid="uid://mc7qvthaiy4y" path="res://scenes/Player/Passive.tscn" id="2_gxxtl"]
+[ext_resource type="PackedScene" uid="uid://c8411fpc13xh8" path="res://scenes/UI/healthBar.tscn" id="3_3nxoe"]
+[ext_resource type="PackedScene" uid="uid://h81tp37drcdi" path="res://scenes/UI/Skill.tscn" id="4_c6clf"]
+[ext_resource type="Texture2D" uid="uid://b82q0ts00h7dd" path="res://assets/MapDesigns/AttackSprite01.png" id="5_m5jv7"]
+[ext_resource type="Texture2D" uid="uid://lis8t7de7m4o" path="res://assets/MapDesigns/move FX.png" id="6_xj3oi"]
+[ext_resource type="FontFile" uid="uid://bnako7dhjcnkd" path="res://assets/pixel_font.ttf" id="7_7kseg"]
+
+[node name="PlayerUI" type="CanvasLayer"]
+
+[node name="HUD" type="Control" parent="."]
+layout_direction = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+script = ExtResource("1_hsh3e")
+
+[node name="Passive" parent="HUD" instance=ExtResource("2_gxxtl")]
+layout_mode = 0
+offset_left = 67.0
+offset_top = 880.0
+offset_right = 197.0
+offset_bottom = 1010.0
+
+[node name="HealthBar" parent="HUD" instance=ExtResource("3_3nxoe")]
+self_modulate = Color(0.608777, 0.637453, 0.766432, 1)
+layout_mode = 0
+anchors_preset = 0
+anchor_top = 0.0
+anchor_bottom = 0.0
+offset_left = 210.0
+offset_top = 940.0
+offset_right = 635.0
+offset_bottom = 956.0
+grow_vertical = 1
+rounded = true
+
+[node name="Skills" type="Control" parent="HUD"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1560.0
+offset_top = 720.0
+offset_right = -80.0
+offset_bottom = -60.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Skill" parent="HUD/Skills" instance=ExtResource("4_c6clf")]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -60.0
+offset_right = 60.0
+offset_bottom = 120.0
+grow_horizontal = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="HUD/Skills/Skill"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -18.5
+offset_top = -18.5
+offset_right = 18.5
+offset_bottom = 18.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_m5jv7")
+region_rect = Rect2(330, 0, 52, 64)
+
+[node name="Skill2" parent="HUD/Skills" instance=ExtResource("4_c6clf")]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -60.0
+offset_right = 120.0
+offset_bottom = 60.0
+grow_vertical = 2
+
+[node name="Skill3" parent="HUD/Skills" instance=ExtResource("4_c6clf")]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -60.0
+offset_top = -120.0
+offset_right = 60.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="HUD/Skills/Skill3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_xj3oi")
+region_rect = Rect2(9, 19, 11, 9)
+
+[node name="Skill4" parent="HUD/Skills" instance=ExtResource("4_c6clf")]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = -60.0
+offset_right = 0.0
+offset_bottom = 60.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="HealthVal" type="Label" parent="HUD"]
+layout_mode = 0
+offset_left = 220.0
+offset_top = 880.0
+offset_right = 340.0
+offset_bottom = 920.0
+theme_override_colors/font_color = Color(0.607843, 0.639216, 0.764706, 1)
+theme_override_fonts/font = ExtResource("7_7kseg")
+theme_override_font_sizes/font_size = 40
+text = "100/100"
