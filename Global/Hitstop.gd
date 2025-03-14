@@ -1,7 +1,7 @@
 extends Node
 
 var freezeSlow = 0.07
-var freezeTime = 0.3
+var freezeTime = 0.4
 
 func slowTime():
 	Engine.time_scale = freezeSlow

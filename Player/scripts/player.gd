@@ -49,7 +49,7 @@ func attack():
 
 func died():
 	if stats.health <= 0:
-		get_parent().get_tree().reload_current_scene()
+		get_parent().get_tree().change_scene_to_file("res://World/Areas/Main.tscn")
 
 
 func _on_hurtbox_component_area_entered(hitbox: Area2D) -> void:

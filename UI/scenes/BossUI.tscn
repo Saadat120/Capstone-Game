@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dxhk63e1mu4t3"]
 
-[ext_resource type="PackedScene" uid="uid://c8411fpc13xh8" path="res://scenes/UI/healthBar.tscn" id="1_swpt3"]
+[ext_resource type="PackedScene" uid="uid://c8411fpc13xh8" path="res://UI/scenes/healthBar.tscn" id="1_swpt3"]
 
 [node name="BossUI" type="CanvasLayer"]
 

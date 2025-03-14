@@ -4,9 +4,9 @@ class_name badgerBoss extends CharacterBody2D
 @onready var hit_flash: AnimationPlayer = $HitFlash
 @onready var stateMachine: StateMachine = $StateMachine
 @onready var healthBar: ProgressBar = $"BossUI/HUD/HealthBar"
-@export var stats: StatsComponent
-@onready var badgerArena: Area2D = $"../Map/BadgerArena"
+@onready var stats: StatsComponent = $StatsComponent
 @onready var damage_numbers_origin: Node2D = $DamageNumbersOrigin
+
 var dead = false
 var aggro: bool = false
 var attacking: bool = false
@@ -23,31 +23,17 @@ var badgerDirectionMap = {
 }
 
 func _ready():
-	stateMachine.Initialize()
-	stats.initialize(700, 200, 10, 1, 1.15, 40)
-	SignalBus.enemyHealthChanged.connect(healthBar._set_health)
-	healthBar.visible = false
-	badgerArena.body_entered.connect(_on_body_entered)
-	badgerArena.body_exited.connect(_on_body_exited)
-	pass
 	
+	SignalBus.enemyHealthChanged.connect(healthBar._set_health)
+	healthBar.initHealth(stats.health)
+	healthBar.visible = true
+	aggro = true
+	
+	stateMachine.changeState(stateMachine.get_node("Chase"))
+	stateMachine.Initialize()
 func _physics_process(_delta: float) -> void:
 	move_and_slide()
 	die()
-	pass
-
-func _on_body_entered(body):
-	if body.is_in_group("player"):  # Ensure the player is in the "player" group
-		healthBar.initHealth(stats.health)
-		aggro = true
-		healthBar.visible = true
-		stateMachine.changeState(stateMachine.get_node("Chase"))  # Change to follow state
-
-func _on_body_exited(body):
-	if body.is_in_group("player"):
-		aggro = false
-		healthBar.visible = false
-		stateMachine.changeState(stateMachine.get_node("Idle"))  # Change to idle state
 
 func updateAnimation(state: String):
 	animationPlayer.play(state + animationDirection())
@@ -80,8 +66,8 @@ func die() -> void:
 		velocity = Vector2.ZERO
 		# Optional: Delay before removal
 		setDirection()
-		updateAnimation("Death")
-		await get_tree().create_timer(1.5).timeout  
+		updateAnimation("Burrow")
+		await get_tree().create_timer(2.6).timeout
 		healthBar.visible = false
 		queue_free()
 

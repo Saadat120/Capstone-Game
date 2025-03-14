@@ -1,0 +1,82 @@
+[gd_scene load_steps=11 format=3 uid="uid://dj3gidclujbvw"]
+
+[ext_resource type="Texture2D" uid="uid://cxipdd1gul8x6" path="res://assets/Isometric_Portal.png" id="1_pq4g0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1jbrk"]
+atlas = ExtResource("1_pq4g0")
+region = Rect2(0, 0, 112, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jddoi"]
+atlas = ExtResource("1_pq4g0")
+region = Rect2(112, 0, 112, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j83cp"]
+atlas = ExtResource("1_pq4g0")
+region = Rect2(224, 0, 112, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qttxe"]
+atlas = ExtResource("1_pq4g0")
+region = Rect2(336, 0, 112, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2rdhc"]
+atlas = ExtResource("1_pq4g0")
+region = Rect2(448, 0, 112, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ecm6"]
+atlas = ExtResource("1_pq4g0")
+region = Rect2(560, 0, 112, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7yfvl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1jbrk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jddoi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j83cp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qttxe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2rdhc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ecm6")
+}],
+"loop": true,
+"name": &"portal",
+"speed": 8.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vrpid"]
+radius = 27.0
+height = 86.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ox6m1"]
+size = Vector2(73.8179, 35.1133)
+
+[node name="StaticBody2D" type="StaticBody2D"]
+
+[node name="Portal" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.65, 0.65)
+sprite_frames = SubResource("SpriteFrames_7yfvl")
+animation = &"portal"
+autoplay = "portal"
+
+[node name="Area2D" type="Area2D" parent="Portal"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Portal/Area2D"]
+position = Vector2(-1.53845, -4.61538)
+scale = Vector2(1.53846, 1.53846)
+shape = SubResource("CapsuleShape2D_vrpid")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-6, -18)
+rotation = -0.380482
+scale = Vector2(0.65, 0.65)
+shape = SubResource("RectangleShape2D_ox6m1")
+debug_color = Color(0.970454, 0.0837896, 0.383566, 0.42)

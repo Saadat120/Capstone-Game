@@ -19,6 +19,9 @@ func Enter():
 		
 	if stats.attackTimer.is_stopped():
 		stats.attackTimer.start()
+	if get_entity() is badgerBoss:
+		get_entity().velocity = Vector2.ZERO
+		
 	get_entity().setDirection()
 	get_entity().updateAnimation("Attack")
 	pass

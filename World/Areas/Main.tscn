@@ -1,13 +1,13 @@
 [gd_scene load_steps=27 format=4 uid="uid://dtkvgch8g7nbi"]
 
-[ext_resource type="Texture2D" uid="uid://ij75ak0ds87j" path="res://assets/MapDesigns/spritesheet.png" id="1_f5pka"]
-[ext_resource type="Script" path="res://World/scripts/haven.gd" id="1_m3ynh"]
-[ext_resource type="Texture2D" uid="uid://cxipdd1gul8x6" path="res://assets/Isometric_Portal.png" id="2_2vs43"]
-[ext_resource type="PackedScene" uid="uid://cu0dol3wgdf3j" path="res://scenes/Player/player.tscn" id="4_g7jxp"]
-[ext_resource type="PackedScene" uid="uid://7uv4wjpm161c" path="res://scenes/UI/UI.tscn" id="5_hhxw2"]
+[ext_resource type="Script" path="res://World/scripts/Main.gd" id="1_jfch8"]
+[ext_resource type="Texture2D" uid="uid://ij75ak0ds87j" path="res://assets/MapDesigns/spritesheet.png" id="2_qik28"]
+[ext_resource type="Texture2D" uid="uid://cxipdd1gul8x6" path="res://assets/Isometric_Portal.png" id="3_jpoix"]
+[ext_resource type="PackedScene" uid="uid://cu0dol3wgdf3j" path="res://Player/scenes/player.tscn" id="4_g5hdj"]
+[ext_resource type="PackedScene" uid="uid://7uv4wjpm161c" path="res://UI/scenes/UI.tscn" id="5_t5q3l"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yuvqf"]
-texture = ExtResource("1_f5pka")
+texture = ExtResource("2_qik28")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0
@@ -143,27 +143,27 @@ sources/0 = SubResource("TileSetAtlasSource_yuvqf")
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_oq2s7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1jbrk"]
-atlas = ExtResource("2_2vs43")
+atlas = ExtResource("3_jpoix")
 region = Rect2(0, 0, 112, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jddoi"]
-atlas = ExtResource("2_2vs43")
+atlas = ExtResource("3_jpoix")
 region = Rect2(112, 0, 112, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j83cp"]
-atlas = ExtResource("2_2vs43")
+atlas = ExtResource("3_jpoix")
 region = Rect2(224, 0, 112, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qttxe"]
-atlas = ExtResource("2_2vs43")
+atlas = ExtResource("3_jpoix")
 region = Rect2(336, 0, 112, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2rdhc"]
-atlas = ExtResource("2_2vs43")
+atlas = ExtResource("3_jpoix")
 region = Rect2(448, 0, 112, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7ecm6"]
-atlas = ExtResource("2_2vs43")
+atlas = ExtResource("3_jpoix")
 region = Rect2(560, 0, 112, 128)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_odxah"]
@@ -200,27 +200,27 @@ height = 86.0
 size = Vector2(73.8179, 35.1133)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_birn4"]
-atlas = ExtResource("2_2vs43")
+atlas = ExtResource("3_jpoix")
 region = Rect2(0, 0, 112, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_57uex"]
-atlas = ExtResource("2_2vs43")
+atlas = ExtResource("3_jpoix")
 region = Rect2(112, 0, 112, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ja1k1"]
-atlas = ExtResource("2_2vs43")
+atlas = ExtResource("3_jpoix")
 region = Rect2(224, 0, 112, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3elev"]
-atlas = ExtResource("2_2vs43")
+atlas = ExtResource("3_jpoix")
 region = Rect2(336, 0, 112, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wft1v"]
-atlas = ExtResource("2_2vs43")
+atlas = ExtResource("3_jpoix")
 region = Rect2(448, 0, 112, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1c7k8"]
-atlas = ExtResource("2_2vs43")
+atlas = ExtResource("3_jpoix")
 region = Rect2(560, 0, 112, 128)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wyxy5"]
@@ -257,7 +257,7 @@ height = 123.077
 size = Vector2(51.145, 22.2566)
 
 [node name="Haven" type="Node2D"]
-script = ExtResource("1_m3ynh")
+script = ExtResource("1_jfch8")
 
 [node name="Water" type="TileMapLayer" parent="."]
 y_sort_enabled = true
@@ -325,10 +325,10 @@ rotation = -0.380482
 shape = SubResource("RectangleShape2D_qstex")
 debug_color = Color(0.968627, 0.0823529, 0.384314, 0.419608)
 
-[node name="Player" parent="." instance=ExtResource("4_g7jxp")]
+[node name="Player" parent="." instance=ExtResource("4_g5hdj")]
 position = Vector2(975, 486)
 
-[node name="UI" parent="." instance=ExtResource("5_hhxw2")]
+[node name="UI" parent="." instance=ExtResource("5_t5q3l")]
 
 [connection signal="body_entered" from="WolfPortal/Portal/Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="BadgerPortal/Portal/Area2D" to="." method="_on_badgerPortal_entered"]

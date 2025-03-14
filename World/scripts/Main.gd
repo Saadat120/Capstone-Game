@@ -7,13 +7,10 @@ func _ready() -> void:
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
-		get_tree().change_scene_to_file("res://World/Areas/WolfArena.tscn")
-		
-		pass # Replace with function body.
-	pass # Replace with function body.
+		get_tree().change_scene_to_file.call_deferred("res://World/Areas/WolfArena.tscn")
 
 #BadgerPortal entered
 func _on_badgerPortal_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
-		print("Enter Badger portal")
+		get_tree().change_scene_to_file.call_deferred("res://World/Areas/badgerArena.tscn")
 	pass

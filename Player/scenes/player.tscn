@@ -1,6 +1,6 @@
 [gd_scene load_steps=70 format=3 uid="uid://cu0dol3wgdf3j"]
 
-[ext_resource type="Script" path="res://scripts/Player/player.gd" id="1_5vw1t"]
+[ext_resource type="Script" path="res://Player/scripts/player.gd" id="1_5vw1t"]
 [ext_resource type="Shader" uid="uid://bgafj0yghf2qm" path="res://assets/Sprites/Extra/hitFlash.tres" id="2_lcyww"]
 [ext_resource type="Texture2D" uid="uid://s1q82lpqeuvt" path="res://assets/Player/Mage-Sheet.png" id="2_tfu6d"]
 [ext_resource type="AnimationNodeBlendSpace2D" uid="uid://jq5hf01d7gqk" path="res://assets/Player/Animations/playerRunBlend.tres" id="6_788ri"]
@@ -8,8 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://b82q0ts00h7dd" path="res://assets/MapDesigns/AttackSprite01.png" id="6_y45c1"]
 [ext_resource type="Script" path="res://Common/scripts/HitboxComponent.gd" id="8_27j1f"]
 [ext_resource type="PackedScene" uid="uid://dm13bkfdseof0" path="res://Common/HurtboxComponent.tscn" id="8_pahnu"]
-[ext_resource type="Script" path="res://scripts/Player/CombatManager.gd" id="10_b4eum"]
-[ext_resource type="PackedScene" uid="uid://doslp77la0i1f" path="res://scenes/UI/PlayerUI.tscn" id="10_bwlsn"]
+[ext_resource type="Script" path="res://Player/scripts/CombatManager.gd" id="10_b4eum"]
+[ext_resource type="PackedScene" uid="uid://doslp77la0i1f" path="res://UI/scenes/PlayerUI.tscn" id="10_bwlsn"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fck4g"]
 resource_local_to_scene = true

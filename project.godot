@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Align"
-run/main_scene="res://World/Areas/Haven.tscn"
+run/main_scene="res://World/Areas/Main.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 

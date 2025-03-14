@@ -2,7 +2,7 @@
 
 [ext_resource type="StyleBox" uid="uid://dm2uppek7evjx" path="res://Resources/Themes/Button.tres" id="1_lfu4f"]
 [ext_resource type="StyleBox" uid="uid://detsw3iqyp0r1" path="res://Resources/Themes/hoverButton.tres" id="1_tbaon"]
-[ext_resource type="Script" path="res://scripts/UI/menu.gd" id="4_uiw2k"]
+[ext_resource type="Script" path="res://UI/scripts/menu.gd" id="4_uiw2k"]
 [ext_resource type="Texture2D" uid="uid://1ech5ty6322" path="res://assets/UI/GUI.png" id="5_hy0xi"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gw7b4"]

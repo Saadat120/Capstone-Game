@@ -1,6 +1,6 @@
 [gd_scene load_steps=38 format=3 uid="uid://b6tb8e05qojfc"]
 
-[ext_resource type="Script" path="res://scripts/Player/Projectile.gd" id="1_30w15"]
+[ext_resource type="Script" path="res://Player/scripts/Projectile.gd" id="1_30w15"]
 [ext_resource type="Texture2D" uid="uid://dq4fk758pyd66" path="res://assets/Entities/Projectile/projectile.png" id="2_f3gco"]
 [ext_resource type="Texture2D" uid="uid://dbq083v0ou4pr" path="res://assets/Entities/Projectile/Dark VFX 1 (40x32).png" id="3_2mgv2"]
 

@@ -1,6 +1,6 @@
-[gd_scene load_steps=79 format=3 uid="uid://m7c11xmobi3y"]
+[gd_scene load_steps=82 format=3 uid="uid://m7c11xmobi3y"]
 
-[ext_resource type="Script" path="res://scripts/Entities/wolfBoss.gd" id="1_5vc8q"]
+[ext_resource type="Script" path="res://Entities/scripts/wolfBoss.gd" id="1_5vc8q"]
 [ext_resource type="Shader" uid="uid://bgafj0yghf2qm" path="res://assets/Sprites/Extra/hitFlash.tres" id="2_txir4"]
 [ext_resource type="Script" path="res://scripts/StateMachine/chaseState.gd" id="5_es7e0"]
 [ext_resource type="Script" path="res://scripts/StateMachine/StateMachine.gd" id="5_kve3e"]
@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://c8ydosnmahghv" path="res://Entities/assets/wolf-all.png" id="8_wcgn3"]
 [ext_resource type="PackedScene" uid="uid://de2s21g531onq" path="res://Common/HitboxComponent.tscn" id="10_8nwkp"]
 [ext_resource type="Script" path="res://Entities/bosses/wolfBoss/scripts/summonState.gd" id="11_e00ir"]
-[ext_resource type="PackedScene" uid="uid://dxhk63e1mu4t3" path="res://scenes/UI/BossUI.tscn" id="11_h1tyk"]
+[ext_resource type="PackedScene" uid="uid://dxhk63e1mu4t3" path="res://UI/scenes/BossUI.tscn" id="11_h1tyk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eoi8y"]
 atlas = ExtResource("8_wcgn3")
@@ -981,6 +981,118 @@ tracks/3/keys = {
 "values": [0.191986]
 }
 
+[sub_resource type="Animation" id="Animation_p6x1s"]
+resource_name = "Howl"
+length = 1.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.333333, 0.5, 0.666667, 0.833333, 1, 1.16667, 1.33333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [120, 121, 122, 123, 124, 125, 126, 127, 128]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../CollisionBody:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(6, 10)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../CollisionBody:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.5708]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../HitboxComponent/Hitbox:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../HitboxComponent/Hitbox:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Hurtbox/Hurtbox:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.5708]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Hurtbox/Hurtbox:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2, 6)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../CollisionBody:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath(".:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
 [sub_resource type="Animation" id="Animation_84w54"]
 length = 0.001
 tracks/0/type = "value"
@@ -1885,6 +1997,7 @@ _data = {
 "DeathSE": SubResource("Animation_v5i48"),
 "DeathSW": SubResource("Animation_dxhbe"),
 "DeathW": SubResource("Animation_p7ysh"),
+"Howl": SubResource("Animation_p6x1s"),
 "RESET": SubResource("Animation_84w54"),
 "SummonNE": SubResource("Animation_d3vum"),
 "moveE": SubResource("Animation_oeckt"),
@@ -1948,6 +2061,12 @@ animation = &"moveSW"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_owwwb"]
 animation = &"moveSE"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_50lb5"]
+animation = &"moveNE"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_00unl"]
+animation = &"moveNW"
+
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_l3io7"]
 blend_point_0/node = SubResource("AnimationNodeAnimation_2htxh")
 blend_point_0/pos = Vector2(-1, -1)
@@ -1961,6 +2080,10 @@ blend_point_4/node = SubResource("AnimationNodeAnimation_7ex0w")
 blend_point_4/pos = Vector2(-1, 1)
 blend_point_5/node = SubResource("AnimationNodeAnimation_owwwb")
 blend_point_5/pos = Vector2(1, 1)
+blend_point_6/node = SubResource("AnimationNodeAnimation_50lb5")
+blend_point_6/pos = Vector2(0.2, -1)
+blend_point_7/node = SubResource("AnimationNodeAnimation_00unl")
+blend_point_7/pos = Vector2(-0.1, -1)
 blend_mode = 1
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_cv2ec"]
@@ -2104,12 +2227,13 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
+active = false
 root_node = NodePath("../Sprite2D")
 tree_root = SubResource("AnimationNodeStateMachine_rtg1a")
 advance_expression_base_node = NodePath("..")
 anim_player = NodePath("../AnimationPlayer")
 parameters/Attack/blend_position = Vector2(0.970738, -0.193833)
-parameters/Chase/blend_position = Vector2(-0.970738, -0.986784)
+parameters/Chase/blend_position = Vector2(0.991094, -0.970414)
 parameters/Death/blend_position = Vector2(0.982188, 0.986784)
 
 [node name="HitFlash" type="AnimationPlayer" parent="."]
