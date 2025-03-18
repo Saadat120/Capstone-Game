@@ -79,8 +79,9 @@ func die() -> void:
 
 func _on_hurtbox_area_entered(hitbox: Area2D) -> void:
 	if hitbox is Hitbox:
-		DamageManager.applyDamage(hitbox.get_parent(), self)
+		DamageManager.applyDamageToEnemy(hitbox.get_parent(), self)
 		SignalBus.enemyHealthChanged.emit(stats.health)
+		SignalBus.passiveStack.emit() #Player gains a stack
 		hit_flash.play("hitFlash")
 	if stats.health <= 0:
 		dead = true

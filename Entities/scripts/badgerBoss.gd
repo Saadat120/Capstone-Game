@@ -10,6 +10,7 @@ class_name badgerBoss extends CharacterBody2D
 var dead = false
 var aggro: bool = false
 var attacking: bool = false
+var burrowed: bool = false
 
 var cardinal_direction: Vector2 = Vector2(1, -1)
 var direction : Vector2 = Vector2.ZERO
@@ -73,7 +74,7 @@ func die() -> void:
 
 func _on_hurtbox_area_entered(hitbox: Area2D) -> void:
 	if hitbox is Hitbox:
-		DamageManager.applyDamage(hitbox.get_parent(), self)
+		DamageManager.applyDamageToEnemy(hitbox.get_parent(), self)
 		SignalBus.enemyHealthChanged.emit(stats.health)
 		hit_flash.play("hitFlash")
 		if stats.health <= 0:

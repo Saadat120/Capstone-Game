@@ -33,7 +33,3 @@ func initialize(_maxHealth, _maxAbility, _damage, _speed,  _attackSpeed, _range)
 	attackSpeed = _attackSpeed
 	speed = _speed
 	attackRange = _range
-	
-func damaged(_damage: int):
-	if health >= _damage:
-		health -= _damage

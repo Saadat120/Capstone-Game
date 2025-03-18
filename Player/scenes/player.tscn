@@ -1,13 +1,14 @@
-[gd_scene load_steps=70 format=3 uid="uid://cu0dol3wgdf3j"]
+[gd_scene load_steps=72 format=3 uid="uid://cu0dol3wgdf3j"]
 
 [ext_resource type="Script" path="res://Player/scripts/player.gd" id="1_5vw1t"]
+[ext_resource type="Script" path="res://Player/scripts/PlayerManager.gd" id="2_jp4qc"]
 [ext_resource type="Shader" uid="uid://bgafj0yghf2qm" path="res://assets/Sprites/Extra/hitFlash.tres" id="2_lcyww"]
 [ext_resource type="Texture2D" uid="uid://s1q82lpqeuvt" path="res://assets/Player/Mage-Sheet.png" id="2_tfu6d"]
 [ext_resource type="AnimationNodeBlendSpace2D" uid="uid://jq5hf01d7gqk" path="res://assets/Player/Animations/playerRunBlend.tres" id="6_788ri"]
-[ext_resource type="Script" path="res://Common/scripts/StatsComponent.gd" id="6_vl3w5"]
 [ext_resource type="Texture2D" uid="uid://b82q0ts00h7dd" path="res://assets/MapDesigns/AttackSprite01.png" id="6_y45c1"]
 [ext_resource type="Script" path="res://Common/scripts/HitboxComponent.gd" id="8_27j1f"]
 [ext_resource type="PackedScene" uid="uid://dm13bkfdseof0" path="res://Common/HurtboxComponent.tscn" id="8_pahnu"]
+[ext_resource type="PackedScene" uid="uid://dsykkh7qgbqaj" path="res://Player/scenes/dash.tscn" id="10_83325"]
 [ext_resource type="Script" path="res://Player/scripts/CombatManager.gd" id="10_b4eum"]
 [ext_resource type="PackedScene" uid="uid://doslp77la0i1f" path="res://UI/scenes/PlayerUI.tscn" id="10_bwlsn"]
 
@@ -1436,6 +1437,9 @@ tracks/0/keys = {
 "values": [false]
 }
 
+[sub_resource type="Animation" id="Animation_fdjxy"]
+resource_name = "dash"
+
 [sub_resource type="Animation" id="Animation_eq8jw"]
 resource_name = "hitFlash"
 length = 0.4
@@ -1455,6 +1459,7 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wfd6p"]
 _data = {
 "RESET": SubResource("Animation_84o86"),
+"dash": SubResource("Animation_fdjxy"),
 "hitFlash": SubResource("Animation_eq8jw")
 }
 
@@ -1468,8 +1473,15 @@ size = Vector2(28, 53)
 size = Vector2(13, 30)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
+y_sort_enabled = true
 motion_mode = 1
 script = ExtResource("1_5vw1t")
+
+[node name="PlayerManager" type="Node" parent="."]
+script = ExtResource("2_jp4qc")
+
+[node name="CombatManager" type="Node" parent="PlayerManager"]
+script = ExtResource("10_b4eum")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_fck4g")
@@ -1499,7 +1511,7 @@ parameters/Attack/blend_position = Vector2(-0.973282, -0.929515)
 parameters/Idle/blend_position = Vector2(-0.889313, 0.94723)
 parameters/Walk/blend_position = Vector2(0.00381684, 0.938326)
 
-[node name="HitFlash" type="AnimationPlayer" parent="."]
+[node name="FX" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_wfd6p")
 }
@@ -1530,14 +1542,10 @@ position = Vector2(-0.5, 6)
 shape = SubResource("RectangleShape2D_6103c")
 debug_color = Color(0.772549, 0, 0, 0.419608)
 
-[node name="StatsComponent" type="Node" parent="."]
-script = ExtResource("6_vl3w5")
-
-[node name="CombatManager" type="Node" parent="."]
-script = ExtResource("10_b4eum")
-
 [node name="DamageNumbersOrigin" type="Node2D" parent="."]
 position = Vector2(0, -23)
+
+[node name="Dash" parent="." instance=ExtResource("10_83325")]
 
 [node name="PlayerUI" parent="." instance=ExtResource("10_bwlsn")]
 

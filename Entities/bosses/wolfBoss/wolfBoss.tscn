@@ -1,4 +1,4 @@
-[gd_scene load_steps=82 format=3 uid="uid://m7c11xmobi3y"]
+[gd_scene load_steps=72 format=3 uid="uid://m7c11xmobi3y"]
 
 [ext_resource type="Script" path="res://Entities/scripts/wolfBoss.gd" id="1_5vc8q"]
 [ext_resource type="Shader" uid="uid://bgafj0yghf2qm" path="res://assets/Sprites/Extra/hitFlash.tres" id="2_txir4"]
@@ -11,77 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://de2s21g531onq" path="res://Common/HitboxComponent.tscn" id="10_8nwkp"]
 [ext_resource type="Script" path="res://Entities/bosses/wolfBoss/scripts/summonState.gd" id="11_e00ir"]
 [ext_resource type="PackedScene" uid="uid://dxhk63e1mu4t3" path="res://UI/scenes/BossUI.tscn" id="11_h1tyk"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_eoi8y"]
-atlas = ExtResource("8_wcgn3")
-region = Rect2(0, 512, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nidhy"]
-atlas = ExtResource("8_wcgn3")
-region = Rect2(64, 512, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_17l12"]
-atlas = ExtResource("8_wcgn3")
-region = Rect2(128, 512, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xkpxx"]
-atlas = ExtResource("8_wcgn3")
-region = Rect2(192, 512, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4b2fe"]
-atlas = ExtResource("8_wcgn3")
-region = Rect2(256, 512, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_whng7"]
-atlas = ExtResource("8_wcgn3")
-region = Rect2(320, 512, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_oaede"]
-atlas = ExtResource("8_wcgn3")
-region = Rect2(384, 512, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_t2f3f"]
-atlas = ExtResource("8_wcgn3")
-region = Rect2(448, 512, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hnots"]
-atlas = ExtResource("8_wcgn3")
-region = Rect2(512, 512, 64, 64)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_p5duv"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_eoi8y")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nidhy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_17l12")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xkpxx")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4b2fe")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_whng7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_oaede")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_t2f3f")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hnots")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0jlkj"]
 resource_local_to_scene = true
@@ -2196,15 +2125,6 @@ height = 102.8
 [node name="WolfBoss" type="CharacterBody2D"]
 motion_mode = 1
 script = ExtResource("1_5vc8q")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-visible = false
-position = Vector2(114, -30)
-rotation = -0.0872665
-scale = Vector2(3, 3)
-sprite_frames = SubResource("SpriteFrames_p5duv")
-frame = 3
-frame_progress = 0.958503
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_0jlkj")

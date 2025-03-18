@@ -15,7 +15,7 @@ func _on_resume_button_down() -> void:
 	resume()
 	
 func _on_restart_button_down() -> void:
-	get_tree().reload_current_scene()
+	get_tree().change_scene_to_file("res://World/Areas/Main.tscn")
 	pass # Replace with function body.
 
 func _on_quit_button_down() -> void:

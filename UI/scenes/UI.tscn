@@ -66,8 +66,7 @@ text = "Resume
 
 [node name="Restart" type="Button" parent="HUD/Menu/VBoxContainer"]
 layout_mode = 2
-text = "Restart
-"
+text = "Base"
 
 [node name="Quit" type="Button" parent="HUD/Menu/VBoxContainer"]
 layout_mode = 2

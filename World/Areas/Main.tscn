@@ -325,6 +325,9 @@ rotation = -0.380482
 shape = SubResource("RectangleShape2D_qstex")
 debug_color = Color(0.968627, 0.0823529, 0.384314, 0.419608)
 
+[node name="Companion" type="Node2D" parent="."]
+position = Vector2(941, 528)
+
 [node name="Player" parent="." instance=ExtResource("4_g5hdj")]
 position = Vector2(975, 486)
 

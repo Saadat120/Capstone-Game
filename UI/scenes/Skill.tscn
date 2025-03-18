@@ -61,6 +61,6 @@ offset_top = -16.0
 offset_right = 20.0
 grow_horizontal = 2
 grow_vertical = 0
-text = "Space"
+text = "Empty"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
