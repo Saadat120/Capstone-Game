@@ -24,5 +24,5 @@ func handleInput(_event: InputEvent) -> State:
 	return null
 
 # Helper function to access entity through StateMachine
-func get_entity():
+func get_entity() -> CharacterBody2D:
 	return get_parent().entity if get_parent() is StateMachine else null

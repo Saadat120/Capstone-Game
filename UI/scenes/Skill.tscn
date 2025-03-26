@@ -1,15 +1,15 @@
 [gd_scene load_steps=4 format=3 uid="uid://h81tp37drcdi"]
 
-[ext_resource type="Texture2D" uid="uid://l8tytkxph7j6" path="res://assets/UI/Icon33.png" id="1_dlnqj"]
+[ext_resource type="Texture2D" uid="uid://y5hkx3c2xcbj" path="res://UI/assets/panel-005.png" id="1_lqt6g"]
 [ext_resource type="Script" path="res://UI/scripts/skill.gd" id="2_dhxtn"]
 [ext_resource type="Texture2D" uid="uid://b5ren0kyd1o5b" path="res://white.png" id="3_qo2ba"]
 
 [node name="Skill" type="NinePatchRect"]
-self_modulate = Color(0, 0, 0, 1)
-offset_right = 90.0
-offset_bottom = 90.0
+self_modulate = Color(0.105614, 0.105614, 0.105614, 1)
+offset_right = 110.0
+offset_bottom = 110.0
 mouse_filter = 0
-texture = ExtResource("1_dlnqj")
+texture = ExtResource("1_lqt6g")
 script = ExtResource("2_dhxtn")
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="."]
@@ -19,18 +19,18 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_top = -32.0
-offset_right = 46.0
-offset_bottom = 12.0
+offset_left = -36.5
+offset_top = -36.5
+offset_right = 36.5
+offset_bottom = 36.5
 grow_horizontal = 2
 grow_vertical = 2
-rotation = 0.785398
 step = 0.05
 value = 100.0
 fill_mode = 5
 nine_patch_stretch = true
 texture_progress = ExtResource("3_qo2ba")
-tint_progress = Color(0.439049, 0.439049, 0.439049, 0.905882)
+tint_progress = Color(0.605275, 0.605274, 0.605274, 0.905882)
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 1.5
@@ -41,13 +41,14 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -20.5
-offset_right = 20.5
-offset_bottom = 16.0
+offset_left = -24.0
+offset_right = 24.0
+offset_bottom = 27.0
 grow_horizontal = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 24
 text = "0.0"
+horizontal_alignment = 1
 
 [node name="Key" type="Label" parent="."]
 layout_mode = 1
@@ -56,11 +57,13 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -20.0
-offset_top = -16.0
-offset_right = 20.0
+offset_left = -44.5
+offset_top = -23.0
+offset_right = 44.5
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_font_sizes/font_size = 20
 text = "Empty"
+horizontal_alignment = 1
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,140 @@
+[gd_scene load_steps=12 format=3 uid="uid://bk36qnaychwcp"]
+
+[ext_resource type="Texture2D" uid="uid://cb30fh0wha4c0" path="res://UI/assets/keyboard_escape.png" id="1_i7mga"]
+[ext_resource type="Script" path="res://UI/scripts/pauseArea.gd" id="1_r45h1"]
+[ext_resource type="PackedScene" uid="uid://dwisfevma3f57" path="res://UI/scenes/StatusPage.tscn" id="3_773wc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gik4s"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v6v7d"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3w35d"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4ebvg"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3ntah"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tvws2"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ry3dd"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o0sh4"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="PauseArea" type="PanelContainer"]
+process_mode = 3
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_r45h1")
+
+[node name="MainMenu" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="PauseOptions" type="PanelContainer" parent="MainMenu"]
+custom_minimum_size = Vector2(725, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_gik4s")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu/PauseOptions"]
+layout_mode = 2
+theme_override_constants/separation = 120
+
+[node name="MainMenuTitle" type="Label" parent="MainMenu/PauseOptions/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 56
+text = "
+   Main Menu"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu/PauseOptions/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 60
+
+[node name="Status" type="Button" parent="MainMenu/PauseOptions/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/hover = SubResource("StyleBoxFlat_v6v7d")
+theme_override_styles/normal = SubResource("StyleBoxFlat_3w35d")
+text = "                    Status"
+alignment = 0
+
+[node name="Companion" type="Button" parent="MainMenu/PauseOptions/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/hover = SubResource("StyleBoxFlat_4ebvg")
+theme_override_styles/normal = SubResource("StyleBoxFlat_3ntah")
+text = "                    Companion"
+alignment = 0
+
+[node name="Exit" type="Button" parent="MainMenu/PauseOptions/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/hover = SubResource("StyleBoxFlat_tvws2")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ry3dd")
+text = "                    Exit Game"
+alignment = 0
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MainMenu/PauseOptions"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainMenu/PauseOptions/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MainMenu/PauseOptions/VBoxContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(56, 48)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("1_i7mga")
+
+[node name="Label" type="Label" parent="MainMenu/PauseOptions/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 32
+text = "Close"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu/PauseOptions/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="CenterArea" type="PanelContainer" parent="MainMenu"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(900, 0)
+layout_mode = 2
+
+[node name="PanelContainer2" type="PanelContainer" parent="MainMenu"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_o0sh4")
+
+[node name="StatusPage" parent="." instance=ExtResource("3_773wc")]
+visible = false
+layout_mode = 2
+
+[connection signal="button_down" from="MainMenu/PauseOptions/VBoxContainer/VBoxContainer/Status" to="." method="_on_status_button_down"]
+[connection signal="button_down" from="MainMenu/PauseOptions/VBoxContainer/VBoxContainer/Exit" to="." method="_on_exit_button_down"]

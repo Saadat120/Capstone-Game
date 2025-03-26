@@ -1,14 +1,14 @@
 extends Node
 
 
-func displayNumbers(value: int, position: Vector2, isCritical: bool):
-	var number = Label.new()
+func displayNumbers(value: int, position: Vector2, isCritical: bool)->void:
+	var number := Label.new()
 	number.global_position = position
 	number.text = str(value)
 	number.z_index = 5
 	number.label_settings = LabelSettings.new()
 	
-	var color = "#fff"
+	var color := "#fff"
 	
 	if isCritical:
 		color = "#b22"
@@ -24,7 +24,7 @@ func displayNumbers(value: int, position: Vector2, isCritical: bool):
 	await number.resized
 	number.pivot_offset = Vector2(number.size/2)
 	
-	var tween = get_tree().create_tween()
+	var tween := get_tree().create_tween()
 	tween.set_parallel(true)
 	tween.tween_property(
 		number, "position:y", number.position.y - 24, 0.25

@@ -10,7 +10,7 @@ func _ready() -> void:
 	bar.max_value = timer.wait_time
 	bar.value = 0
 	
-func initialize(skillCooldown, button):
+func initialize(skillCooldown: float, button: String) -> void:
 	timer.wait_time = skillCooldown
 	skillButton = button
 	key.text = skillButton

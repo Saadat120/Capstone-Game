@@ -12,7 +12,7 @@ func _ready() -> void:
 	add_child(stats.attackTimer)
 	stats.attackTimer.start()
 
-func Enter():
+func Enter() -> void:
 	stats.attackTimer.wait_time = stats.attackSpeed
 	if stats.attackTimer.time_left > 0:
 		return  # Prevent attacking if cooldown is still active
@@ -26,14 +26,14 @@ func Enter():
 	get_entity().updateAnimation("Attack")
 	pass
 	
-func Exit():
+func Exit() -> void:
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func Process(_delta: float) -> State:
 #	Get Player reference and distance b/w player and boss
 	player = get_tree().get_first_node_in_group("Player")
-	var distance = get_entity().global_position.distance_to(player.global_position)
+	var distance := get_entity().global_position.distance_to(player.global_position)
 #	# Wait for attack animation + cooldown before switching states
 	if stats.attackTimer.is_stopped():
 		if distance > stats.attackRange:

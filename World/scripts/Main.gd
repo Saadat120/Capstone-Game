@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var playerCam = $Player/Camera2D
+@onready var playerCam := $Player/Camera2D
 @onready var companion: Node2D = $Companion
 
 func _ready() -> void:
@@ -17,9 +17,9 @@ func _on_badgerPortal_entered(body: Node2D) -> void:
 		get_tree().change_scene_to_file.call_deferred("res://World/Areas/badgerArena.tscn")
 	pass
 
-func addPet():
-	var companionScene = load("res://Player/scenes/stagCompanion.tscn")
+func addPet() -> void:
+	var companionScene := load("res://Player/scenes/stagCompanion.tscn")
 	if companionScene:
-		var companionInstance = companionScene.instantiate()
-		companion.add_child(companionInstance)
+		#var companionInstance = companionScene.instantiate()
+		companion.add_child(companionScene.instantiate())
 	

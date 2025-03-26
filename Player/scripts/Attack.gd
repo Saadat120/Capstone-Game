@@ -4,7 +4,7 @@ var attackName: String
 var cooldown: float
 var damage: int
 var isReady: bool = true
-var cooldownTimer = Timer.new()
+var cooldownTimer := Timer.new()
 	
 func _init(attackType: String, dmg: int, cd: float) -> void:
 	attackName = attackType
@@ -14,11 +14,11 @@ func _init(attackType: String, dmg: int, cd: float) -> void:
 	cooldownTimer.one_shot = true
 	cooldownTimer.timeout.connect(_reset_cooldown)
 
-func execute_attack():
+func execute_attack() -> void:
 	if !isReady:
 		return
 	isReady = false
 	cooldownTimer.start()
 
-func _reset_cooldown():
+func _reset_cooldown() -> void:
 	isReady = true

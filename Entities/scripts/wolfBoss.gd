@@ -8,12 +8,12 @@ class_name wolfBoss  extends CharacterBody2D
 @onready var damage_numbers_origin: Node2D = $DamageNumbersOrigin
 @onready var attackTimer: Timer = $AttackTimer
 
-var dead = false
+var dead := false
 var aggro: bool = false
 var cardinal_direction: Vector2 = Vector2(1, -1)
 var direction : Vector2 = Vector2.ZERO
 
-var wolfDirectionMap = {
+var wolfDirectionMap := {
 	Vector2(1, 0): "E",
 	Vector2(-1, 0): "W",
 	Vector2(1, 1).normalized(): "SE",  # Southeast
@@ -22,8 +22,8 @@ var wolfDirectionMap = {
 	Vector2(-1, -1).normalized(): "NW" # Northwest
 }
 
-func _ready():
-	stats.initialize(700, 200, 10, 55, 1.2, 80)
+func _ready() -> void:
+	stats.initialize(700, 200, 15, 55, 1.2, 80)
 	SignalBus.enemyHealthChanged.connect(healthBar._set_health)
 	healthBar.initHealth(stats.health)
 	aggro = true
@@ -39,21 +39,21 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 	die()
 
-func updateAnimation(state: String):
+func updateAnimation(state: String) -> void:
 	animationPlayer.play(state + animationDirection())
 
-func animationDirection():
+func animationDirection() -> String:
 	return wolfDirectionMap.get(cardinal_direction, "NE")
 
-func setDirection():
+func setDirection() -> bool:
 	if direction == Vector2.ZERO:
 		return false
 		
-	var closest_direction = Vector2.ZERO
-	var min_angle = 180
+	var closest_direction := Vector2.ZERO
+	var min_angle := 180
 
-	for dir in wolfDirectionMap.keys():
-		var angle_diff = rad_to_deg(direction.angle_to(dir))
+	for dir:Vector2 in wolfDirectionMap.keys():
+		var angle_diff := rad_to_deg(direction.angle_to(dir))
 		if abs(angle_diff) < min_angle:
 			min_angle = abs(angle_diff)
 			closest_direction = dir

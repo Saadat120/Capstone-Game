@@ -7,14 +7,14 @@ class_name badgerBoss extends CharacterBody2D
 @onready var stats: StatsComponent = $StatsComponent
 @onready var damage_numbers_origin: Node2D = $DamageNumbersOrigin
 
-var dead = false
+var dead: bool = false
 var aggro: bool = false
 var attacking: bool = false
 var burrowed: bool = false
 
 var cardinal_direction: Vector2 = Vector2(1, -1)
 var direction : Vector2 = Vector2.ZERO
-var badgerDirectionMap = {
+var badgerDirectionMap := {
 	Vector2(1, 0): "E",
 	Vector2(-1, 0): "W",
 	Vector2(1, 1).normalized(): "SE",  # Southeast
@@ -23,7 +23,7 @@ var badgerDirectionMap = {
 	Vector2(-1, -1).normalized(): "NW" # Northwest
 }
 
-func _ready():
+func _ready() -> void:
 	
 	SignalBus.enemyHealthChanged.connect(healthBar._set_health)
 	healthBar.initHealth(stats.health)
@@ -36,21 +36,21 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 	die()
 
-func updateAnimation(state: String):
+func updateAnimation(state: String) -> void:
 	animationPlayer.play(state + animationDirection())
 
-func animationDirection():
+func animationDirection() -> String:
 	return badgerDirectionMap.get(cardinal_direction, "NE")
 
-func setDirection():
+func setDirection() -> bool:
 	if direction == Vector2.ZERO:
 		return false
 		
-	var closest_direction = Vector2.ZERO
-	var min_angle = 180
+	var closest_direction := Vector2.ZERO
+	var min_angle := 180
 
-	for dir in badgerDirectionMap.keys():
-		var angle_diff = rad_to_deg(direction.angle_to(dir))
+	for dir:Vector2 in badgerDirectionMap.keys():
+		var angle_diff := rad_to_deg(direction.angle_to(dir))
 		if abs(angle_diff) < min_angle:
 			min_angle = abs(angle_diff)
 			closest_direction = dir

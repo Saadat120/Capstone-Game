@@ -2,12 +2,12 @@ extends ProgressBar
 
 @onready var damageBar: ProgressBar = $DamageBar
 @export var timer: Timer
-var health = 0: set = _set_health
+var health := 0: set = _set_health
 
-func _set_health(newHealth):
+func _set_health(newHealth: int) -> void:
 	if damageBar == null:
 		damageBar = get_node("DamageBar")
-	var prevHealth = health
+	var prevHealth := health
 	health = min(max_value, newHealth)
 	value = health
 		
@@ -16,7 +16,7 @@ func _set_health(newHealth):
 	else:
 		damageBar.value = health
 
-func initHealth(_health):
+func initHealth(_health: int) -> void:
 	if damageBar == null:
 		damageBar = get_node("DamageBar")
 	health = _health

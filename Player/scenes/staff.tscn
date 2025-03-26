@@ -1,0 +1,61 @@
+[gd_scene load_steps=6 format=3 uid="uid://d4kv48c7pv7sp"]
+
+[ext_resource type="Texture2D" uid="uid://boxwba6a0jf8d" path="res://UI/assets/37.png" id="1_festw"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2kb34"]
+radius = 4.0
+height = 50.0
+
+[sub_resource type="Animation" id="Animation_up1xi"]
+resource_name = "Default"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 3), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_88my1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k7c4a"]
+_data = {
+"Default": SubResource("Animation_up1xi"),
+"RESET": SubResource("Animation_88my1")
+}
+
+[node name="Staff" type="CharacterBody2D"]
+scale = Vector2(0.85, 0.85)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_festw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_2kb34")
+disabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+active = false
+libraries = {
+"": SubResource("AnimationLibrary_k7c4a")
+}
+autoplay = "Default"

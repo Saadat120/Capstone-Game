@@ -23,7 +23,7 @@ var attackTimer: Timer = Timer.new()
 func _process(_delta: float) -> void:
 	pass
 	
-func initialize(_maxHealth, _maxAbility, _damage, _speed,  _attackSpeed, _range):
+func initialize(_maxHealth: int, _maxAbility: int, _damage: int, _speed: float,  _attackSpeed: float, _range: float) -> void:
 	maxHealth = _maxHealth
 	maxAbility = _maxAbility
 	

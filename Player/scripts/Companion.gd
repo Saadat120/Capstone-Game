@@ -1,33 +1,26 @@
 extends CharacterBody2D
 
 @onready var animationTree: AnimationTree = $AnimationTree
-@onready var stack1: ProgressBar = $CanvasLayer/HBoxContainer/Stack1
-@onready var stack2: ProgressBar = $CanvasLayer/HBoxContainer/Stack2
-@onready var stack3: ProgressBar = $CanvasLayer/HBoxContainer/Stack3
-var stacks: Array
+@onready var gauge: ProgressBar = $CanvasLayer/GaugeMeter
 
 var player: CharacterBody2D
 var follow: bool = false
 var cardinal_direction: Vector2 = Vector2.DOWN
 var direction : Vector2 = Vector2.ZERO
 var distance: float
-const maxStacks = 3
-var stackCount = 0
+var gaugeInc: float = 0
+var abilityActive: bool
 
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("Player")
+	gauge.value = 0
 	SignalBus.passiveStack.connect(handleStacks)
-	stack1.visible = false
-	stack2.visible = false
-	stack3.visible = false
-	stacks.append(stack1)
-	stacks.append(stack2)
-	stacks.append(stack3)
+	
 	
 func _physics_process(_delta: float) -> void:
 	handleMovement()
 
-func handleMovement():
+func handleMovement() -> void:
 	distance = global_position.distance_to(player.global_position)
 	
 	if distance > 60:
@@ -47,14 +40,22 @@ func handleMovement():
 	animationTree.set("parameters/Follow/blend_position", cardinal_direction)
 	move_and_slide()
 
-	
-func handleStacks():
-	if stackCount < maxStacks:
-		stacks[stackCount].visible = true
-		stackCount += 1
-		return
+func handleStacks() -> void:
+#The lower the health, the greater the gauge increase every hit
+	if gauge.value < 100 and $AbilityTimer.is_stopped():
+		gaugeInc = 10 * (1 + abs((player.playerManager.health - 100)/200.0))
+		gauge.value = clamp(gauge.value + gaugeInc, gauge.min_value, gauge.max_value)
+		$CanvasLayer/GaugeValue.text = str(int(gauge.value))
+		AbilityProc()
 
-	if stackCount >= maxStacks:
-		stackCount = 0
-		for stack in stacks:
-			stack.visible = false
+func AbilityProc() -> void:
+	if gauge.value >= 100 and not abilityActive:
+		abilityActive = true
+		SignalBus.AbilityMeterFilled.emit()
+		$AbilityTimer.start()
+
+func _on_ability_timer_timeout() -> void:
+	abilityActive = false
+	gauge.value = 0
+	$CanvasLayer/GaugeValue.text = str(int(gauge.value))
+	SignalBus.AbilityEnded.emit()

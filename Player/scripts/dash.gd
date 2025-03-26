@@ -4,9 +4,9 @@ extends Node2D
 @onready var cooldown: Timer = $Cooldown
 
 	
-func startDash(duration):
+func startDash(duration: float) -> void:
 	timer.wait_time = duration
 	timer.start()
 
-func isDashing():
+func isDashing() -> bool:
 	return !timer.is_stopped()

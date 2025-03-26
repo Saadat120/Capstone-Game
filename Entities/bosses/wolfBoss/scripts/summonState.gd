@@ -3,7 +3,7 @@ class_name SummonState extends State
 @onready var attack: State = $"../Attack"
 
 var speed: float
-@export var attackRange = 55
+@export var attackRange := 55
 var player: Node2D
 
 #What happens when wolf Boss enters this state
@@ -20,7 +20,7 @@ func Exit()  -> void:
 func Process(_delta: float) -> State:
 		
 	if get_entity() and player:
-		var distance = get_entity().global_position.distance_to(player.global_position)
+		var distance := get_entity().global_position.distance_to(player.global_position)
 		#Transition to attack state
 		if distance < attackRange:
 			return attack

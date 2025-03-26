@@ -6,9 +6,17 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4rbqn"]
 bg_color = Color(0.215686, 0.54902, 0.478431, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ws7qy"]
 bg_color = Color(0.0941176, 0.0941176, 0.0941176, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
 expand_margin_left = 1.0
 expand_margin_top = 1.0
 expand_margin_right = 1.0
@@ -18,6 +26,10 @@ shadow_offset = Vector2(0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_my7gb"]
 bg_color = Color(0.575961, 1.69661e-06, 3.36915e-07, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
 
 [node name="HealthBar" type="ProgressBar" node_paths=PackedStringArray("timer")]
 z_index = 1
