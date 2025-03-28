@@ -1507,7 +1507,7 @@ root_node = NodePath("../Sprite2D")
 tree_root = SubResource("AnimationNodeStateMachine_3a87n")
 advance_expression_base_node = NodePath("..")
 anim_player = NodePath("../AnimationPlayer")
-parameters/Attack/blend_position = Vector2(-0.973282, -0.929515)
+parameters/Attack/blend_position = Vector2(-0.984733, 0.91029)
 parameters/Idle/blend_position = Vector2(-0.889313, 0.94723)
 parameters/Walk/blend_position = Vector2(0.00381684, 0.938326)
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0j65lqipjkta"
-path="res://.godot/imported/arrow (1).png-da07b4c1676190b6a3b01f68390ef66f.ctex"
+uid="uid://g3xfogwu3hk2"
+path="res://.godot/imported/boar-all.png-7d4324861362b4c10bdfeeafbc81f921.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UI/assets/arrow (1).png"
-dest_files=["res://.godot/imported/arrow (1).png-da07b4c1676190b6a3b01f68390ef66f.ctex"]
+source_file="res://Entities/assets/boar-all.png"
+dest_files=["res://.godot/imported/boar-all.png-7d4324861362b4c10bdfeeafbc81f921.ctex"]
 
 [params]
 

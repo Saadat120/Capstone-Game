@@ -61,7 +61,6 @@ func attack() -> void:
 		playerManager.performAttack("basicAttack")
 		attacking = true
 
-
 func died() -> void:
 	if playerManager.health <= 0:
 		get_parent().get_tree().change_scene_to_file("res://World/Areas/Main.tscn")

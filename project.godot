@@ -21,6 +21,7 @@ SignalBus="*res://Global/SignalBus.gd"
 DamageNumbers="*res://Global/DamageNumbers.gd"
 Hitstop="*res://Global/Hitstop.gd"
 DamageManager="*res://Global/DamageManager.gd"
+GlobalPlayer="*res://Global/GlobalPlayer.gd"
 
 [debug]
 

@@ -1,6 +1,5 @@
 extends Node
 
-
 func displayNumbers(value: int, position: Vector2, isCritical: bool)->void:
 	var number := Label.new()
 	number.global_position = position

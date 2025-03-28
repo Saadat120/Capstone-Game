@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://bk36qnaychwcp"]
+[gd_scene load_steps=13 format=3 uid="uid://bk36qnaychwcp"]
 
-[ext_resource type="Texture2D" uid="uid://cb30fh0wha4c0" path="res://UI/assets/keyboard_escape.png" id="1_i7mga"]
-[ext_resource type="Script" path="res://UI/scripts/pauseArea.gd" id="1_r45h1"]
-[ext_resource type="PackedScene" uid="uid://dwisfevma3f57" path="res://UI/scenes/StatusPage.tscn" id="3_773wc"]
+[ext_resource type="Script" path="res://UI/scripts/pauseArea.gd" id="1_ebnym"]
+[ext_resource type="Texture2D" uid="uid://cb30fh0wha4c0" path="res://UI/assets/keyboard_escape.png" id="2_g8xcx"]
+[ext_resource type="PackedScene" uid="uid://dwisfevma3f57" path="res://UI/scenes/Pause/StatusPage.tscn" id="3_op7kn"]
+[ext_resource type="PackedScene" uid="uid://bo8xoqaotlp3t" path="res://UI/scenes/Pause/CompanionPage.tscn" id="4_hdyll"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gik4s"]
 bg_color = Color(0, 0, 0, 1)
@@ -36,7 +37,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_r45h1")
+script = ExtResource("1_ebnym")
 
 [node name="MainMenu" type="HBoxContainer" parent="."]
 layout_mode = 2
@@ -107,7 +108,7 @@ alignment = 1
 custom_minimum_size = Vector2(56, 48)
 layout_mode = 2
 size_flags_horizontal = 4
-texture = ExtResource("1_i7mga")
+texture = ExtResource("2_g8xcx")
 
 [node name="Label" type="Label" parent="MainMenu/PauseOptions/VBoxContainer2/HBoxContainer"]
 layout_mode = 2
@@ -132,9 +133,14 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_o0sh4")
 
-[node name="StatusPage" parent="." instance=ExtResource("3_773wc")]
+[node name="StatusPage" parent="." instance=ExtResource("3_op7kn")]
+visible = false
+layout_mode = 2
+
+[node name="CompanionPage" parent="." instance=ExtResource("4_hdyll")]
 visible = false
 layout_mode = 2
 
 [connection signal="button_down" from="MainMenu/PauseOptions/VBoxContainer/VBoxContainer/Status" to="." method="_on_status_button_down"]
+[connection signal="button_down" from="MainMenu/PauseOptions/VBoxContainer/VBoxContainer/Companion" to="." method="_on_companion_button_down"]
 [connection signal="button_down" from="MainMenu/PauseOptions/VBoxContainer/VBoxContainer/Exit" to="." method="_on_exit_button_down"]

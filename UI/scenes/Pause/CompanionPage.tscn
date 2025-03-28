@@ -1,0 +1,158 @@
+[gd_scene load_steps=8 format=3 uid="uid://bo8xoqaotlp3t"]
+
+[ext_resource type="Texture2D" uid="uid://c0npspc30ewyj" path="res://Entities/assets/stag-all.png" id="1_ltpgq"]
+[ext_resource type="Texture2D" uid="uid://c8ydosnmahghv" path="res://Entities/assets/wolf-all.png" id="3_m3yau"]
+[ext_resource type="Texture2D" uid="uid://b07yx1fjcsdqq" path="res://Entities/assets/badger-all.png" id="4_vrp13"]
+[ext_resource type="Texture2D" uid="uid://g3xfogwu3hk2" path="res://Entities/assets/boar-all.png" id="5_e503t"]
+[ext_resource type="Texture2D" uid="uid://cb30fh0wha4c0" path="res://UI/assets/keyboard_escape.png" id="6_qvuwj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g1mob"]
+bg_color = Color(0.165656, 0.165656, 0.165656, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hi5gr"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="CompanionPage" type="PanelContainer"]
+process_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_g1mob")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Title" type="HBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(500, 150)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/Title"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Companion Select"
+
+[node name="MainHBox" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+
+[node name="StagTree" type="VBoxContainer" parent="VBoxContainer/MainHBox"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/MainHBox/StagTree"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hi5gr")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MainHBox/StagTree/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="NinePatchRect" type="NinePatchRect" parent="VBoxContainer/MainHBox/StagTree/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("1_ltpgq")
+region_rect = Rect2(0, 83, 31, 37)
+
+[node name="WolfTree" type="VBoxContainer" parent="VBoxContainer/MainHBox"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/MainHBox/WolfTree"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hi5gr")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MainHBox/WolfTree/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="NinePatchRect" type="NinePatchRect" parent="VBoxContainer/MainHBox/WolfTree/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("3_m3yau")
+region_rect = Rect2(333, 591, 37, 34)
+
+[node name="BadgerTree" type="VBoxContainer" parent="VBoxContainer/MainHBox"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/MainHBox/BadgerTree"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hi5gr")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MainHBox/BadgerTree/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="NinePatchRect" type="NinePatchRect" parent="VBoxContainer/MainHBox/BadgerTree/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("4_vrp13")
+region_rect = Rect2(3, 131, 31, 28)
+
+[node name="BoarTree" type="VBoxContainer" parent="VBoxContainer/MainHBox"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/MainHBox/BoarTree"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hi5gr")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MainHBox/BoarTree/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="NinePatchRect" type="NinePatchRect" parent="VBoxContainer/MainHBox/BoarTree/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(120, 110)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("5_e503t")
+region_rect = Rect2(43, 29, 35, 25)
+
+[node name="Levels" type="VBoxContainer" parent="VBoxContainer/MainHBox"]
+visible = false
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="FooterHBox" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="FooterContainer" type="VBoxContainer" parent="VBoxContainer/FooterHBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+
+[node name="Close" type="HBoxContainer" parent="VBoxContainer/FooterHBox/FooterContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="VBoxContainer/FooterHBox/FooterContainer/Close"]
+custom_minimum_size = Vector2(56, 48)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("6_qvuwj")
+
+[node name="Label" type="Label" parent="VBoxContainer/FooterHBox/FooterContainer/Close"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 32
+text = "Go Back"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SpacingBox" type="BoxContainer" parent="VBoxContainer/FooterHBox/FooterContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2

@@ -1,22 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://7uv4wjpm161c"]
+[gd_scene load_steps=2 format=3 uid="uid://7uv4wjpm161c"]
 
-[ext_resource type="PackedScene" uid="uid://bk36qnaychwcp" path="res://UI/scenes/PauseArea.tscn" id="1_5jtd7"]
-[ext_resource type="PackedScene" uid="uid://cymhafg005goy" path="res://UI/scenes/PlayerMenu.tscn" id="5_832ex"]
+[ext_resource type="PackedScene" uid="uid://bk36qnaychwcp" path="res://UI/scenes/Pause/PauseArea.tscn" id="1_5jtd7"]
 
 [node name="UI" type="CanvasLayer"]
 layer = 100
 
-[node name="HUD" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(1.0062, 1)
-
-[node name="PauseArea" parent="HUD" instance=ExtResource("1_5jtd7")]
-layout_mode = 1
-
-[node name="Panel" parent="." instance=ExtResource("5_832ex")]
-visible = false
+[node name="PauseArea" parent="." instance=ExtResource("1_5jtd7")]
