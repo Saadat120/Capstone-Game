@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=4 uid="uid://bjbdblue6w0y"]
 
-[ext_resource type="Script" path="res://World/scripts/Arena.gd" id="1_uv53m"]
-[ext_resource type="Texture2D" uid="uid://ij75ak0ds87j" path="res://assets/MapDesigns/spritesheet.png" id="1_ytt7o"]
+[ext_resource type="Script" uid="uid://dpm844ro5otxi" path="res://World/scripts/Arena.gd" id="1_uv53m"]
+[ext_resource type="Texture2D" uid="uid://ij75ak0ds87j" path="res://UI/assets/TileMap/spritesheet.png" id="1_ytt7o"]
 [ext_resource type="PackedScene" uid="uid://m7c11xmobi3y" path="res://Entities/bosses/wolfBoss/wolfBoss.tscn" id="2_u6yrl"]
 [ext_resource type="PackedScene" uid="uid://cu0dol3wgdf3j" path="res://Player/scenes/player.tscn" id="3_slsos"]
 [ext_resource type="PackedScene" uid="uid://7uv4wjpm161c" path="res://UI/scenes/UI.tscn" id="5_gbc50"]

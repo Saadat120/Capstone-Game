@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://drlkgan5uv4x4"]
 
-[ext_resource type="Texture2D" uid="uid://d1qmjl3len4wu" path="res://UI/assets/18.png" id="1_obwvi"]
+[ext_resource type="Texture2D" uid="uid://d1qmjl3len4wu" path="res://Player/assets/18.png" id="1_obwvi"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1on7t"]
 radius = 7.0
@@ -50,8 +50,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bwjhe"]
 _data = {
-"Pullback": SubResource("Animation_dpsib"),
-"RESET": SubResource("Animation_ewvt5")
+&"Pullback": SubResource("Animation_dpsib"),
+&"RESET": SubResource("Animation_ewvt5")
 }
 
 [node name="SpearUltimate" type="CharacterBody2D"]
@@ -64,6 +64,6 @@ shape = SubResource("CapsuleShape2D_1on7t")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_bwjhe")
+&"": SubResource("AnimationLibrary_bwjhe")
 }
 autoplay = "Pullback"

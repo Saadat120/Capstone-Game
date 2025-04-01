@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ck6f5ck1xbhat"]
 
-[ext_resource type="Texture2D" uid="uid://crtuyrwb83tuj" path="res://assets/UI/Circle01.png" id="1_r03v6"]
+[ext_resource type="Texture2D" uid="uid://crtuyrwb83tuj" path="res://UI/assets/panels/Circle01.png" id="1_r03v6"]
 
 [node name="CompanionSelection" type="Control"]
 layout_mode = 3

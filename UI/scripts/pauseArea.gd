@@ -46,4 +46,5 @@ func _on_companion_button_down() -> void:
 	companionPage.show()
 	
 func _on_exit_button_down() -> void:
+	GlobalPlayer.saveProgress()
 	get_tree().quit()

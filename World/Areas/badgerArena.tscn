@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=4 uid="uid://b4y3s7j8na5yb"]
 
-[ext_resource type="Texture2D" uid="uid://ij75ak0ds87j" path="res://assets/MapDesigns/spritesheet.png" id="1_04kim"]
-[ext_resource type="Script" path="res://World/scripts/BadgerArena.gd" id="1_c3evl"]
+[ext_resource type="Texture2D" uid="uid://ij75ak0ds87j" path="res://UI/assets/TileMap/spritesheet.png" id="1_04kim"]
+[ext_resource type="Script" uid="uid://dgugyxnvnifuc" path="res://World/scripts/BadgerArena.gd" id="1_c3evl"]
 [ext_resource type="PackedScene" uid="uid://crrx0ak4hnwai" path="res://Entities/bosses/badgerBoss/badgerBoss.tscn" id="2_yai74"]
 [ext_resource type="PackedScene" uid="uid://cu0dol3wgdf3j" path="res://Player/scenes/player.tscn" id="3_76f2a"]
 

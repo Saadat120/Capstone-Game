@@ -1,15 +1,15 @@
 [gd_scene load_steps=72 format=3 uid="uid://m7c11xmobi3y"]
 
-[ext_resource type="Script" path="res://Entities/scripts/wolfBoss.gd" id="1_5vc8q"]
-[ext_resource type="Shader" uid="uid://bgafj0yghf2qm" path="res://assets/Sprites/Extra/hitFlash.tres" id="2_txir4"]
-[ext_resource type="Script" path="res://scripts/StateMachine/chaseState.gd" id="5_es7e0"]
-[ext_resource type="Script" path="res://scripts/StateMachine/StateMachine.gd" id="5_kve3e"]
-[ext_resource type="Script" path="res://Common/scripts/StatsComponent.gd" id="5_llpr2"]
-[ext_resource type="Script" path="res://scripts/StateMachine/attackState.gd" id="6_8mipx"]
-[ext_resource type="Script" path="res://scripts/StateMachine/idleState.gd" id="7_3bv5x"]
+[ext_resource type="Script" uid="uid://dujs3v8qlj81p" path="res://Entities/scripts/wolfBoss.gd" id="1_5vc8q"]
+[ext_resource type="Shader" uid="uid://bgafj0yghf2qm" path="res://Player/assets/hitFlash.tres" id="2_txir4"]
+[ext_resource type="Script" uid="uid://6si8eicwtc82" path="res://scripts/StateMachine/chaseState.gd" id="5_es7e0"]
+[ext_resource type="Script" uid="uid://cp1t6qhxhtqsg" path="res://scripts/StateMachine/StateMachine.gd" id="5_kve3e"]
+[ext_resource type="Script" uid="uid://dern71du8kkuy" path="res://Common/scripts/StatsComponent.gd" id="5_llpr2"]
+[ext_resource type="Script" uid="uid://dn4ejr11fg3ew" path="res://scripts/StateMachine/attackState.gd" id="6_8mipx"]
+[ext_resource type="Script" uid="uid://ba4eakdptbbm5" path="res://scripts/StateMachine/idleState.gd" id="7_3bv5x"]
 [ext_resource type="Texture2D" uid="uid://c8ydosnmahghv" path="res://Entities/assets/wolf-all.png" id="8_wcgn3"]
 [ext_resource type="PackedScene" uid="uid://de2s21g531onq" path="res://Common/HitboxComponent.tscn" id="10_8nwkp"]
-[ext_resource type="Script" path="res://Entities/bosses/wolfBoss/scripts/summonState.gd" id="11_e00ir"]
+[ext_resource type="Script" uid="uid://bvh1oqmu0fmrs" path="res://Entities/bosses/wolfBoss/scripts/summonState.gd" id="11_e00ir"]
 [ext_resource type="PackedScene" uid="uid://dxhk63e1mu4t3" path="res://UI/scenes/BossUI.tscn" id="11_h1tyk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0jlkj"]
@@ -1914,29 +1914,29 @@ tracks/7/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0sogr"]
 _data = {
-"AttackE": SubResource("Animation_ifpdv"),
-"AttackNE": SubResource("Animation_gr7so"),
-"AttackNW": SubResource("Animation_jlaak"),
-"AttackSE": SubResource("Animation_2hd00"),
-"AttackSW": SubResource("Animation_14sj4"),
-"AttackW": SubResource("Animation_gkj71"),
-"DeathE": SubResource("Animation_a5pxk"),
-"DeathNE": SubResource("Animation_uc1jb"),
-"DeathNW": SubResource("Animation_jrivq"),
-"DeathSE": SubResource("Animation_v5i48"),
-"DeathSW": SubResource("Animation_dxhbe"),
-"DeathW": SubResource("Animation_p7ysh"),
-"Howl": SubResource("Animation_p6x1s"),
-"RESET": SubResource("Animation_84w54"),
-"SummonNE": SubResource("Animation_d3vum"),
-"moveE": SubResource("Animation_oeckt"),
-"moveN": SubResource("Animation_py3v5"),
-"moveNE": SubResource("Animation_sva1k"),
-"moveNW": SubResource("Animation_ock27"),
-"moveS": SubResource("Animation_g3xev"),
-"moveSE": SubResource("Animation_8mxwq"),
-"moveSW": SubResource("Animation_f021w"),
-"moveW": SubResource("Animation_o8333")
+&"AttackE": SubResource("Animation_ifpdv"),
+&"AttackNE": SubResource("Animation_gr7so"),
+&"AttackNW": SubResource("Animation_jlaak"),
+&"AttackSE": SubResource("Animation_2hd00"),
+&"AttackSW": SubResource("Animation_14sj4"),
+&"AttackW": SubResource("Animation_gkj71"),
+&"DeathE": SubResource("Animation_a5pxk"),
+&"DeathNE": SubResource("Animation_uc1jb"),
+&"DeathNW": SubResource("Animation_jrivq"),
+&"DeathSE": SubResource("Animation_v5i48"),
+&"DeathSW": SubResource("Animation_dxhbe"),
+&"DeathW": SubResource("Animation_p7ysh"),
+&"Howl": SubResource("Animation_p6x1s"),
+&"RESET": SubResource("Animation_84w54"),
+&"SummonNE": SubResource("Animation_d3vum"),
+&"moveE": SubResource("Animation_oeckt"),
+&"moveN": SubResource("Animation_py3v5"),
+&"moveNE": SubResource("Animation_sva1k"),
+&"moveNW": SubResource("Animation_ock27"),
+&"moveS": SubResource("Animation_g3xev"),
+&"moveSE": SubResource("Animation_8mxwq"),
+&"moveSW": SubResource("Animation_f021w"),
+&"moveW": SubResource("Animation_o8333")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4rhom"]
@@ -2111,8 +2111,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xqlso"]
 _data = {
-"RESET": SubResource("Animation_frdr7"),
-"hitFlash": SubResource("Animation_ljbwd")
+&"RESET": SubResource("Animation_frdr7"),
+&"hitFlash": SubResource("Animation_ljbwd")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fn2c3"]

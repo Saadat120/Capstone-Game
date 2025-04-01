@@ -9,7 +9,7 @@ func _set_health(newHealth: int) -> void:
 		damageBar = get_node("DamageBar")
 	var prevHealth := health
 	health = min(max_value, newHealth)
-	value = health
+	value = int(health)
 		
 	if health < prevHealth:
 		timer.start()

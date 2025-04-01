@@ -1,7 +1,7 @@
 [gd_scene load_steps=38 format=3 uid="uid://b2pcm142bhdx7"]
 
 [ext_resource type="Texture2D" uid="uid://c0npspc30ewyj" path="res://Entities/assets/stag-all.png" id="1_loa12"]
-[ext_resource type="Script" path="res://Player/scripts/Companion.gd" id="1_viimo"]
+[ext_resource type="Script" uid="uid://fvbuwx13cgxd" path="res://Player/scripts/Companion.gd" id="1_viimo"]
 
 [sub_resource type="Animation" id="Animation_0hkni"]
 resource_name = "FollowE"
@@ -404,19 +404,19 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_t4p1f"]
 _data = {
-"FollowE": SubResource("Animation_0hkni"),
-"FollowNE": SubResource("Animation_47ecp"),
-"FollowNW": SubResource("Animation_bjmtc"),
-"FollowSE": SubResource("Animation_3kd51"),
-"FollowSW": SubResource("Animation_mb8no"),
-"FollowW": SubResource("Animation_5uco5"),
-"RESET": SubResource("Animation_m5w43"),
-"idleE": SubResource("Animation_keprr"),
-"idleNE": SubResource("Animation_6gcu7"),
-"idleNW": SubResource("Animation_f7gp0"),
-"idleSE": SubResource("Animation_mxr6v"),
-"idleSW": SubResource("Animation_yqptk"),
-"idleW": SubResource("Animation_cdcdf")
+&"FollowE": SubResource("Animation_0hkni"),
+&"FollowNE": SubResource("Animation_47ecp"),
+&"FollowNW": SubResource("Animation_bjmtc"),
+&"FollowSE": SubResource("Animation_3kd51"),
+&"FollowSW": SubResource("Animation_mb8no"),
+&"FollowW": SubResource("Animation_5uco5"),
+&"RESET": SubResource("Animation_m5w43"),
+&"idleE": SubResource("Animation_keprr"),
+&"idleNE": SubResource("Animation_6gcu7"),
+&"idleNW": SubResource("Animation_f7gp0"),
+&"idleSE": SubResource("Animation_mxr6v"),
+&"idleSW": SubResource("Animation_yqptk"),
+&"idleW": SubResource("Animation_cdcdf")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_my6yb"]

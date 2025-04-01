@@ -1,8 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://bk36qnaychwcp"]
+[gd_scene load_steps=15 format=3 uid="uid://bk36qnaychwcp"]
 
-[ext_resource type="Script" path="res://UI/scripts/pauseArea.gd" id="1_ebnym"]
-[ext_resource type="Texture2D" uid="uid://cb30fh0wha4c0" path="res://UI/assets/keyboard_escape.png" id="2_g8xcx"]
+[ext_resource type="Script" uid="uid://uxf17k7gqkhp" path="res://UI/scripts/pauseArea.gd" id="1_ebnym"]
+[ext_resource type="Texture2D" uid="uid://cb30fh0wha4c0" path="res://UI/assets/icons/keyboard_escape.png" id="2_g8xcx"]
 [ext_resource type="PackedScene" uid="uid://dwisfevma3f57" path="res://UI/scenes/Pause/StatusPage.tscn" id="3_op7kn"]
+[ext_resource type="Texture2D" uid="uid://3i27qjfhqkw0" path="res://UI/assets/icons/scratch.png" id="3_p0gpf"]
+[ext_resource type="Texture2D" uid="uid://das5clqw0bcfd" path="res://UI/assets/icons/bone.png" id="4_awjei"]
 [ext_resource type="PackedScene" uid="uid://bo8xoqaotlp3t" path="res://UI/scenes/Pause/CompanionPage.tscn" id="4_hdyll"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gik4s"]
@@ -123,6 +125,7 @@ custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 
 [node name="CenterArea" type="PanelContainer" parent="MainMenu"]
+visible = false
 self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(900, 0)
 layout_mode = 2
@@ -132,6 +135,43 @@ visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_o0sh4")
+
+[node name="UpgradeMaterials" type="VBoxContainer" parent="MainMenu/PanelContainer2"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainMenu/PanelContainer2/UpgradeMaterials"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 100
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MainMenu/PanelContainer2/UpgradeMaterials/HBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = ExtResource("3_p0gpf")
+
+[node name="MarkCount" type="Label" parent="MainMenu/PanelContainer2/UpgradeMaterials/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_font_sizes/font_size = 32
+text = "0"
+vertical_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MainMenu/PanelContainer2/UpgradeMaterials"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 126
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MainMenu/PanelContainer2/UpgradeMaterials/HBoxContainer2"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+texture = ExtResource("4_awjei")
+
+[node name="TreatCount" type="Label" parent="MainMenu/PanelContainer2/UpgradeMaterials/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_font_sizes/font_size = 32
+text = "0"
+vertical_alignment = 1
 
 [node name="StatusPage" parent="." instance=ExtResource("3_op7kn")]
 visible = false

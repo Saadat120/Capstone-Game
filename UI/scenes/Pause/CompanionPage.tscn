@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c8ydosnmahghv" path="res://Entities/assets/wolf-all.png" id="3_m3yau"]
 [ext_resource type="Texture2D" uid="uid://b07yx1fjcsdqq" path="res://Entities/assets/badger-all.png" id="4_vrp13"]
 [ext_resource type="Texture2D" uid="uid://g3xfogwu3hk2" path="res://Entities/assets/boar-all.png" id="5_e503t"]
-[ext_resource type="Texture2D" uid="uid://cb30fh0wha4c0" path="res://UI/assets/keyboard_escape.png" id="6_qvuwj"]
+[ext_resource type="Texture2D" uid="uid://cb30fh0wha4c0" path="res://UI/assets/icons/keyboard_escape.png" id="6_qvuwj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g1mob"]
 bg_color = Color(0.165656, 0.165656, 0.165656, 1)

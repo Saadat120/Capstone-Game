@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://mc7qvthaiy4y"]
 
-[ext_resource type="Texture2D" uid="uid://crtuyrwb83tuj" path="res://assets/UI/Circle01.png" id="1_5fms7"]
+[ext_resource type="Texture2D" uid="uid://crtuyrwb83tuj" path="res://UI/assets/panels/Circle01.png" id="1_5fms7"]
 [ext_resource type="Texture2D" uid="uid://c0npspc30ewyj" path="res://Entities/assets/stag-all.png" id="2_nwcnp"]
 
 [node name="Passive" type="NinePatchRect"]

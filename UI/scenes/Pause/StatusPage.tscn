@@ -1,12 +1,13 @@
-[gd_scene load_steps=14 format=3 uid="uid://dwisfevma3f57"]
+[gd_scene load_steps=16 format=3 uid="uid://dwisfevma3f57"]
 
-[ext_resource type="Texture2D" uid="uid://bc1fx4gue01my" path="res://UI/assets/heart-rate.png" id="1_s4gg6"]
-[ext_resource type="Script" path="res://UI/scripts/statusPage.gd" id="1_w1qyb"]
-[ext_resource type="Texture2D" uid="uid://c0j65lqipjkta" path="res://UI/assets/arrow.png" id="2_wp025"]
-[ext_resource type="Texture2D" uid="uid://dnncpxtqy422o" path="res://UI/assets/slash.png" id="3_xt1o8"]
-[ext_resource type="Texture2D" uid="uid://cjv3uvp57am10" path="res://UI/assets/running.png" id="4_fjcax"]
-[ext_resource type="Texture2D" uid="uid://c74kvtt5cxyjq" path="res://UI/assets/defence.png" id="5_784d7"]
-[ext_resource type="Texture2D" uid="uid://cb30fh0wha4c0" path="res://UI/assets/keyboard_escape.png" id="6_xec5r"]
+[ext_resource type="Texture2D" uid="uid://bc1fx4gue01my" path="res://UI/assets/icons/heart-rate.png" id="1_s4gg6"]
+[ext_resource type="Script" uid="uid://38oft263k2vo" path="res://UI/scripts/statusPage.gd" id="1_w1qyb"]
+[ext_resource type="Texture2D" uid="uid://c0j65lqipjkta" path="res://UI/assets/icons/arrow.png" id="2_wp025"]
+[ext_resource type="Texture2D" uid="uid://dnncpxtqy422o" path="res://UI/assets/icons/slash.png" id="3_xt1o8"]
+[ext_resource type="Texture2D" uid="uid://cjv3uvp57am10" path="res://UI/assets/icons/running.png" id="4_fjcax"]
+[ext_resource type="Texture2D" uid="uid://c74kvtt5cxyjq" path="res://UI/assets/icons/defence.png" id="5_784d7"]
+[ext_resource type="Texture2D" uid="uid://cb30fh0wha4c0" path="res://UI/assets/icons/keyboard_escape.png" id="6_xec5r"]
+[ext_resource type="Texture2D" uid="uid://3i27qjfhqkw0" path="res://UI/assets/icons/scratch.png" id="7_fn0g0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g1mob"]
 bg_color = Color(0.165656, 0.165656, 0.165656, 1)
@@ -28,6 +29,11 @@ bg_color = Color(0.0980392, 0.0980392, 0.0980392, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ytu0y"]
 bg_color = Color(0.0980392, 0.0980392, 0.0980392, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fn0g0"]
+draw_center = false
+border_width_bottom = 3
+border_color = Color(1, 1, 1, 1)
+
 [node name="StatusPage" type="PanelContainer"]
 process_mode = 3
 anchors_preset = 15
@@ -43,7 +49,7 @@ layout_mode = 2
 theme_override_constants/separation = 0
 
 [node name="StatsUpgradeVBox" type="VBoxContainer" parent="HBoxContainer"]
-custom_minimum_size = Vector2(800, 0)
+custom_minimum_size = Vector2(900, 0)
 layout_mode = 2
 theme_override_constants/separation = 100
 
@@ -63,173 +69,309 @@ alignment = 2
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_hhcep")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/PanelContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/PanelContainer"]
 layout_mode = 2
-theme_override_constants/separation = 363
+theme_override_constants/separation = 100
 
-[node name="Label" type="Label" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/PanelContainer/HBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/PanelContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 380
+
+[node name="Label" type="Label" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/PanelContainer/HBoxContainer2/HBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Stats"
 
-[node name="Level" type="Label" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/PanelContainer/HBoxContainer"]
+[node name="Level" type="Label" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/PanelContainer/HBoxContainer2/HBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Level"
+
+[node name="Marks" type="Label" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/PanelContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Marks"
 
 [node name="Vitality" type="PanelContainer" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade"]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_7ewcr")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Vitality"]
+[node name="VitalityBox" type="HBoxContainer" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Vitality"]
 custom_minimum_size = Vector2(600, 0)
 layout_mode = 2
 theme_override_constants/separation = 260
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Vitality/HBoxContainer"]
+[node name="Title" type="HBoxContainer" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Vitality/VitalityBox"]
 layout_mode = 2
 theme_override_constants/separation = 30
 alignment = 1
 
-[node name="NinePatchRect" type="NinePatchRect" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Vitality/HBoxContainer/HBoxContainer"]
+[node name="NinePatchRect" type="NinePatchRect" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Vitality/VitalityBox/Title"]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 texture = ExtResource("1_s4gg6")
 
-[node name="Label" type="Label" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Vitality/HBoxContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Vitality/VitalityBox/Title"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Vitality"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Vitality/HBoxContainer"]
+[node name="UpgradeReq" type="HBoxContainer" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Vitality/VitalityBox"]
 layout_mode = 2
-theme_override_constants/separation = 20
+theme_override_constants/separation = 120
 alignment = 2
 
-[node name="HealthLvl" type="Label" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Vitality/HBoxContainer/HBoxContainer2"]
+[node name="LevelBox" type="HBoxContainer" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Vitality/VitalityBox/UpgradeReq"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="HealthLvl" type="Label" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Vitality/VitalityBox/UpgradeReq/LevelBox"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "1"
 
-[node name="HlthButton" type="Button" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Vitality/HBoxContainer/HBoxContainer2"]
+[node name="HlthButton" type="Button" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Vitality/VitalityBox/UpgradeReq/LevelBox"]
 layout_mode = 2
+size_flags_horizontal = 10
 icon = ExtResource("2_wp025")
+
+[node name="MarkBox" type="HBoxContainer" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Vitality/VitalityBox/UpgradeReq"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="MarkCost" type="Label" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Vitality/VitalityBox/UpgradeReq/MarkBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "1"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Vitality/VitalityBox/UpgradeReq/MarkBox"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("7_fn0g0")
 
 [node name="Damage" type="PanelContainer" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade"]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_bc0d1")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Damage"]
+[node name="DamageBox" type="HBoxContainer" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Damage"]
 custom_minimum_size = Vector2(600, 0)
 layout_mode = 2
 theme_override_constants/separation = 270
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Damage/HBoxContainer"]
+[node name="Title" type="HBoxContainer" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Damage/DamageBox"]
 layout_mode = 2
 theme_override_constants/separation = 30
 alignment = 1
 
-[node name="NinePatchRect" type="NinePatchRect" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Damage/HBoxContainer/HBoxContainer"]
+[node name="NinePatchRect" type="NinePatchRect" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Damage/DamageBox/Title"]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 texture = ExtResource("3_xt1o8")
 
-[node name="Label" type="Label" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Damage/HBoxContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Damage/DamageBox/Title"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Damage"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Damage/HBoxContainer"]
+[node name="UpgradeReq" type="HBoxContainer" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Damage/DamageBox"]
 layout_mode = 2
-theme_override_constants/separation = 20
-alignment = 2
+theme_override_constants/separation = 120
 
-[node name="DamageLvl" type="Label" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Damage/HBoxContainer/HBoxContainer2"]
+[node name="LevelBox" type="HBoxContainer" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Damage/DamageBox/UpgradeReq"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="DamageLvl" type="Label" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Damage/DamageBox/UpgradeReq/LevelBox"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "1"
 
-[node name="DmgButton" type="Button" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Damage/HBoxContainer/HBoxContainer2"]
+[node name="DmgButton" type="Button" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Damage/DamageBox/UpgradeReq/LevelBox"]
 layout_mode = 2
+size_flags_horizontal = 10
 icon = ExtResource("2_wp025")
+
+[node name="MarkBox" type="HBoxContainer" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Damage/DamageBox/UpgradeReq"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="MarkCost" type="Label" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Damage/DamageBox/UpgradeReq/MarkBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "1"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Damage/DamageBox/UpgradeReq/MarkBox"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("7_fn0g0")
 
 [node name="Agility" type="PanelContainer" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade"]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_o5ogy")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Agility"]
+[node name="AgilityBox" type="HBoxContainer" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Agility"]
 custom_minimum_size = Vector2(600, 0)
 layout_mode = 2
 theme_override_constants/separation = 297
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Agility/HBoxContainer"]
+[node name="Title" type="HBoxContainer" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Agility/AgilityBox"]
 layout_mode = 2
 theme_override_constants/separation = 30
 alignment = 1
 
-[node name="NinePatchRect" type="NinePatchRect" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Agility/HBoxContainer/HBoxContainer"]
+[node name="NinePatchRect" type="NinePatchRect" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Agility/AgilityBox/Title"]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 texture = ExtResource("4_fjcax")
 
-[node name="Label" type="Label" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Agility/HBoxContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Agility/AgilityBox/Title"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Speed"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Agility/HBoxContainer"]
+[node name="UpgradeReq" type="HBoxContainer" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Agility/AgilityBox"]
 layout_mode = 2
-theme_override_constants/separation = 20
+theme_override_constants/separation = 120
 
-[node name="AgilityLvl" type="Label" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Agility/HBoxContainer/HBoxContainer2"]
+[node name="LevelBox" type="HBoxContainer" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Agility/AgilityBox/UpgradeReq"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="AgilityLvl" type="Label" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Agility/AgilityBox/UpgradeReq/LevelBox"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "1"
 
-[node name="AgilityButton" type="Button" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Agility/HBoxContainer/HBoxContainer2"]
+[node name="AgilityButton" type="Button" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Agility/AgilityBox/UpgradeReq/LevelBox"]
 layout_mode = 2
+size_flags_horizontal = 10
 icon = ExtResource("2_wp025")
+
+[node name="MarkBox" type="HBoxContainer" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Agility/AgilityBox/UpgradeReq"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="MarkCost" type="Label" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Agility/AgilityBox/UpgradeReq/MarkBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "1"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Agility/AgilityBox/UpgradeReq/MarkBox"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("7_fn0g0")
 
 [node name="Armor" type="PanelContainer" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade"]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_ytu0y")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Armor"]
+[node name="ArmorBox" type="HBoxContainer" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Armor"]
 custom_minimum_size = Vector2(600, 0)
 layout_mode = 2
 theme_override_constants/separation = 292
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Armor/HBoxContainer"]
+[node name="Title" type="HBoxContainer" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Armor/ArmorBox"]
 layout_mode = 2
 theme_override_constants/separation = 30
 alignment = 1
 
-[node name="NinePatchRect" type="NinePatchRect" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Armor/HBoxContainer/HBoxContainer"]
+[node name="NinePatchRect" type="NinePatchRect" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Armor/ArmorBox/Title"]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 texture = ExtResource("5_784d7")
 
-[node name="Label" type="Label" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Armor/HBoxContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Armor/ArmorBox/Title"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Armor"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Armor/HBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Armor/ArmorBox"]
 layout_mode = 2
-theme_override_constants/separation = 20
+theme_override_constants/separation = 120
 
-[node name="ArmorLvl" type="Label" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Armor/HBoxContainer/HBoxContainer2"]
+[node name="LevelBox" type="HBoxContainer" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Armor/ArmorBox/HBoxContainer"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="ArmorLvl" type="Label" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Armor/ArmorBox/HBoxContainer/LevelBox"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "1"
 
-[node name="ArmorButton" type="Button" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Armor/HBoxContainer/HBoxContainer2"]
+[node name="ArmorButton" type="Button" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Armor/ArmorBox/HBoxContainer/LevelBox"]
 layout_mode = 2
+size_flags_horizontal = 10
 icon = ExtResource("2_wp025")
+
+[node name="MarkBox" type="HBoxContainer" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Armor/ArmorBox/HBoxContainer"]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="MarkCost" type="Label" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Armor/ArmorBox/HBoxContainer/MarkBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "1"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Armor/ArmorBox/HBoxContainer/MarkBox"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("7_fn0g0")
+
+[node name="MarksHeld" type="PanelContainer" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/MarksHeld"]
+layout_mode = 2
+theme_override_constants/separation = 100
+
+[node name="NinePatchRect" type="NinePatchRect" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/MarksHeld/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("7_fn0g0")
+
+[node name="MarksCount" type="Label" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/MarksHeld/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "0"
+
+[node name="Insufficient" type="PanelContainer" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade"]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Insufficient"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "Insufficient Marks"
+
+[node name="Timer" type="Timer" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade"]
+wait_time = 2.0
+one_shot = true
 
 [node name="FooterContainer" type="VBoxContainer" parent="HBoxContainer/StatsUpgradeVBox"]
 layout_mode = 2
@@ -261,10 +403,10 @@ layout_mode = 2
 
 [node name="StatDetails" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 149
+theme_override_constants/separation = 100
 
 [node name="Spacer" type="VBoxContainer" parent="HBoxContainer/StatDetails"]
-custom_minimum_size = Vector2(0, 80)
+custom_minimum_size = Vector2(0, 129)
 layout_mode = 2
 
 [node name="StatsContent" type="VBoxContainer" parent="HBoxContainer/StatDetails"]
@@ -394,11 +536,79 @@ theme_override_colors/font_color = Color(0, 0.317647, 0.890196, 1)
 theme_override_font_sizes/font_size = 24
 text = "+10"
 
-[connection signal="mouse_entered" from="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Vitality/HBoxContainer/HBoxContainer2/HlthButton" to="." method="_on_hlth_button_mouse_entered"]
-[connection signal="mouse_exited" from="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Vitality/HBoxContainer/HBoxContainer2/HlthButton" to="." method="_on_hlth_button_mouse_exited"]
-[connection signal="mouse_entered" from="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Damage/HBoxContainer/HBoxContainer2/DmgButton" to="." method="_on_dmg_button_mouse_entered"]
-[connection signal="mouse_exited" from="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Damage/HBoxContainer/HBoxContainer2/DmgButton" to="." method="_on_dmg_button_mouse_exited"]
-[connection signal="mouse_entered" from="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Agility/HBoxContainer/HBoxContainer2/AgilityButton" to="." method="_on_agility_button_mouse_entered"]
-[connection signal="mouse_exited" from="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Agility/HBoxContainer/HBoxContainer2/AgilityButton" to="." method="_on_agility_button_mouse_exited"]
-[connection signal="mouse_entered" from="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Armor/HBoxContainer/HBoxContainer2/ArmorButton" to="." method="_on_armor_button_mouse_entered"]
-[connection signal="mouse_exited" from="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Armor/HBoxContainer/HBoxContainer2/ArmorButton" to="." method="_on_armor_button_mouse_exited"]
+[node name="UpgradeDetails" type="VBoxContainer" parent="HBoxContainer/StatDetails"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/StatDetails/UpgradeDetails"]
+custom_minimum_size = Vector2(610, 300)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/StatDetails/UpgradeDetails/PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 35
+
+[node name="StatTitle" type="Label" parent="HBoxContainer/StatDetails/UpgradeDetails/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_fn0g0")
+text = "Vitality"
+horizontal_alignment = 1
+
+[node name="VitalityDetails" type="Label" parent="HBoxContainer/StatDetails/UpgradeDetails/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(550, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+theme_override_constants/line_spacing = 15
+theme_override_font_sizes/font_size = 24
+text = "The player's total health. Higher vitality means you can withstand more damage before being defeated."
+autowrap_mode = 3
+
+[node name="DamageDetails" type="Label" parent="HBoxContainer/StatDetails/UpgradeDetails/PanelContainer/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(550, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+theme_override_constants/line_spacing = 15
+theme_override_font_sizes/font_size = 24
+text = "The amount of harm you deal to enemies per basic attack. Upgrading this equates to Higher damage."
+autowrap_mode = 2
+
+[node name="AgilityDetails" type="Label" parent="HBoxContainer/StatDetails/UpgradeDetails/PanelContainer/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(550, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+theme_override_constants/line_spacing = 15
+theme_override_font_sizes/font_size = 24
+text = "Affects movement speed and second ability cooldowns. Higher Agility lets you move faster and active abilities more frequently."
+autowrap_mode = 2
+
+[node name="ArmorDetails" type="Label" parent="HBoxContainer/StatDetails/UpgradeDetails/PanelContainer/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(550, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+theme_override_constants/line_spacing = 15
+theme_override_font_sizes/font_size = 24
+text = "Reduces incoming damage. Upgradeing armor makes you more resistant to attacks."
+autowrap_mode = 2
+
+[connection signal="button_down" from="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Vitality/VitalityBox/UpgradeReq/LevelBox/HlthButton" to="." method="_on_hlth_button_button_down"]
+[connection signal="mouse_entered" from="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Vitality/VitalityBox/UpgradeReq/LevelBox/HlthButton" to="." method="_on_hlth_button_mouse_entered"]
+[connection signal="mouse_exited" from="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Vitality/VitalityBox/UpgradeReq/LevelBox/HlthButton" to="." method="_on_hlth_button_mouse_exited"]
+[connection signal="button_down" from="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Damage/DamageBox/UpgradeReq/LevelBox/DmgButton" to="." method="_on_dmg_button_button_down"]
+[connection signal="mouse_entered" from="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Damage/DamageBox/UpgradeReq/LevelBox/DmgButton" to="." method="_on_dmg_button_mouse_entered"]
+[connection signal="mouse_exited" from="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Damage/DamageBox/UpgradeReq/LevelBox/DmgButton" to="." method="_on_dmg_button_mouse_exited"]
+[connection signal="button_down" from="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Agility/AgilityBox/UpgradeReq/LevelBox/AgilityButton" to="." method="_on_agility_button_button_down"]
+[connection signal="mouse_entered" from="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Agility/AgilityBox/UpgradeReq/LevelBox/AgilityButton" to="." method="_on_agility_button_mouse_entered"]
+[connection signal="mouse_exited" from="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Agility/AgilityBox/UpgradeReq/LevelBox/AgilityButton" to="." method="_on_agility_button_mouse_exited"]
+[connection signal="button_down" from="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Armor/ArmorBox/HBoxContainer/LevelBox/ArmorButton" to="." method="_on_armor_button_button_down"]
+[connection signal="mouse_entered" from="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Armor/ArmorBox/HBoxContainer/LevelBox/ArmorButton" to="." method="_on_armor_button_mouse_entered"]
+[connection signal="mouse_exited" from="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Armor/ArmorBox/HBoxContainer/LevelBox/ArmorButton" to="." method="_on_armor_button_mouse_exited"]
+[connection signal="timeout" from="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Timer" to="." method="_on_timer_timeout"]

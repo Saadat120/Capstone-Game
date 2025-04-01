@@ -1,15 +1,15 @@
 [gd_scene load_steps=72 format=3 uid="uid://cu0dol3wgdf3j"]
 
-[ext_resource type="Script" path="res://Player/scripts/player.gd" id="1_5vw1t"]
-[ext_resource type="Script" path="res://Player/scripts/PlayerManager.gd" id="2_jp4qc"]
-[ext_resource type="Shader" uid="uid://bgafj0yghf2qm" path="res://assets/Sprites/Extra/hitFlash.tres" id="2_lcyww"]
-[ext_resource type="Texture2D" uid="uid://s1q82lpqeuvt" path="res://assets/Player/Mage-Sheet.png" id="2_tfu6d"]
-[ext_resource type="AnimationNodeBlendSpace2D" uid="uid://jq5hf01d7gqk" path="res://assets/Player/Animations/playerRunBlend.tres" id="6_788ri"]
-[ext_resource type="Texture2D" uid="uid://b82q0ts00h7dd" path="res://assets/MapDesigns/AttackSprite01.png" id="6_y45c1"]
-[ext_resource type="Script" path="res://Common/scripts/HitboxComponent.gd" id="8_27j1f"]
+[ext_resource type="Script" uid="uid://dqkdocbm8shq6" path="res://Player/scripts/player.gd" id="1_5vw1t"]
+[ext_resource type="Script" uid="uid://blv6u16a1xb4i" path="res://Player/scripts/PlayerManager.gd" id="2_jp4qc"]
+[ext_resource type="Shader" uid="uid://bgafj0yghf2qm" path="res://Player/assets/hitFlash.tres" id="2_lcyww"]
+[ext_resource type="Texture2D" uid="uid://s1q82lpqeuvt" path="res://Player/assets/Mage-Sheet.png" id="2_tfu6d"]
+[ext_resource type="AnimationNodeBlendSpace2D" uid="uid://jq5hf01d7gqk" path="res://Player/assets/playerRunBlend.tres" id="6_788ri"]
+[ext_resource type="Texture2D" uid="uid://b82q0ts00h7dd" path="res://Player/assets/AttackSprite01.png" id="6_y45c1"]
+[ext_resource type="Script" uid="uid://eusi3fu2fkav" path="res://Common/scripts/HitboxComponent.gd" id="8_27j1f"]
 [ext_resource type="PackedScene" uid="uid://dm13bkfdseof0" path="res://Common/HurtboxComponent.tscn" id="8_pahnu"]
 [ext_resource type="PackedScene" uid="uid://dsykkh7qgbqaj" path="res://Player/scenes/dash.tscn" id="10_83325"]
-[ext_resource type="Script" path="res://Player/scripts/CombatManager.gd" id="10_b4eum"]
+[ext_resource type="Script" uid="uid://duh3slu1fisl" path="res://Player/scripts/CombatManager.gd" id="10_b4eum"]
 [ext_resource type="PackedScene" uid="uid://doslp77la0i1f" path="res://UI/scenes/PlayerUI.tscn" id="10_bwlsn"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fck4g"]
@@ -1271,31 +1271,31 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_b20y1"]
 _data = {
-"RESET": SubResource("Animation_f6ua3"),
-"attackDown": SubResource("Animation_abnui"),
-"attackDownLeft": SubResource("Animation_ewees"),
-"attackDownRight": SubResource("Animation_ig0m1"),
-"attackLeft": SubResource("Animation_ol24s"),
-"attackRight": SubResource("Animation_4q7u6"),
-"attackUp": SubResource("Animation_jd1nw"),
-"attackUpLeft": SubResource("Animation_sw66i"),
-"attackUpRight": SubResource("Animation_7yy1b"),
-"idleDown": SubResource("Animation_xaw8m"),
-"idleDownLeft": SubResource("Animation_iv3nd"),
-"idleDownRight": SubResource("Animation_18mn2"),
-"idleLeft": SubResource("Animation_ewuof"),
-"idleRight": SubResource("Animation_nb4v4"),
-"idleUp": SubResource("Animation_q4c18"),
-"idleUpLeft": SubResource("Animation_ute7u"),
-"idleUpRight": SubResource("Animation_3x20v"),
-"walkDown": SubResource("Animation_0lx00"),
-"walkDownLeft": SubResource("Animation_ecp3l"),
-"walkDownRight": SubResource("Animation_rnknp"),
-"walkLeft": SubResource("Animation_xu4yn"),
-"walkRight": SubResource("Animation_i8fua"),
-"walkUp": SubResource("Animation_0of7x"),
-"walkUpLeft": SubResource("Animation_xv5n5"),
-"walkUpRight": SubResource("Animation_xau8p")
+&"RESET": SubResource("Animation_f6ua3"),
+&"attackDown": SubResource("Animation_abnui"),
+&"attackDownLeft": SubResource("Animation_ewees"),
+&"attackDownRight": SubResource("Animation_ig0m1"),
+&"attackLeft": SubResource("Animation_ol24s"),
+&"attackRight": SubResource("Animation_4q7u6"),
+&"attackUp": SubResource("Animation_jd1nw"),
+&"attackUpLeft": SubResource("Animation_sw66i"),
+&"attackUpRight": SubResource("Animation_7yy1b"),
+&"idleDown": SubResource("Animation_xaw8m"),
+&"idleDownLeft": SubResource("Animation_iv3nd"),
+&"idleDownRight": SubResource("Animation_18mn2"),
+&"idleLeft": SubResource("Animation_ewuof"),
+&"idleRight": SubResource("Animation_nb4v4"),
+&"idleUp": SubResource("Animation_q4c18"),
+&"idleUpLeft": SubResource("Animation_ute7u"),
+&"idleUpRight": SubResource("Animation_3x20v"),
+&"walkDown": SubResource("Animation_0lx00"),
+&"walkDownLeft": SubResource("Animation_ecp3l"),
+&"walkDownRight": SubResource("Animation_rnknp"),
+&"walkLeft": SubResource("Animation_xu4yn"),
+&"walkRight": SubResource("Animation_i8fua"),
+&"walkUp": SubResource("Animation_0of7x"),
+&"walkUpLeft": SubResource("Animation_xv5n5"),
+&"walkUpRight": SubResource("Animation_xau8p")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_peyor"]
@@ -1458,9 +1458,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wfd6p"]
 _data = {
-"RESET": SubResource("Animation_84o86"),
-"dash": SubResource("Animation_fdjxy"),
-"hitFlash": SubResource("Animation_eq8jw")
+&"RESET": SubResource("Animation_84o86"),
+&"dash": SubResource("Animation_fdjxy"),
+&"hitFlash": SubResource("Animation_eq8jw")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1g56r"]
@@ -1499,7 +1499,7 @@ hframes = 12
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Sprite2D")
 libraries = {
-"": SubResource("AnimationLibrary_b20y1")
+&"": SubResource("AnimationLibrary_b20y1")
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
@@ -1513,7 +1513,7 @@ parameters/Walk/blend_position = Vector2(0.00381684, 0.938326)
 
 [node name="FX" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_wfd6p")
+&"": SubResource("AnimationLibrary_wfd6p")
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

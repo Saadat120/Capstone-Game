@@ -1,14 +1,24 @@
-[gd_scene load_steps=10 format=3 uid="uid://doslp77la0i1f"]
+[gd_scene load_steps=13 format=3 uid="uid://doslp77la0i1f"]
 
-[ext_resource type="Script" path="res://UI/scripts/playerHud.gd" id="1_hsh3e"]
+[ext_resource type="Script" uid="uid://532age48nhpv" path="res://UI/scripts/playerHud.gd" id="1_hsh3e"]
 [ext_resource type="PackedScene" uid="uid://mc7qvthaiy4y" path="res://Player/scenes/Passive.tscn" id="2_gxxtl"]
 [ext_resource type="PackedScene" uid="uid://c8411fpc13xh8" path="res://UI/scenes/healthBar.tscn" id="3_3nxoe"]
 [ext_resource type="PackedScene" uid="uid://h81tp37drcdi" path="res://UI/scenes/Skill.tscn" id="4_c6clf"]
-[ext_resource type="Texture2D" uid="uid://b82q0ts00h7dd" path="res://assets/MapDesigns/AttackSprite01.png" id="5_m5jv7"]
-[ext_resource type="Texture2D" uid="uid://lis8t7de7m4o" path="res://assets/MapDesigns/move FX.png" id="6_xj3oi"]
-[ext_resource type="Texture2D" uid="uid://dnncpxtqy422o" path="res://UI/assets/slash.png" id="8_5ooud"]
-[ext_resource type="Texture2D" uid="uid://c74kvtt5cxyjq" path="res://UI/assets/defence.png" id="9_dgh7p"]
-[ext_resource type="Texture2D" uid="uid://cjv3uvp57am10" path="res://UI/assets/running.png" id="10_01hxb"]
+[ext_resource type="Texture2D" uid="uid://b82q0ts00h7dd" path="res://Player/assets/AttackSprite01.png" id="5_m5jv7"]
+[ext_resource type="Texture2D" uid="uid://lis8t7de7m4o" path="res://Player/assets/move FX.png" id="6_xj3oi"]
+[ext_resource type="Texture2D" uid="uid://dnncpxtqy422o" path="res://UI/assets/icons/slash.png" id="8_5ooud"]
+[ext_resource type="Texture2D" uid="uid://c74kvtt5cxyjq" path="res://UI/assets/icons/defence.png" id="9_dgh7p"]
+[ext_resource type="Texture2D" uid="uid://cjv3uvp57am10" path="res://UI/assets/icons/running.png" id="10_01hxb"]
+[ext_resource type="Texture2D" uid="uid://das5clqw0bcfd" path="res://UI/assets/icons/bone.png" id="10_27b7c"]
+[ext_resource type="Texture2D" uid="uid://3i27qjfhqkw0" path="res://UI/assets/icons/scratch.png" id="10_wm5yh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_27b7c"]
+bg_color = Color(0, 0, 0, 0.815686)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
 
 [node name="PlayerUI" type="CanvasLayer"]
 
@@ -201,3 +211,51 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "40"
 horizontal_alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="HUD"]
+layout_mode = 2
+offset_left = 1670.0
+offset_top = 940.0
+offset_right = 1870.0
+offset_bottom = 1015.0
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_27b7c")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/PanelContainer"]
+layout_mode = 2
+
+[node name="MarksHBox" type="HBoxContainer" parent="HUD/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(170, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="NinePatchRect" type="NinePatchRect" parent="HUD/PanelContainer/VBoxContainer/MarksHBox"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("10_wm5yh")
+
+[node name="Marks" type="Label" parent="HUD/PanelContainer/VBoxContainer/MarksHBox"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_font_sizes/font_size = 24
+text = "0"
+
+[node name="TreatsHBox" type="HBoxContainer" parent="HUD/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(170, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="NinePatchRect" type="NinePatchRect" parent="HUD/PanelContainer/VBoxContainer/TreatsHBox"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("10_27b7c")
+
+[node name="Treats" type="Label" parent="HUD/PanelContainer/VBoxContainer/TreatsHBox"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_font_sizes/font_size = 24
+text = "0"

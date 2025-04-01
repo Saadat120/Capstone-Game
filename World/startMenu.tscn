@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://ddfc7dwiyov4j"]
 
-[ext_resource type="FontFile" uid="uid://bnako7dhjcnkd" path="res://assets/pixel_font.ttf" id="1_0wknh"]
-[ext_resource type="Script" path="res://UI/scripts/startMenu.gd" id="1_kcanm"]
-[ext_resource type="Texture2D" uid="uid://kn4v5u61x4ox" path="res://assets/UI/Starter.png" id="2_ptyvh"]
+[ext_resource type="FontFile" uid="uid://bnako7dhjcnkd" path="res://UI/assets/fonts/pixel_font.ttf" id="1_0wknh"]
+[ext_resource type="Script" uid="uid://tbt2nywvmpoe" path="res://UI/scripts/startMenu.gd" id="1_kcanm"]
+[ext_resource type="Texture2D" uid="uid://kn4v5u61x4ox" path="res://World/Starter.png" id="2_ptyvh"]
 
 [node name="StartMenu" type="Control"]
 layout_mode = 3

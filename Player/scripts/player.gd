@@ -17,7 +17,11 @@ var shakeStrength: float = 0.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	playerManager.initialize(100, 150, 80, 10)
+	var health : int = GlobalPlayer.healthStats["value"]
+	var damage : int = GlobalPlayer.damageStats["value"]
+	var agility : float = GlobalPlayer.agilityStats["value"]
+	var armor : int = GlobalPlayer.armorStats["value"]
+	playerManager.initialize(health, damage, agility, armor)
 
 func _physics_process(delta: float) -> void:
 	handleDash()
