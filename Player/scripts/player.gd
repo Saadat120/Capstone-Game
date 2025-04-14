@@ -6,6 +6,7 @@ class_name Player extends CharacterBody2D
 @onready var damage_numbers_origin: Node2D = $DamageNumbersOrigin
 
 var attacking := false
+var recentHit := false
 var cardinal_direction: Vector2 = Vector2.DOWN
 var direction : Vector2 = Vector2.ZERO
 
@@ -14,15 +15,7 @@ var randomStrength: float = 5.0
 var shakeFade: float = 3.0
 var rng := RandomNumberGenerator.new()
 var shakeStrength: float = 0.0
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	var health : int = GlobalPlayer.healthStats["value"]
-	var damage : int = GlobalPlayer.damageStats["value"]
-	var agility : float = GlobalPlayer.agilityStats["value"]
-	var armor : int = GlobalPlayer.armorStats["value"]
-	playerManager.initialize(health, damage, agility, armor)
-
+	
 func _physics_process(delta: float) -> void:
 	handleDash()
 	handleMovement()
@@ -35,12 +28,12 @@ func _physics_process(delta: float) -> void:
 		$Camera2D.offset = randomOffset()
 
 func handleMovement() -> void:
-	if !attacking:
+	if !attacking and playerManager.canMove:
 		direction = Vector2(
 			Input.get_vector("moveLeft", "moveRight", "moveUp", "moveDown")
 		).normalized()
 		velocity = direction * playerManager.getSpeed()
-	elif attacking:
+	elif attacking or !playerManager.canMove:
 		velocity = Vector2.ZERO
 	if direction != Vector2.ZERO:
 		cardinal_direction = direction
@@ -52,23 +45,38 @@ func handleMovement() -> void:
 
 func handleDash() -> void:
 	if Input.is_action_just_pressed("Shift"):
-		if velocity != Vector2.ZERO and playerManager.getAbility("Dash").isReady:
-			$Dash.startDash(0.1)
-			playerManager.performAttack("Dash")
-	playerManager.speedMultipliers["Dash"] = 5 if $Dash.isDashing() else 1
+		if velocity != Vector2.ZERO and !playerManager.abilitiesManager.isDashing():
+			playerManager.useAbility("Dash")
+	playerManager.speedMultipliers["Dash"] = 5 if playerManager.abilitiesManager.isDashing() else 1
 
 func attack() -> void:
-	if playerManager.getAbility("basicAttack").isReady:
-		attacking = false
-		
-	if Input.is_action_just_pressed("Space"):
-		playerManager.performAttack("basicAttack")
-		attacking = true
-
+	if playerManager.canAttack:
+		if $PlayerManager/AbilitiesManager/AttackTimer.is_stopped():
+			attacking = false
+			recentHit = false
+			
+		if Input.is_action_just_pressed("Space"):
+			playerManager.useAbility("Attack")
+			attacking = true
+	
 func died() -> void:
 	if playerManager.health <= 0:
-		get_parent().get_tree().change_scene_to_file("res://World/Areas/Main.tscn")
+		get_parent().get_tree().change_scene_to_file("res://World/scenes/Main.tscn")
 
+#Player hits enemy
+func _on_hitbox_area_entered(hurtbox: Area2D) -> void:
+	if recentHit == true:
+		return
+	if hurtbox is Hurtbox:
+		var entity := hurtbox.get_parent()
+		DamageManager.applyDamageToEnemy(self, entity)
+		SignalBus.enemyHealthChanged.emit(entity.stats.health)
+		SignalBus.passiveStack.emit() #Player gains a stack
+		entity.hit_flash.play("hitFlash")
+		if entity.stats.health <= 0:
+			entity.dead = true
+
+#Enemy hits player
 func _on_hurtbox_component_area_entered(hitbox: Area2D) -> void:
 	if hitbox is Hitbox:
 		DamageManager.applyDamageToPlayer(hitbox.get_parent(), self)

@@ -1,9 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://bo8xoqaotlp3t"]
+[gd_scene load_steps=12 format=3 uid="uid://bo8xoqaotlp3t"]
 
+[ext_resource type="Script" uid="uid://b43r0owcx3nl4" path="res://UI/scenes/Pause/companionPage.gd" id="1_arv77"]
 [ext_resource type="Texture2D" uid="uid://c0npspc30ewyj" path="res://Entities/assets/stag-all.png" id="1_ltpgq"]
+[ext_resource type="Texture2D" uid="uid://das5clqw0bcfd" path="res://UI/assets/icons/bone.png" id="2_f7513"]
+[ext_resource type="PackedScene" uid="uid://cdke4eifmnyeq" path="res://UI/scenes/SkillTree/StagSkillTree.tscn" id="2_tloc2"]
 [ext_resource type="Texture2D" uid="uid://c8ydosnmahghv" path="res://Entities/assets/wolf-all.png" id="3_m3yau"]
 [ext_resource type="Texture2D" uid="uid://b07yx1fjcsdqq" path="res://Entities/assets/badger-all.png" id="4_vrp13"]
 [ext_resource type="Texture2D" uid="uid://g3xfogwu3hk2" path="res://Entities/assets/boar-all.png" id="5_e503t"]
+[ext_resource type="PackedScene" uid="uid://rrkeeacqdfv2" path="res://UI/scenes/SkillTree/WolfSkillTree.tscn" id="6_f7513"]
 [ext_resource type="Texture2D" uid="uid://cb30fh0wha4c0" path="res://UI/assets/icons/keyboard_escape.png" id="6_qvuwj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g1mob"]
@@ -20,31 +24,83 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_g1mob")
+script = ExtResource("1_arv77")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
 theme_override_constants/separation = 30
 
-[node name="Title" type="HBoxContainer" parent="VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 700
+
+[node name="Title" type="HBoxContainer" parent="VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(500, 150)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 alignment = 1
 
-[node name="Label" type="Label" parent="VBoxContainer/Title"]
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/Title"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Companion Select"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(568, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_constants/separation = 75
+alignment = 2
+
+[node name="Insufficient" type="PanelContainer" parent="VBoxContainer/HBoxContainer/HBoxContainer2"]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/HBoxContainer2/Insufficient"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "Insufficient Marks"
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/HBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/HBoxContainer2/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 100
+
+[node name="NinePatchRect" type="NinePatchRect" parent="VBoxContainer/HBoxContainer/HBoxContainer2/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture = ExtResource("2_f7513")
+
+[node name="TreatsHeld" type="Label" parent="VBoxContainer/HBoxContainer/HBoxContainer2/PanelContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "0"
+
+[node name="Timer" type="Timer" parent="VBoxContainer/HBoxContainer/HBoxContainer2"]
+wait_time = 2.0
 
 [node name="MainHBox" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
+theme_override_constants/separation = 50
 
 [node name="StagTree" type="VBoxContainer" parent="VBoxContainer/MainHBox"]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
+theme_override_constants/separation = 50
 
 [node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/MainHBox/StagTree"]
 layout_mode = 2
@@ -61,9 +117,14 @@ size_flags_horizontal = 4
 texture = ExtResource("1_ltpgq")
 region_rect = Rect2(0, 83, 31, 37)
 
+[node name="StagSkillTree" parent="VBoxContainer/MainHBox/StagTree" instance=ExtResource("2_tloc2")]
+layout_mode = 2
+size_flags_vertical = 3
+
 [node name="WolfTree" type="VBoxContainer" parent="VBoxContainer/MainHBox"]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
+theme_override_constants/separation = 50
 
 [node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/MainHBox/WolfTree"]
 layout_mode = 2
@@ -80,7 +141,11 @@ size_flags_horizontal = 4
 texture = ExtResource("3_m3yau")
 region_rect = Rect2(333, 591, 37, 34)
 
+[node name="WolfSkillTree" parent="VBoxContainer/MainHBox/WolfTree" instance=ExtResource("6_f7513")]
+layout_mode = 2
+
 [node name="BadgerTree" type="VBoxContainer" parent="VBoxContainer/MainHBox"]
+visible = false
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 
@@ -100,6 +165,7 @@ texture = ExtResource("4_vrp13")
 region_rect = Rect2(3, 131, 31, 28)
 
 [node name="BoarTree" type="VBoxContainer" parent="VBoxContainer/MainHBox"]
+visible = false
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 
@@ -156,3 +222,5 @@ vertical_alignment = 1
 [node name="SpacingBox" type="BoxContainer" parent="VBoxContainer/FooterHBox/FooterContainer"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
+
+[connection signal="timeout" from="VBoxContainer/HBoxContainer/HBoxContainer2/Timer" to="." method="_on_timer_timeout"]

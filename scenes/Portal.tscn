@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://dj3gidclujbvw"]
 
-[ext_resource type="Texture2D" uid="uid://cxipdd1gul8x6" path="res://UI/assets/TileMap/Isometric_Portal.png" id="1_pq4g0"]
+[ext_resource type="Texture2D" uid="uid://cxipdd1gul8x6" path="res://World/assets/TileMap/Isometric_Portal.png" id="1_pq4g0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1jbrk"]
 atlas = ExtResource("1_pq4g0")

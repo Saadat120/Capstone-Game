@@ -1,0 +1,192 @@
+[gd_scene load_steps=9 format=3 uid="uid://cdke4eifmnyeq"]
+
+[ext_resource type="PackedScene" uid="uid://dylyolnd82w" path="res://UI/scenes/SkillTree/skillButton.tscn" id="1_bfae8"]
+[ext_resource type="Script" uid="uid://bw8nnusj4rh0k" path="res://UI/scenes/SkillTree/StagSkilltree.gd" id="1_hf2kl"]
+[ext_resource type="Texture2D" uid="uid://c6j4dr3f36lqt" path="res://UI/assets/icons/healing.png" id="2_re6c1"]
+[ext_resource type="Texture2D" uid="uid://cuaa5qk7xeqcr" path="res://UI/assets/icons/increasedSpeed.png" id="3_umu33"]
+[ext_resource type="Texture2D" uid="uid://b172qjg8knpaj" path="res://UI/assets/icons/regeneration.png" id="4_hf2kl"]
+[ext_resource type="Texture2D" uid="uid://dq7kgan3g65cg" path="res://UI/assets/icons/dodge.png" id="5_otog5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_otog5"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i5okt"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="StagSkillTree" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 400.0
+offset_bottom = 580.0
+script = ExtResource("1_hf2kl")
+
+[node name="Panel" type="Panel" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BaseSkill" parent="Panel" instance=ExtResource("1_bfae8")]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -64.0
+offset_right = 64.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture_normal = ExtResource("2_re6c1")
+companionName = "Stag"
+branchName = "root"
+
+[node name="SkillTreeOne" parent="Panel/BaseSkill" instance=ExtResource("1_bfae8")]
+layout_mode = 0
+offset_left = -96.0
+offset_top = 192.0
+offset_right = 32.0
+offset_bottom = 320.0
+disabled = true
+texture_normal = ExtResource("3_umu33")
+companionName = "Stag"
+branchName = "branch1"
+
+[node name="SkillButton" parent="Panel/BaseSkill/SkillTreeOne" instance=ExtResource("1_bfae8")]
+layout_mode = 0
+offset_top = 192.0
+offset_bottom = 320.0
+disabled = true
+texture_normal = ExtResource("5_otog5")
+companionName = "Stag"
+branchName = "branch1"
+branchIndex = 1
+
+[node name="SkillButton2" parent="Panel/BaseSkill" instance=ExtResource("1_bfae8")]
+layout_mode = 0
+offset_left = 104.0
+offset_top = 192.0
+offset_right = 232.0
+offset_bottom = 320.0
+disabled = true
+texture_normal = ExtResource("4_hf2kl")
+companionName = "Stag"
+branchName = "branch2"
+
+[node name="SkillButtonT2" parent="Panel/BaseSkill/SkillButton2" instance=ExtResource("1_bfae8")]
+layout_mode = 0
+offset_top = 192.0
+offset_bottom = 320.0
+disabled = true
+texture_normal = ExtResource("4_hf2kl")
+companionName = "Stag"
+branchName = "branch2"
+branchIndex = 1
+
+[node name="SkillOneDetails" type="PanelContainer" parent="."]
+visible = false
+z_index = 1
+layout_mode = 0
+offset_left = 272.0
+offset_top = 24.0
+offset_right = 572.0
+offset_bottom = 105.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_otog5")
+
+[node name="Label" type="Label" parent="SkillOneDetails"]
+custom_minimum_size = Vector2(280, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Upon Ability Activattion, Recover 15% of max health"
+autowrap_mode = 2
+
+[node name="TreeOneDetails1" type="PanelContainer" parent="."]
+visible = false
+z_index = 1
+layout_mode = 0
+offset_left = 176.0
+offset_top = 218.0
+offset_right = 486.0
+offset_bottom = 299.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_i5okt")
+
+[node name="Label" type="Label" parent="TreeOneDetails1"]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Upon Ability Activattion, Gain 50% increase in Move Speed"
+autowrap_mode = 2
+
+[node name="TreeOneDetails2" type="PanelContainer" parent="."]
+visible = false
+z_index = 1
+layout_mode = 0
+offset_left = 176.0
+offset_top = 408.0
+offset_right = 486.0
+offset_bottom = 489.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_i5okt")
+
+[node name="Label" type="Label" parent="TreeOneDetails2"]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Upon Ability Activattion, Dodge Up to three Enemy Attacks"
+autowrap_mode = 2
+
+[node name="TreeTwoDetails1" type="PanelContainer" parent="."]
+visible = false
+z_index = 1
+layout_mode = 0
+offset_left = 376.0
+offset_top = 218.0
+offset_right = 686.0
+offset_bottom = 299.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_i5okt")
+
+[node name="Label" type="Label" parent="TreeTwoDetails1"]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Upon Ability Activattion, Gain Health Regenaration Along with the recovery"
+autowrap_mode = 2
+
+[node name="TreeTwoDetails2" type="PanelContainer" parent="."]
+visible = false
+z_index = -1
+layout_mode = 0
+offset_left = 381.0
+offset_top = 408.0
+offset_right = 691.0
+offset_bottom = 489.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_i5okt")
+
+[node name="Label" type="Label" parent="TreeTwoDetails2"]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "After 4 Seconds of Not Taking Damage Begin health regeneration"
+autowrap_mode = 2
+
+[connection signal="button_down" from="Panel/BaseSkill" to="." method="_on_base_skill_button_down"]
+[connection signal="mouse_entered" from="Panel/BaseSkill" to="." method="_on_base_skill_mouse_entered"]
+[connection signal="mouse_exited" from="Panel/BaseSkill" to="." method="_on_base_skill_mouse_exited"]
+[connection signal="mouse_entered" from="Panel/BaseSkill/SkillTreeOne" to="." method="_on_skill_tree_one_mouse_entered"]
+[connection signal="mouse_exited" from="Panel/BaseSkill/SkillTreeOne" to="." method="_on_skill_tree_one_mouse_exited"]
+[connection signal="mouse_entered" from="Panel/BaseSkill/SkillTreeOne/SkillButton" to="." method="_on_skill_button_mouse_entered"]
+[connection signal="mouse_exited" from="Panel/BaseSkill/SkillTreeOne/SkillButton" to="." method="_on_skill_button_mouse_exited"]
+[connection signal="mouse_entered" from="Panel/BaseSkill/SkillButton2" to="." method="_on_skill_button_2_mouse_entered"]
+[connection signal="mouse_exited" from="Panel/BaseSkill/SkillButton2" to="." method="_on_skill_button_2_mouse_exited"]
+[connection signal="mouse_entered" from="Panel/BaseSkill/SkillButton2/SkillButtonT2" to="." method="_on_skill_button_t_2_mouse_entered"]
+[connection signal="mouse_exited" from="Panel/BaseSkill/SkillButton2/SkillButtonT2" to="." method="_on_skill_button_t_2_mouse_exited"]

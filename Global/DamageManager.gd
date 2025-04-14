@@ -1,12 +1,13 @@
 extends Node
 
-func applyDamageToPlayer(source: CharacterBody2D, target: CharacterBody2D) -> void:
-	var damageMultiplier: float = 1/(1+target.playerManager.armor/ 100)
-	var damage: int = max(1, round(source.stats.damage * damageMultiplier))
-	target.playerManager.health -= damage
-	DamageNumbers.displayNumbers(damage, target.damage_numbers_origin.global_position, false)
+func applyDamageToPlayer(enemy: CharacterBody2D, player: CharacterBody2D) -> void:
+	var damageMultiplier: float = 1/(1+player.playerManager.armor/ 100)
+	var damage: int = max(1, round(enemy.stats.damage * damageMultiplier))
+	player.playerManager.health -= damage
+	DamageNumbers.displayNumbers(damage, player.damage_numbers_origin.global_position, false)
 
-func applyDamageToEnemy(source: CharacterBody2D, target: CharacterBody2D) -> void:
-	var damage: int = source.playerManager.damage()
-	target.stats.health -= damage
-	DamageNumbers.displayNumbers(damage, target.damage_numbers_origin.global_position, false)
+func applyDamageToEnemy(player: CharacterBody2D, enemy: CharacterBody2D) -> void:
+	player.recentHit = true
+	var damage: int = player.playerManager.damage()
+	enemy.stats.health -= damage
+	DamageNumbers.displayNumbers(damage, enemy.damage_numbers_origin.global_position, false)

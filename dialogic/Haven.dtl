@@ -1,0 +1,13 @@
+Birdy: Welcome to our base. We will be safe here and you can prepare before heading out.
+stag: Why am I here to?
+Player: You are one of the escaped animals. We have to return you back to your home.
+Birdy: Unless.
+stag: Unless what?
+Birdy: Unless you would like to assist us in our mission.
+stag: You hit me for no reason... but you did help me escape. I suppose I can help you.
+[signal arg="Stag"]
+stag: As your companion, you can now access my abilities. Below your health is my gauge that rises as you hit your opponents. The less health you have the more each strike increases it.
+stag: The list of my abilities can be found in the companion tabs. My first ability gives you a portion of your health back.
+Birdy: Here are some treats and claws you can use. The prior allows you to unlock a skill for your companion and the former allows you to upgrade yourself.
+Birdy: Whenever you are ready, come talk to me and we can look for our targets.
+[signal arg="end"]

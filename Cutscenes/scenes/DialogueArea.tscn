@@ -1,0 +1,125 @@
+[gd_scene load_steps=7 format=3 uid="uid://fxyt3s3v8pe6"]
+
+[ext_resource type="Script" uid="uid://bbktbsp54g8qx" path="res://Cutscenes/scripts/DialogueScript.gd" id="1_llfot"]
+[ext_resource type="Texture2D" uid="uid://s1q82lpqeuvt" path="res://Player/assets/Mage-Sheet.png" id="1_rb7ij"]
+[ext_resource type="Texture2D" uid="uid://c7cdpi1ark7vc" path="res://Entities/assets/LongIdle3.png" id="2_llfot"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_53r5r"]
+bg_color = Color(0.691357, 0.691357, 0.691357, 1)
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ic80u"]
+bg_color = Color(0.690196, 0.690196, 0.690196, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4w5hj"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="DialogueArea" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_llfot")
+
+[node name="PlayerPanel" type="PanelContainer" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -900.0
+offset_right = 500.0
+grow_vertical = 0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="PlayerPanel"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("1_rb7ij")
+region_rect = Rect2(69, 7, 20, 42)
+
+[node name="HandlerPanel" type="PanelContainer" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -500.0
+offset_top = -717.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="TextureRect" type="TextureRect" parent="HandlerPanel"]
+custom_minimum_size = Vector2(500, 500)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture = ExtResource("2_llfot")
+stretch_mode = 5
+flip_h = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -750.0
+offset_top = -430.0
+offset_right = 750.0
+offset_bottom = -76.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 800
+alignment = 1
+
+[node name="Player" type="PanelContainer" parent="VBoxContainer/HBoxContainer"]
+z_index = 1
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_53r5r")
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/Player"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 48
+text = "Mage"
+
+[node name="Handler" type="PanelContainer" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ic80u")
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/Handler"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 48
+text = "Handler"
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+size_flags_vertical = 10
+theme_override_styles/panel = SubResource("StyleBoxFlat_4w5hj")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/PanelContainer"]
+custom_minimum_size = Vector2(1400, 250)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/normal_font_size = 32
+text = "Welcome"

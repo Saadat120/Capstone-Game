@@ -29,7 +29,7 @@ func onBossDefeated() -> void:
 	isBossDefeated = true
 
 func _on_return_timer_timeout() -> void:
-	get_parent().get_tree().change_scene_to_file("res://World/Areas/Main.tscn")
+	get_parent().get_tree().change_scene_to_file("res://World/scenes/Main.tscn")
 	pass # Replace with function body.
 
 func addPet() -> void:

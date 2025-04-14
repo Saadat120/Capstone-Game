@@ -1,0 +1,27 @@
+set {Player.move} = false
+set {Player.attack} = false
+Birdy: Thats our first target. This stag is one of the least dangerous of the escape animals but do not underestimate him. Sneak up on him and strike him from behind.
+[wait time="0.3"]
+set {Player.attack} = true
+set {Player.move} = true
+set {stagScene.pause} = true
+set {Player.attack} = true
+stag: Oooouch!!
+stag: What is wrong with you?
+Player: Umm... Sorry?
+stag: Sorry!? Is that all you have to say. You come and strike me for no reason and your sorry?
+[sound path="res://Entities/assets/wolf-howl.mp3" volume="0.0"]
+[wait time="1.0"]
+Player: What was that?
+stag: They're nearby!!
+Birdy: Whose nearby?
+stag: The pack of wolves. They have a new alpha and they have been hunting me for hours now.  I was grazing to get my energy up when you came and struck me.
+Player: Sorry about that.
+stag: It doesn't matter now. We have to run. Now!
+Player: What do you think?
+Birdy: Hmmmm. There may be a chance that this new alpha is one of our targets. Let's wait and see.
+set {stagScene.wolfArrival} = true
+set {Player.attack} = true
+set {stagScene.pause} = true
+stag: That was just one of the weaker betas. More will be coming! We have to leave now!
+Birdy: Let's go. We can return another time.

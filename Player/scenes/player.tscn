@@ -1,16 +1,14 @@
-[gd_scene load_steps=72 format=3 uid="uid://cu0dol3wgdf3j"]
+[gd_scene load_steps=70 format=3 uid="uid://cu0dol3wgdf3j"]
 
 [ext_resource type="Script" uid="uid://dqkdocbm8shq6" path="res://Player/scripts/player.gd" id="1_5vw1t"]
 [ext_resource type="Script" uid="uid://blv6u16a1xb4i" path="res://Player/scripts/PlayerManager.gd" id="2_jp4qc"]
 [ext_resource type="Shader" uid="uid://bgafj0yghf2qm" path="res://Player/assets/hitFlash.tres" id="2_lcyww"]
 [ext_resource type="Texture2D" uid="uid://s1q82lpqeuvt" path="res://Player/assets/Mage-Sheet.png" id="2_tfu6d"]
+[ext_resource type="Script" uid="uid://tlyrl6dvl3kh" path="res://Player/scripts/AbilitiesManager.gd" id="4_nshua"]
 [ext_resource type="AnimationNodeBlendSpace2D" uid="uid://jq5hf01d7gqk" path="res://Player/assets/playerRunBlend.tres" id="6_788ri"]
 [ext_resource type="Texture2D" uid="uid://b82q0ts00h7dd" path="res://Player/assets/AttackSprite01.png" id="6_y45c1"]
 [ext_resource type="Script" uid="uid://eusi3fu2fkav" path="res://Common/scripts/HitboxComponent.gd" id="8_27j1f"]
 [ext_resource type="PackedScene" uid="uid://dm13bkfdseof0" path="res://Common/HurtboxComponent.tscn" id="8_pahnu"]
-[ext_resource type="PackedScene" uid="uid://dsykkh7qgbqaj" path="res://Player/scenes/dash.tscn" id="10_83325"]
-[ext_resource type="Script" uid="uid://duh3slu1fisl" path="res://Player/scripts/CombatManager.gd" id="10_b4eum"]
-[ext_resource type="PackedScene" uid="uid://doslp77la0i1f" path="res://UI/scenes/PlayerUI.tscn" id="10_bwlsn"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fck4g"]
 resource_local_to_scene = true
@@ -1480,8 +1478,20 @@ script = ExtResource("1_5vw1t")
 [node name="PlayerManager" type="Node" parent="."]
 script = ExtResource("2_jp4qc")
 
-[node name="CombatManager" type="Node" parent="PlayerManager"]
-script = ExtResource("10_b4eum")
+[node name="AbilitiesManager" type="Node" parent="PlayerManager"]
+script = ExtResource("4_nshua")
+
+[node name="AttackTimer" type="Timer" parent="PlayerManager/AbilitiesManager"]
+wait_time = 0.4
+one_shot = true
+
+[node name="DashTimer" type="Timer" parent="PlayerManager/AbilitiesManager"]
+wait_time = 0.1
+one_shot = true
+
+[node name="DashCooldown" type="Timer" parent="PlayerManager/AbilitiesManager"]
+wait_time = 2.0
+one_shot = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_fck4g")
@@ -1526,7 +1536,7 @@ zoom = Vector2(2.5, 2.5)
 
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 4
-collision_mask = 0
+collision_mask = 4
 script = ExtResource("8_27j1f")
 
 [node name="Hitbox" type="CollisionShape2D" parent="Hitbox"]
@@ -1545,8 +1555,6 @@ debug_color = Color(0.772549, 0, 0, 0.419608)
 [node name="DamageNumbersOrigin" type="Node2D" parent="."]
 position = Vector2(0, -23)
 
-[node name="Dash" parent="." instance=ExtResource("10_83325")]
-
-[node name="PlayerUI" parent="." instance=ExtResource("10_bwlsn")]
-
+[connection signal="timeout" from="PlayerManager/AbilitiesManager/DashTimer" to="PlayerManager/AbilitiesManager" method="_on_dash_timer_timeout"]
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="area_entered" from="HurtboxComponent" to="." method="_on_hurtbox_component_area_entered"]

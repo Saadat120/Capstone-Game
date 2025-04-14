@@ -1,7 +1,7 @@
 class_name ChaseState extends State
 
 @onready var attack: State = $"../Attack"
-@onready var burrow: State = $"../Burrow"
+#@onready var burrow: State = $"../Burrow"
 
 var speed: float
 @export var attackRange := 55
@@ -27,8 +27,8 @@ func Process(_delta: float) -> State:
 		if distance <= attackRange:
 			return attack
 		
-		if get_entity() is badgerBoss and distance > 200:
-			return burrow
+		#if get_entity() is badgerBoss and distance > 200:
+			#return burrow
 
 		if get_entity().aggro == true:
 			# Move towards player

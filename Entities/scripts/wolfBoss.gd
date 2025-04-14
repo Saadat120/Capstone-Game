@@ -8,6 +8,7 @@ class_name wolfBoss  extends CharacterBody2D
 @onready var damage_numbers_origin: Node2D = $DamageNumbersOrigin
 @onready var attackTimer: Timer = $AttackTimer
 
+var recentHit: bool = false
 var dead := false
 var aggro: bool = false
 var cardinal_direction: Vector2 = Vector2(1, -1)
@@ -23,7 +24,7 @@ var wolfDirectionMap := {
 }
 
 func _ready() -> void:
-	stats.initialize(700, 200, 15, 55, 1.2, 80)
+	stats.initialize(700, 15, 45, 1.2, 80)
 	SignalBus.enemyHealthChanged.connect(healthBar._set_health)
 	healthBar.initHealth(stats.health)
 	aggro = true
@@ -75,13 +76,3 @@ func die() -> void:
 		healthBar.queue_free()
 		queue_free()
 		SignalBus.bossDefeated.emit()
-
-
-func _on_hurtbox_area_entered(hitbox: Area2D) -> void:
-	if hitbox is Hitbox:
-		DamageManager.applyDamageToEnemy(hitbox.get_parent(), self)
-		SignalBus.enemyHealthChanged.emit(stats.health)
-		SignalBus.passiveStack.emit() #Player gains a stack
-		hit_flash.play("hitFlash")
-	if stats.health <= 0:
-		dead = true

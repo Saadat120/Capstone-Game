@@ -1,0 +1,18 @@
+Birdy: Welcome Recruit! Your mission is dangerous, but don't worry. I'll walk you through the basics.
+Player: Okay...
+Birdy: There has been recent abductions of animals from their homes. These animals were able to break their restraints and swam to different islands.
+Birdy: Your job is to find them all and bring them back to their home. Let's go over your training once more.
+Player: Sure!
+set {Player.move} = true
+set {Player.attack} = true
+Birdy: [WASD] is used for movement, [SPACE] is used for attacking, and while moving [SHIFT] allows you to dash. Try it out!
+[wait time="5.0"]
+set {introVar.showUI} = true
+set {Player.attack} = false
+Birdy: At the bottom of right of the screen is your health. To the left is your abilities. Each ability has a cooldown.
+Birdy: The bottom left is your upgrading points. The claws allows you to upgrade yourself, while the treats allow you to upgrade any companions you may come across. Press [ESC] to Open Settings.
+[wait time="4.0"]
+Player: I'm ready.
+Birdy: Good! We have located our first escaped animal. Let us head out.
+set {Player.attack} = true
+set {introVar.basicsDone} = true

@@ -41,41 +41,41 @@ func _ready() -> void:
 
 
 func update() -> void:
-	healthLevel.text = str(int(GlobalPlayer.healthStats["level"]))
-	healthValue.text = str(int(GlobalPlayer.healthStats["value"]))
-	if GlobalPlayer.healthStats["level"] < 5: 
-		healthInc.text = "+" + str((10 * GlobalPlayer.healthStats["level"]))
-		healthMarkCost.text = str(GlobalPlayer.healthStats["level"])
+	healthLevel.text = str(int(PlayerData.healthStats["level"]))
+	healthValue.text = str(int(PlayerData.healthStats["value"]))
+	if PlayerData.healthStats["level"] < 5: 
+		healthInc.text = "+" + str((10 * PlayerData.healthStats["level"]))
+		healthMarkCost.text = str(PlayerData.healthStats["level"])
 	else:
 		healthInc.hide()
 	
-	damageLevel.text = str(int(GlobalPlayer.damageStats["level"]))
-	damageValue.text = str(int(GlobalPlayer.damageStats["value"]))
-	if GlobalPlayer.damageStats["level"] < 5: 
-		damageInc.text = "+" + str((30 * GlobalPlayer.damageStats["level"])/5)
-		damageMarkCost.text = str(GlobalPlayer.damageStats["level"])
+	damageLevel.text = str(int(PlayerData.damageStats["level"]))
+	damageValue.text = str(int(PlayerData.damageStats["value"]))
+	if PlayerData.damageStats["level"] < 5: 
+		damageInc.text = "+" + str((30 * PlayerData.damageStats["level"])/5)
+		damageMarkCost.text = str(PlayerData.damageStats["level"])
 	else: damageInc.hide()
 	
-	agilityLevel.text = str(int(GlobalPlayer.agilityStats["level"]))
-	agilityValue.text = str(int(GlobalPlayer.agilityStats["value"]))
-	if GlobalPlayer.agilityStats["level"] < 5: 
+	agilityLevel.text = str(int(PlayerData.agilityStats["level"]))
+	agilityValue.text = str(int(PlayerData.agilityStats["value"]))
+	if PlayerData.agilityStats["level"] < 5: 
 		agilityInc.text = "+8"
-		agilityMarkCost.text = str(GlobalPlayer.agilityStats["level"])
+		agilityMarkCost.text = str(PlayerData.agilityStats["level"])
 	else: agilityInc.hide()
 	
-	armorLevel.text = str(int(GlobalPlayer.armorStats["level"]))
-	armorValue.text = str(int(GlobalPlayer.armorStats["value"]))
-	if GlobalPlayer.armorStats["level"] < 5: 
+	armorLevel.text = str(int(PlayerData.armorStats["level"]))
+	armorValue.text = str(int(PlayerData.armorStats["value"]))
+	if PlayerData.armorStats["level"] < 5: 
 		armorInc.text = "+10"
-		armorMarkCost.text = str(GlobalPlayer.armorStats["level"])
+		armorMarkCost.text = str(PlayerData.armorStats["level"])
 	else: armorInc.hide()
 	
-	marksHeld.text = str(GlobalPlayer.playerMarks)
+	marksHeld.text = str(PlayerData.playerMarks)
 		
 func _on_hlth_button_mouse_entered() -> void:
 	showDetails("vitality")
-	if GlobalPlayer.healthStats["level"] < 5:
-		var healthIncVal: int = (10 * GlobalPlayer.healthStats["level"])
+	if PlayerData.healthStats["level"] < 5:
+		var healthIncVal: int = (10 * PlayerData.healthStats["level"])
 		healthInc.text = "+" + str(healthIncVal)
 		healthInc.show()
 
@@ -84,8 +84,8 @@ func _on_hlth_button_mouse_exited() -> void:
 
 func _on_dmg_button_mouse_entered() -> void:
 	showDetails("damage")
-	if GlobalPlayer.damageStats["level"] < 5:
-		var dmgIncVal: int = (30 * GlobalPlayer.damageStats["level"])/5
+	if PlayerData.damageStats["level"] < 5:
+		var dmgIncVal: int = (30 * PlayerData.damageStats["level"])/5
 		damageInc.text = "+" + str(dmgIncVal)
 		damageInc.show()
 
@@ -94,7 +94,7 @@ func _on_dmg_button_mouse_exited() -> void:
 
 func _on_agility_button_mouse_entered() -> void:
 	showDetails("agility")
-	if GlobalPlayer.agilityStats["level"] < 5:
+	if PlayerData.agilityStats["level"] < 5:
 		agilityInc.text = "+8"
 		agilityInc.show()
 		
@@ -103,7 +103,7 @@ func _on_agility_button_mouse_exited() -> void:
 
 func _on_armor_button_mouse_entered() -> void:
 	showDetails("armor")
-	if GlobalPlayer.armorStats["level"] < 5:
+	if PlayerData.armorStats["level"] < 5:
 		armorInc.text = "+10"
 		armorInc.show()
 
@@ -111,36 +111,36 @@ func _on_armor_button_mouse_exited() -> void:
 	armorInc.hide()
 
 func _on_hlth_button_button_down() -> void:
-	if GlobalPlayer.healthStats["level"] < 5:
-		if GlobalPlayer.playerMarks > 0 and int(healthMarkCost.text) <= GlobalPlayer.playerMarks:
-			GlobalPlayer.upgradeStat("vitality", int(healthMarkCost.text))
+	if PlayerData.healthStats["level"] < 5:
+		if PlayerData.playerMarks > 0 and int(healthMarkCost.text) <= PlayerData.playerMarks:
+			PlayerData.upgradeStat("vitality", int(healthMarkCost.text))
 			update()
 		else:
 			timer.start()
 			insufficient.show()
 
 func _on_dmg_button_button_down() -> void:
-	if GlobalPlayer.damageStats["level"] < 5:
-		if GlobalPlayer.playerMarks > 0 and int(damageMarkCost.text) <= GlobalPlayer.playerMarks:
-			GlobalPlayer.upgradeStat("damage", int(damageMarkCost.text))
+	if PlayerData.damageStats["level"] < 5:
+		if PlayerData.playerMarks > 0 and int(damageMarkCost.text) <= PlayerData.playerMarks:
+			PlayerData.upgradeStat("damage", int(damageMarkCost.text))
 			update()
 		else:
 			timer.start()
 			insufficient.show()
 
 func _on_agility_button_button_down() -> void:
-	if GlobalPlayer.agilityStats["level"] < 5:
-		if GlobalPlayer.playerMarks > 0 and int(agilityMarkCost.text) <= GlobalPlayer.playerMarks:
-			GlobalPlayer.upgradeStat("agility", int(agilityMarkCost.text))
+	if PlayerData.agilityStats["level"] < 5:
+		if PlayerData.playerMarks > 0 and int(agilityMarkCost.text) <= PlayerData.playerMarks:
+			PlayerData.upgradeStat("agility", int(agilityMarkCost.text))
 			update()
 		else:
 			timer.start()
 			insufficient.show()
 
 func _on_armor_button_button_down() -> void:
-	if GlobalPlayer.armorStats["level"] < 5:
-		if GlobalPlayer.playerMarks > 0 and int(armorMarkCost.text) <= GlobalPlayer.playerMarks:
-				GlobalPlayer.upgradeStat("armor", int(armorMarkCost.text))
+	if PlayerData.armorStats["level"] < 5:
+		if PlayerData.playerMarks > 0 and int(armorMarkCost.text) <= PlayerData.playerMarks:
+				PlayerData.upgradeStat("armor", int(armorMarkCost.text))
 				update()
 		else:
 			timer.start()
