@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://b2pcm142bhdx7"]
+[gd_scene load_steps=36 format=3 uid="uid://b2pcm142bhdx7"]
 
 [ext_resource type="Texture2D" uid="uid://c0npspc30ewyj" path="res://Entities/assets/stag-all.png" id="1_loa12"]
 [ext_resource type="Script" uid="uid://fvbuwx13cgxd" path="res://Player/scripts/Companion.gd" id="1_viimo"]
@@ -508,20 +508,6 @@ graph_offset = Vector2(-26.0399, 10.935)
 [sub_resource type="CircleShape2D" id="CircleShape2D_nldx3"]
 radius = 5.33333
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kfoxk"]
-bg_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ijfjv"]
-bg_color = Color(0.2, 0.6, 0.2, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
-
 [node name="StagCompanion" type="CharacterBody2D"]
 y_sort_enabled = true
 scale = Vector2(0.75, 0.75)
@@ -550,63 +536,3 @@ parameters/Idle/blend_position = Vector2(0.979644, -0.894273)
 position = Vector2(1, 8)
 shape = SubResource("CircleShape2D_nldx3")
 disabled = true
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="GaugeMeter" type="ProgressBar" parent="CanvasLayer"]
-offset_left = 210.0
-offset_top = 970.0
-offset_right = 385.0
-offset_bottom = 982.0
-theme_override_styles/background = SubResource("StyleBoxFlat_kfoxk")
-theme_override_styles/fill = SubResource("StyleBoxFlat_ijfjv")
-value = 50.0
-show_percentage = false
-
-[node name="GaugeValue" type="Label" parent="CanvasLayer"]
-offset_left = 395.0
-offset_top = 967.0
-offset_right = 464.0
-offset_bottom = 985.0
-text = "0/100"
-horizontal_alignment = 1
-
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
-visible = false
-offset_left = 210.0
-offset_top = 950.0
-offset_right = 370.0
-offset_bottom = 990.0
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_constants/separation = 10
-
-[node name="Stack1" type="ProgressBar" parent="CanvasLayer/HBoxContainer"]
-modulate = Color(0.2, 0.6, 0.2, 1)
-custom_minimum_size = Vector2(60, 10)
-layout_mode = 2
-size_flags_vertical = 4
-value = 100.0
-show_percentage = false
-
-[node name="Stack2" type="ProgressBar" parent="CanvasLayer/HBoxContainer"]
-modulate = Color(0.2, 0.6, 0.2, 1)
-custom_minimum_size = Vector2(60, 10)
-layout_mode = 2
-size_flags_vertical = 4
-value = 100.0
-show_percentage = false
-
-[node name="Stack3" type="ProgressBar" parent="CanvasLayer/HBoxContainer"]
-modulate = Color(0.2, 0.6, 0.2, 1)
-custom_minimum_size = Vector2(60, 10)
-layout_mode = 2
-size_flags_vertical = 4
-value = 100.0
-show_percentage = false
-
-[node name="AbilityTimer" type="Timer" parent="."]
-wait_time = 5.0
-one_shot = true
-
-[connection signal="timeout" from="AbilityTimer" to="." method="_on_ability_timer_timeout"]

@@ -8,8 +8,8 @@ var armorStats := {"value": 10, "level": 1}
 var playerMarks: int = 0
 var animalTreats: int = 0
 
-var currentPet : String
-var pets: Array
+var currentPet : String = "Stag"
+var pets: Array = ["Stag"]
 var lockedPets: Array = ["Stag", "Wolf", "Boar", "Badger"]
 var companionAbilities := {
 	"Stag": {

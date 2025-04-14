@@ -33,6 +33,6 @@ func _on_return_timer_timeout() -> void:
 	pass # Replace with function body.
 
 func addPet() -> void:
-	var companionScene := load("res://Player/scenes/stagCompanion.tscn")
+	var companionScene := load("res://Player/scenes/StagCompanion.tscn")
 	if companionScene:
 		companion.add_child(companionScene.instantiate())

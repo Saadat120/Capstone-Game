@@ -10,23 +10,30 @@ var damageMultiplier := 1
 @export var armor: float
 
 var companion: String
-
+var meterFull: bool = false
+var abilityActive := false
 @onready var abilitiesManager: AbilitiesManager = $AbilitiesManager
-@onready var healthBar: ProgressBar = $"../../UI/PlayerUI/StatsContainer/HealthContainer/HealthBar"
+@onready var healthBar: ProgressBar = $"../../UI/PlayerUI/StatsContainer/Container/HealthContainer/HealthBar"
+@onready var gaugeMeter: ProgressBar = $"../../UI/PlayerUI/StatsContainer/Container/GaugeContainer/GaugeMeter"
 
 func _ready() -> void:
 	canMove = true
 	canAttack = true
+	gaugeMeter.value = 0
+	gaugeMeter.max_value = 100
 	maxHealth = PlayerData.healthStats["value"]
 	health = maxHealth
 	speed = PlayerData.agilityStats["value"]
 	armor = PlayerData.armorStats["value"]
+	companion = PlayerData.currentPet
 	healthBar.initHealth(health)
 	SignalBus.playerHealthChanged.connect(healthBar._set_health)
-	SignalBus.AbilityMeterFilled.connect(applyStagAbility)
-	SignalBus.AbilityEnded.connect(endStagAbility)
-	abilitiesManager.initiialize()
-	
+
+func updateGauge() -> void:
+	if gaugeMeter.value < 100 and $AbilitiesManager/UltimateTimer.is_stopped():
+		var gaugeInc: float = 100 * (1 + abs((health - 100)/200.0))
+		gaugeMeter.value = clamp(gaugeMeter.value + gaugeInc, gaugeMeter.min_value, gaugeMeter.max_value)
+
 func getSpeed() -> float:
 	var totalMultiplier := 1.0
 	for key:String in speedMultipliers.keys():
@@ -37,16 +44,10 @@ func damage() -> int:
 		return abilitiesManager.attack["damage"]
 
 func useAbility(ability: String) -> void:
-	if ability == "Attack":
-		abilitiesManager.canAttack()
-	elif ability == "Dash":
-		abilitiesManager.startDash(0.1)
-	
-func applyStagAbility() -> void:
-	var healAmount := maxHealth * 0.15
-	health = clamp(health+healAmount, 0, maxHealth)
-	SignalBus.playerHealthChanged.emit(health)
-	speedMultipliers["Ability"] = 1.5
-
-func endStagAbility() -> void:
-	speedMultipliers["Ability"] = 1
+	match ability:
+		"Attack":
+			abilitiesManager.canAttack()
+		"Dash":
+			abilitiesManager.startDash(0.1)
+		"Ultimate":
+			if gaugeMeter.value >= 100: abilitiesManager.activateUltimate()

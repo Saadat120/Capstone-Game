@@ -1,7 +1,7 @@
 extends Node
 
 var intro:bool = true
-var tutorialStep := 2
+var tutorialStep := 3
 
 #func _ready() -> void:
 	#loadProgress()

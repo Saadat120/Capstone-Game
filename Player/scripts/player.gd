@@ -17,9 +17,8 @@ var rng := RandomNumberGenerator.new()
 var shakeStrength: float = 0.0
 	
 func _physics_process(delta: float) -> void:
-	handleDash()
 	handleMovement()
-	attack()
+	handleAbilities()
 	died()
 	
 	#Camera Shake
@@ -37,28 +36,31 @@ func handleMovement() -> void:
 		velocity = Vector2.ZERO
 	if direction != Vector2.ZERO:
 		cardinal_direction = direction
-		
-	animationTree.set("parameters/Idle/blend_position", cardinal_direction)
-	animationTree.set("parameters/Walk/blend_position", cardinal_direction)
-	animationTree.set("parameters/Attack/blend_position", cardinal_direction)
+	updateAnimation()
 	move_and_slide()
 
-func handleDash() -> void:
+func handleAbilities() -> void:
+#	Attack
+	if $PlayerManager/AbilitiesManager/AttackTimer.is_stopped():
+		attacking = false
+		recentHit = false
+		if Input.is_action_just_pressed("Space") and playerManager.canAttack:
+			attacking = true
+			playerManager.useAbility("Attack")
+#	Dashing
 	if Input.is_action_just_pressed("Shift"):
 		if velocity != Vector2.ZERO and !playerManager.abilitiesManager.isDashing():
 			playerManager.useAbility("Dash")
+#	PetAbility
+	if Input.is_action_just_pressed("F"):
+		playerManager.useAbility("Ultimate")
+
 	playerManager.speedMultipliers["Dash"] = 5 if playerManager.abilitiesManager.isDashing() else 1
 
-func attack() -> void:
-	if playerManager.canAttack:
-		if $PlayerManager/AbilitiesManager/AttackTimer.is_stopped():
-			attacking = false
-			recentHit = false
-			
-		if Input.is_action_just_pressed("Space"):
-			playerManager.useAbility("Attack")
-			attacking = true
-	
+func updateAnimation() -> void:
+	for param:String in ["Idle", "Walk", "Attack"]:
+		animationTree.set("parameters/%s/blend_position" % param, cardinal_direction)
+
 func died() -> void:
 	if playerManager.health <= 0:
 		get_parent().get_tree().change_scene_to_file("res://World/scenes/Main.tscn")
@@ -68,10 +70,10 @@ func _on_hitbox_area_entered(hurtbox: Area2D) -> void:
 	if recentHit == true:
 		return
 	if hurtbox is Hurtbox:
+		playerManager.updateGauge()
 		var entity := hurtbox.get_parent()
 		DamageManager.applyDamageToEnemy(self, entity)
 		SignalBus.enemyHealthChanged.emit(entity.stats.health)
-		SignalBus.passiveStack.emit() #Player gains a stack
 		entity.hit_flash.play("hitFlash")
 		if entity.stats.health <= 0:
 			entity.dead = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://doslp77la0i1f"]
+[gd_scene load_steps=17 format=3 uid="uid://doslp77la0i1f"]
 
 [ext_resource type="Script" uid="uid://532age48nhpv" path="res://UI/scripts/playerHud.gd" id="1_hsh3e"]
 [ext_resource type="PackedScene" uid="uid://mc7qvthaiy4y" path="res://Player/scenes/Passive.tscn" id="2_gxxtl"]
@@ -13,6 +13,20 @@
 [ext_resource type="Texture2D" uid="uid://cjv3uvp57am10" path="res://UI/assets/icons/running.png" id="10_01hxb"]
 [ext_resource type="Texture2D" uid="uid://das5clqw0bcfd" path="res://UI/assets/icons/bone.png" id="10_27b7c"]
 [ext_resource type="Texture2D" uid="uid://3i27qjfhqkw0" path="res://UI/assets/icons/scratch.png" id="10_wm5yh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sla3s"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fypug"]
+bg_color = Color(0.2, 0.6, 0.2, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_27b7c"]
 bg_color = Color(0, 0, 0, 0.815686)
@@ -50,24 +64,46 @@ layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 
-[node name="HealthContainer" type="VBoxContainer" parent="StatsContainer"]
+[node name="Container" type="VBoxContainer" parent="StatsContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
+theme_override_constants/separation = 15
 
-[node name="HealthVal" type="Label" parent="StatsContainer/HealthContainer"]
+[node name="HealthContainer" type="VBoxContainer" parent="StatsContainer/Container"]
+layout_mode = 2
+
+[node name="HealthVal" type="Label" parent="StatsContainer/Container/HealthContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_colors/font_color = Color(0.607843, 0.639216, 0.764706, 1)
 theme_override_font_sizes/font_size = 48
 text = "100/100"
 
-[node name="HealthBar" parent="StatsContainer/HealthContainer" instance=ExtResource("3_3nxoe")]
+[node name="HealthBar" parent="StatsContainer/Container/HealthContainer" instance=ExtResource("3_3nxoe")]
 self_modulate = Color(0.608777, 0.637453, 0.766432, 1)
 custom_minimum_size = Vector2(425, 16)
 layout_mode = 2
 size_flags_horizontal = 0
 rounded = true
+
+[node name="GaugeContainer" type="HBoxContainer" parent="StatsContainer/Container"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="GaugeMeter" type="ProgressBar" parent="StatsContainer/Container/GaugeContainer"]
+custom_minimum_size = Vector2(175, 12)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/background = SubResource("StyleBoxFlat_sla3s")
+theme_override_styles/fill = SubResource("StyleBoxFlat_fypug")
+value = 50.0
+show_percentage = false
+
+[node name="GaugeValue" type="Label" parent="StatsContainer/Container/GaugeContainer"]
+layout_mode = 2
+text = "0/100"
+horizontal_alignment = 1
 
 [node name="Skills" type="Panel" parent="."]
 self_modulate = Color(1, 1, 1, 0)

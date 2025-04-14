@@ -40,4 +40,3 @@ func addPet(pet: String) -> void:
 	var companionScene := load("res://Player/scenes/" + pet + "Companion.tscn")
 	if companionScene:
 		companion.add_child(companionScene.instantiate())
-	player.playerManager.abilitiesManager.petSpecial()

@@ -1493,6 +1493,10 @@ one_shot = true
 wait_time = 2.0
 one_shot = true
 
+[node name="UltimateTimer" type="Timer" parent="PlayerManager/AbilitiesManager"]
+wait_time = 5.0
+one_shot = true
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_fck4g")
 texture = ExtResource("2_tfu6d")
@@ -1556,5 +1560,6 @@ debug_color = Color(0.772549, 0, 0, 0.419608)
 position = Vector2(0, -23)
 
 [connection signal="timeout" from="PlayerManager/AbilitiesManager/DashTimer" to="PlayerManager/AbilitiesManager" method="_on_dash_timer_timeout"]
+[connection signal="timeout" from="PlayerManager/AbilitiesManager/UltimateTimer" to="PlayerManager/AbilitiesManager" method="_on_ultimate_timer_timeout"]
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="area_entered" from="HurtboxComponent" to="." method="_on_hurtbox_component_area_entered"]
