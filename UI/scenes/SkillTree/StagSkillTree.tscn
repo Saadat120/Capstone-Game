@@ -179,7 +179,6 @@ size_flags_horizontal = 4
 text = "After 4 Seconds of Not Taking Damage Begin health regeneration"
 autowrap_mode = 2
 
-[connection signal="button_down" from="Panel/BaseSkill" to="." method="_on_base_skill_button_down"]
 [connection signal="mouse_entered" from="Panel/BaseSkill" to="." method="_on_base_skill_mouse_entered"]
 [connection signal="mouse_exited" from="Panel/BaseSkill" to="." method="_on_base_skill_mouse_exited"]
 [connection signal="mouse_entered" from="Panel/BaseSkill/SkillTreeOne" to="." method="_on_skill_tree_one_mouse_entered"]

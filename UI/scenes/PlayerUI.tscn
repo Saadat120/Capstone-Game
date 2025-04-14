@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://doslp77la0i1f"]
+[gd_scene load_steps=14 format=3 uid="uid://doslp77la0i1f"]
 
 [ext_resource type="Script" uid="uid://532age48nhpv" path="res://UI/scripts/playerHud.gd" id="1_hsh3e"]
 [ext_resource type="PackedScene" uid="uid://mc7qvthaiy4y" path="res://Player/scenes/Passive.tscn" id="2_gxxtl"]
@@ -7,10 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://b82q0ts00h7dd" path="res://Player/assets/AttackSprite01.png" id="5_m5jv7"]
 [ext_resource type="Texture2D" uid="uid://lis8t7de7m4o" path="res://Player/assets/move FX.png" id="6_xj3oi"]
 [ext_resource type="Texture2D" uid="uid://c6j4dr3f36lqt" path="res://UI/assets/icons/healing.png" id="7_sla3s"]
-[ext_resource type="Texture2D" uid="uid://dnncpxtqy422o" path="res://UI/assets/icons/slash.png" id="8_5ooud"]
 [ext_resource type="Texture2D" uid="uid://de5v1effpgbbn" path="res://UI/assets/icons/blood.png" id="8_fypug"]
-[ext_resource type="Texture2D" uid="uid://c74kvtt5cxyjq" path="res://UI/assets/icons/defence.png" id="9_dgh7p"]
-[ext_resource type="Texture2D" uid="uid://cjv3uvp57am10" path="res://UI/assets/icons/running.png" id="10_01hxb"]
 [ext_resource type="Texture2D" uid="uid://das5clqw0bcfd" path="res://UI/assets/icons/bone.png" id="10_27b7c"]
 [ext_resource type="Texture2D" uid="uid://3i27qjfhqkw0" path="res://UI/assets/icons/scratch.png" id="10_wm5yh"]
 
@@ -215,77 +212,6 @@ offset_bottom = 30.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("8_fypug")
-
-[node name="PlayerStats" type="Panel" parent="."]
-visible = false
-self_modulate = Color(1, 1, 1, 0)
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -1267.0
-offset_top = -156.0
-offset_right = -1022.0
-offset_bottom = -38.0
-grow_horizontal = 0
-grow_vertical = 0
-
-[node name="HBoxContainer" type="HBoxContainer" parent="PlayerStats"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 30
-
-[node name="Damage" type="VBoxContainer" parent="PlayerStats/HBoxContainer"]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="PlayerStats/HBoxContainer/Damage"]
-texture_filter = 1
-custom_minimum_size = Vector2(60, 60)
-layout_mode = 2
-texture = ExtResource("8_5ooud")
-
-[node name="Label" type="Label" parent="PlayerStats/HBoxContainer/Damage"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "40"
-horizontal_alignment = 1
-
-[node name="Defence" type="VBoxContainer" parent="PlayerStats/HBoxContainer"]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="PlayerStats/HBoxContainer/Defence"]
-texture_filter = 1
-custom_minimum_size = Vector2(60, 60)
-layout_mode = 2
-texture = ExtResource("9_dgh7p")
-
-[node name="Label" type="Label" parent="PlayerStats/HBoxContainer/Defence"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "40"
-horizontal_alignment = 1
-
-[node name="Speed" type="VBoxContainer" parent="PlayerStats/HBoxContainer"]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="PlayerStats/HBoxContainer/Speed"]
-texture_filter = 1
-custom_minimum_size = Vector2(60, 60)
-layout_mode = 2
-texture = ExtResource("10_01hxb")
-stretch_mode = 5
-
-[node name="Label" type="Label" parent="PlayerStats/HBoxContainer/Speed"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "40"
-horizontal_alignment = 1
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 2

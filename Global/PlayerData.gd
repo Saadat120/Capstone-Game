@@ -8,8 +8,8 @@ var armorStats := {"value": 10, "level": 1}
 var playerMarks: int = 0
 var animalTreats: int = 0
 
-var currentPet : String = "Stag"
-var pets: Array = ["Stag"]
+var currentPet : String #= "Stag"
+var pets: Array #= ["Stag"]
 var lockedPets: Array = ["Stag", "Wolf", "Boar", "Badger"]
 var companionAbilities := {
 	"Stag": {
@@ -28,6 +28,7 @@ func unlockPet(petName: String) -> void:
 	if petName not in pets and petName in lockedPets:
 		pets.append(petName)
 		lockedPets.erase(petName)
+		companionAbilities[petName]["root"][0] = true
 
 func addTreats(treats: int) -> void: animalTreats += treats
 func addMarks(marks: int) -> void: playerMarks += marks

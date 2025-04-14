@@ -24,7 +24,7 @@ DamageManager="*res://Global/DamageManager.gd"
 PlayerData="*res://Global/PlayerData.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 GameState="*res://Global/GameState.gd"
-TransitionScreen="*res://TransitionScreen.tscn"
+TransitionScreen="*res://Global/TransitionScreen.tscn"
 
 [debug]
 

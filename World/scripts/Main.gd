@@ -37,6 +37,8 @@ func dialogic_signal(signalStr: String) -> void:
 func addPet(pet: String) -> void:
 	PlayerData.unlockPet(pet)
 	PlayerData.currentPet = pet
+	$UI/PauseArea/CompanionPage/VBoxContainer/MainHBox/StagTree/StagSkillTree/Panel/BaseSkill.unlockRoot(pet)
+	player.playerManager.companion = pet
 	var companionScene := load("res://Player/scenes/" + pet + "Companion.tscn")
 	if companionScene:
 		companion.add_child(companionScene.instantiate())

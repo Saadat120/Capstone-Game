@@ -15,21 +15,30 @@ func _ready() -> void:
 		line_2d.add_point(global_position + size/2)
 		line_2d.add_point(get_parent().global_position + size/2)
 	
+	 #Lock or unlock based on save data
+	if PlayerData.companionAbilities[companionName][branchName][branchIndex]:
+		panel.show_behind_parent = true
+		lock.hide()
+		disabled = true
+		var skills := get_children()
+		for skill in skills:
+			if skill is SkillNode: skill.disabled = false
+	
+func unlockRoot(petName: String) -> void:
+	if petName != companionName: return
 	# Lock or unlock based on save data
-	if PlayerData.companionAbilities.has(companionName):
-		if PlayerData.companionAbilities[companionName][branchName][branchIndex]:
-			panel.show_behind_parent = true
-			lock.hide()
-			disabled = true
-			var skills := get_children()
-			for skill in skills:
-				if skill is SkillNode: skill.disabled = false
+	if PlayerData.companionAbilities[petName]["root"][0]:
+		panel.show_behind_parent = true
+		lock.hide()
+		disabled = true
+		var skills := get_children()
+		for skill in skills:
+			if skill is SkillNode: skill.disabled = false
 
 func _on_button_down() -> void:
 	#if PlayerData.currentPet != companionName and companionName in PlayerData.pets:
 		#PlayerData.currentPet = companionName
-	if companionName not in PlayerData.pets:
-		return
+	if companionName not in PlayerData.pets: return
 		
 	if PlayerData.animalTreats >= skillCost:
 		var skills := get_children()
