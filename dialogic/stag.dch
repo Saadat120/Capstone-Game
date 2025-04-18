@@ -17,7 +17,7 @@
 &"portraits": {
 "New portrait": {
 "export_overrides": {
-"image": "\"res://stag headshot.png\""
+"image": "\"res://UI/assets/stag headshot.png\""
 },
 "mirror": false,
 "offset": Vector2(0, 0),

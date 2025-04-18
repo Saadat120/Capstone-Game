@@ -11,3 +11,8 @@ func applyDamageToEnemy(player: CharacterBody2D, enemy: CharacterBody2D) -> void
 	var damage: int = player.playerManager.damage()
 	enemy.stats.health -= damage
 	DamageNumbers.displayNumbers(damage, enemy.damage_numbers_origin.global_position, false)
+
+func applyBleed(target: CharacterBody2D) -> void:
+	var damage: int = max(1, int(target.stats.maxHealth * 0.01))
+	target.stats.health -= damage
+	DamageNumbers.displayNumbers(damage, target.damage_numbers_origin.global_position, true)

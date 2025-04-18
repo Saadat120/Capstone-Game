@@ -6,9 +6,11 @@ var special: Dictionary
 @onready var attackTimer: Timer = $AttackTimer
 @onready var ultimateTimer: Timer = $UltimateTimer
 @onready var playerManager: PlayerManager = $".."
+var bleedTicks: int = 4
+var bleed: bool = false
 
 func _ready() -> void:
-	attack = {"damage": PlayerData.damageStats["value"], "cooldown": 0.4, "UI": Skill}
+	attack = {"damage": 200, "cooldown": 0.4, "UI": Skill}
 	dash = {"cooldown": 2, "UI": Skill}
 	special = {"cooldown":5,  "UI": Skill}
 
@@ -53,20 +55,38 @@ func stagAbility() -> void:
 	var healAmount := playerManager.maxHealth * 0.15
 	playerManager.health = clamp(playerManager.health+healAmount, 0, playerManager.maxHealth)
 	SignalBus.playerHealthChanged.emit(playerManager.health)
-	playerManager.speedMultipliers["Ability"] = 1.5
+	if PlayerData.companionAbilities["Stag"]["branch1"][0]:
+		playerManager.speedMultipliers["Ability"] = 1.5
+		if PlayerData.companionAbilities["Stag"]["branch1"][1]: 
+			playerManager.dodgeCount = 2
+	elif PlayerData.companionAbilities["Stag"]["branch2"][0]:
+		playerManager.speedMultipliers["Ability"] = 0.5
 
 func wolfAbility() -> void:
-	var healAmount := playerManager.maxHealth * 0.15
-	playerManager.health = clamp(playerManager.health+healAmount, 0, playerManager.maxHealth)
-	SignalBus.playerHealthChanged.emit(playerManager.health)
-	playerManager.speedMultipliers["Ability"] = 1.5
+	SignalBus.applyBleed.emit()
+	if PlayerData.companionAbilities["Wolf"]["branch1"][0]:
+		#playerManager.speedMultipliers["Ability"] = 1.5
+		if PlayerData.companionAbilities["Wolf"]["branch1"][1]: 
+			playerManager.dodgeCount = 3
+	elif PlayerData.companionAbilities["Wolf"]["branch2"][0]:
+		playerManager.speedMultipliers["Ability"] = 0.5
 
 func endAbility() -> void:
 	if playerManager.companion == "Stag":
 		endStagAbility()
 	elif playerManager.companion == "Wolf":
-		wolfAbility()
+		endWolfAbility()
 	playerManager.gaugeMeter.value = 0
 
 func endStagAbility() -> void:
 	playerManager.speedMultipliers["Ability"] = 1
+	playerManager.dodgeCount = 0
+
+func endWolfAbility() -> void:
+	bleed = false
+	bleedTicks = 4
+
+func lifeSteal(enemy: CharacterBody2D) -> void:
+	if PlayerData.companionAbilities["Wolf"]["branch1"][0]:
+		var steal := int(enemy.stats.maxHealth * 0.005)
+		playerManager.health = clamp(playerManager.health+steal, 0, playerManager.maxHealth)

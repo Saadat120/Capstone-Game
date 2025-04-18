@@ -20,7 +20,7 @@ func _process(_delta: float) -> void:
 
 	if Dialogic.VAR.introVar.basicsDone:
 		GameState.intro = true
-		GameState.tutorialStep = 1
+		GameState.stage = 1
 		TransitionScreen.transition()
 		await TransitionScreen.transitionFinished
 		get_tree().change_scene_to_file.call_deferred("res://World/scenes/stagArea.tscn")

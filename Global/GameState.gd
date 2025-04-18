@@ -1,14 +1,14 @@
 extends Node
 
 var intro:bool = true
-var tutorialStep := 2
-
+var stage := 1
+var challengeBoss: bool = false
 #func _ready() -> void:
 	#loadProgress()
 
 func saveProgress() -> void:
 	var saveData := {
-		"tutorialStep": tutorialStep,
+		"stage": stage,
 		"Treats": PlayerData.animalTreats,
 		"Marks": PlayerData.playerMarks,
 		"Health": PlayerData.healthStats,
@@ -28,7 +28,7 @@ func loadProgress() -> void:
 		var file := FileAccess.open("user://saveData.json", FileAccess.READ)
 		var data: Dictionary = JSON.parse_string(file.get_as_text())
 		if data:
-			tutorialStep = data.get("tutorialStep", tutorialStep)
+			stage = data.get("stage", stage)
 			PlayerData.animalTreats = data.get("Treats", PlayerData.animalTreats)
 			PlayerData.playerMarks = data.get("Treats", PlayerData.playerMarks)
 			PlayerData.healthStats = data.get("Health", PlayerData.healthStats)

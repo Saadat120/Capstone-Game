@@ -1,15 +1,15 @@
 [gd_scene load_steps=65 format=3 uid="uid://disxj684crdau"]
 
-[ext_resource type="Script" uid="uid://bfsuhsv8jnygu" path="res://Entities/scripts/wolfBeta.gd" id="1_2325b"]
-[ext_resource type="Shader" uid="uid://bgafj0yghf2qm" path="res://Player/assets/hitFlash.tres" id="2_arxmh"]
-[ext_resource type="Texture2D" uid="uid://c8ydosnmahghv" path="res://Entities/assets/wolf-all.png" id="3_uvn1q"]
-[ext_resource type="PackedScene" uid="uid://de2s21g531onq" path="res://Common/HitboxComponent.tscn" id="4_q25fn"]
-[ext_resource type="Script" uid="uid://c0ki3y801iyn7" path="res://Entities/scripts/hurtbox.gd" id="5_pwygm"]
-[ext_resource type="Script" uid="uid://dern71du8kkuy" path="res://Common/scripts/StatsComponent.gd" id="6_i8awi"]
+[ext_resource type="Script" uid="uid://bfsuhsv8jnygu" path="res://Entities/scripts/wolfBeta.gd" id="1_rtjpx"]
+[ext_resource type="Shader" uid="uid://bgafj0yghf2qm" path="res://Player/assets/hitFlash.tres" id="2_na8sx"]
+[ext_resource type="Texture2D" uid="uid://c8ydosnmahghv" path="res://Entities/assets/wolf-all.png" id="3_cg0kv"]
+[ext_resource type="PackedScene" uid="uid://de2s21g531onq" path="res://Common/HitboxComponent.tscn" id="4_2mony"]
+[ext_resource type="Script" uid="uid://c0ki3y801iyn7" path="res://Entities/scripts/hurtbox.gd" id="5_4gn1u"]
+[ext_resource type="Script" uid="uid://dern71du8kkuy" path="res://Common/scripts/StatsComponent.gd" id="6_7ookw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wki17"]
 resource_local_to_scene = true
-shader = ExtResource("2_arxmh")
+shader = ExtResource("2_na8sx")
 shader_parameter/enabled = false
 shader_parameter/tint = Color(1, 1, 1, 1)
 
@@ -1940,102 +1940,102 @@ _data = {
 &"moveW": SubResource("Animation_o8333")
 }
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_37sbx"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ia3aj"]
 animation = &"AttackNW"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kk4pb"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6mq24"]
 animation = &"AttackW"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_rcctq"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dpix2"]
 animation = &"AttackSW"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_x3xmp"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fu0f4"]
 animation = &"AttackSE"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wigoj"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ejkvw"]
 animation = &"AttackE"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7xlxs"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5msdg"]
 animation = &"AttackNE"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_xvb5f"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_37sbx")
+blend_point_0/node = SubResource("AnimationNodeAnimation_ia3aj")
 blend_point_0/pos = Vector2(-1, -1)
-blend_point_1/node = SubResource("AnimationNodeAnimation_kk4pb")
+blend_point_1/node = SubResource("AnimationNodeAnimation_6mq24")
 blend_point_1/pos = Vector2(-1, 0)
-blend_point_2/node = SubResource("AnimationNodeAnimation_rcctq")
+blend_point_2/node = SubResource("AnimationNodeAnimation_dpix2")
 blend_point_2/pos = Vector2(-1, 1)
-blend_point_3/node = SubResource("AnimationNodeAnimation_x3xmp")
+blend_point_3/node = SubResource("AnimationNodeAnimation_fu0f4")
 blend_point_3/pos = Vector2(1, 1)
-blend_point_4/node = SubResource("AnimationNodeAnimation_wigoj")
+blend_point_4/node = SubResource("AnimationNodeAnimation_ejkvw")
 blend_point_4/pos = Vector2(1, 0)
-blend_point_5/node = SubResource("AnimationNodeAnimation_7xlxs")
+blend_point_5/node = SubResource("AnimationNodeAnimation_5msdg")
 blend_point_5/pos = Vector2(1, -1)
 blend_mode = 1
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ufnoc"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ad85l"]
 animation = &"moveNW"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_flw3p"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_542u4"]
 animation = &"moveNE"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0ikn0"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8cwy1"]
 animation = &"moveE"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_uud3c"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_iff0t"]
 animation = &"moveW"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5unsf"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0mcrq"]
 animation = &"moveSW"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pdjfe"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6ibyn"]
 animation = &"moveSE"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_l3io7"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_ufnoc")
+blend_point_0/node = SubResource("AnimationNodeAnimation_ad85l")
 blend_point_0/pos = Vector2(-1, -1)
-blend_point_1/node = SubResource("AnimationNodeAnimation_flw3p")
+blend_point_1/node = SubResource("AnimationNodeAnimation_542u4")
 blend_point_1/pos = Vector2(1, -1)
-blend_point_2/node = SubResource("AnimationNodeAnimation_0ikn0")
+blend_point_2/node = SubResource("AnimationNodeAnimation_8cwy1")
 blend_point_2/pos = Vector2(1, 0)
-blend_point_3/node = SubResource("AnimationNodeAnimation_uud3c")
+blend_point_3/node = SubResource("AnimationNodeAnimation_iff0t")
 blend_point_3/pos = Vector2(-1, 0)
-blend_point_4/node = SubResource("AnimationNodeAnimation_5unsf")
+blend_point_4/node = SubResource("AnimationNodeAnimation_0mcrq")
 blend_point_4/pos = Vector2(-1, 1)
-blend_point_5/node = SubResource("AnimationNodeAnimation_pdjfe")
+blend_point_5/node = SubResource("AnimationNodeAnimation_6ibyn")
 blend_point_5/pos = Vector2(1, 1)
 blend_mode = 1
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_07pjs"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0nyse"]
 animation = &"DeathNE"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_sr20v"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0rokx"]
 animation = &"DeathNW"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_b5tov"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fdi8g"]
 animation = &"DeathW"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mclcd"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_f3vmv"]
 animation = &"DeathE"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_f05d4"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_v0sdx"]
 animation = &"DeathSW"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tv10l"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_cwvm1"]
 animation = &"DeathSE"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_kabi3"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_07pjs")
+blend_point_0/node = SubResource("AnimationNodeAnimation_0nyse")
 blend_point_0/pos = Vector2(1, -1)
-blend_point_1/node = SubResource("AnimationNodeAnimation_sr20v")
+blend_point_1/node = SubResource("AnimationNodeAnimation_0rokx")
 blend_point_1/pos = Vector2(-1, -1)
-blend_point_2/node = SubResource("AnimationNodeAnimation_b5tov")
+blend_point_2/node = SubResource("AnimationNodeAnimation_fdi8g")
 blend_point_2/pos = Vector2(-1, 0)
-blend_point_3/node = SubResource("AnimationNodeAnimation_mclcd")
+blend_point_3/node = SubResource("AnimationNodeAnimation_f3vmv")
 blend_point_3/pos = Vector2(1, 0)
-blend_point_4/node = SubResource("AnimationNodeAnimation_f05d4")
+blend_point_4/node = SubResource("AnimationNodeAnimation_v0sdx")
 blend_point_4/pos = Vector2(-1, 1)
-blend_point_5/node = SubResource("AnimationNodeAnimation_tv10l")
+blend_point_5/node = SubResource("AnimationNodeAnimation_cwvm1")
 blend_point_5/pos = Vector2(1, 1)
 blend_mode = 1
 
@@ -2068,7 +2068,7 @@ states/Death/position = Vector2(533, 99.6917)
 states/End/position = Vector2(792, 99.3834)
 states/Start/position = Vector2(200, 99.7688)
 transitions = ["Start", "Chase", SubResource("AnimationNodeStateMachineTransition_anfjb"), "Chase", "Attack", SubResource("AnimationNodeStateMachineTransition_ee2se"), "Attack", "Chase", SubResource("AnimationNodeStateMachineTransition_rjaiq"), "Chase", "Death", SubResource("AnimationNodeStateMachineTransition_0fcwl"), "Attack", "Death", SubResource("AnimationNodeStateMachineTransition_tqh8f")]
-graph_offset = Vector2(-65.0992, -27.0075)
+graph_offset = Vector2(-26.0392, 7.755)
 
 [sub_resource type="Animation" id="Animation_frdr7"]
 length = 0.001
@@ -2115,12 +2115,12 @@ radius = 7.0
 
 [node name="wolfBeta" type="CharacterBody2D"]
 motion_mode = 1
-script = ExtResource("1_2325b")
+script = ExtResource("1_rtjpx")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_wki17")
 position = Vector2(4, 3)
-texture = ExtResource("3_uvn1q")
+texture = ExtResource("3_cg0kv")
 hframes = 15
 vframes = 16
 
@@ -2150,7 +2150,7 @@ libraries = {
 &"": SubResource("AnimationLibrary_xqlso")
 }
 
-[node name="HitboxComponent" parent="." instance=ExtResource("4_q25fn")]
+[node name="HitboxComponent" parent="." instance=ExtResource("4_2mony")]
 collision_layer = 2
 collision_mask = 0
 
@@ -2161,7 +2161,7 @@ disabled = true
 [node name="Hurtbox" type="Area2D" parent="."]
 collision_layer = 4
 collision_mask = 0
-script = ExtResource("5_pwygm")
+script = ExtResource("5_4gn1u")
 
 [node name="Hurtbox" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2(2, 6)
@@ -2170,7 +2170,7 @@ shape = SubResource("CapsuleShape2D_j0frr")
 debug_color = Color(0.772549, 0, 0, 0.419608)
 
 [node name="StatsComponent" type="Node" parent="."]
-script = ExtResource("6_i8awi")
+script = ExtResource("6_7ookw")
 damage = 10
 defence = 0
 

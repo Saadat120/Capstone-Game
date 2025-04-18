@@ -4,6 +4,7 @@ class_name Player extends CharacterBody2D
 @onready var animationTree: AnimationTree = $AnimationTree
 @onready var fx: AnimationPlayer = $FX
 @onready var damage_numbers_origin: Node2D = $DamageNumbersOrigin
+@onready var effects: Node2D = $Effects
 
 var attacking := false
 var recentHit := false
@@ -81,6 +82,10 @@ func _on_hitbox_area_entered(hurtbox: Area2D) -> void:
 #Enemy hits player
 func _on_hurtbox_component_area_entered(hitbox: Area2D) -> void:
 	if hitbox is Hitbox:
+		if playerManager.dodgeCount > 0:
+			DamageNumbers.displayDodge(effects.global_position)
+			playerManager.dodgeCount = playerManager.dodgeCount - 1
+			return
 		DamageManager.applyDamageToPlayer(hitbox.get_parent(), self)
 		SignalBus.playerHealthChanged.emit(playerManager.health)
 		shakeStrength = randomStrength #apply camera shake

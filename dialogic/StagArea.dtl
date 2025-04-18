@@ -25,3 +25,4 @@ set {Player.attack} = true
 set {stagScene.pause} = true
 stag: That was just one of the weaker betas. More will be coming! We have to leave now!
 Birdy: Let's go. We can return another time.
+[signal arg="stagAreaComplete"]

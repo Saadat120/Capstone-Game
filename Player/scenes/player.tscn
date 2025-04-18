@@ -1497,6 +1497,10 @@ one_shot = true
 wait_time = 5.0
 one_shot = true
 
+[node name="BleedTimer" type="Timer" parent="PlayerManager/AbilitiesManager"]
+wait_time = 5.0
+one_shot = true
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_fck4g")
 texture = ExtResource("2_tfu6d")
@@ -1557,6 +1561,9 @@ shape = SubResource("RectangleShape2D_6103c")
 debug_color = Color(0.772549, 0, 0, 0.419608)
 
 [node name="DamageNumbersOrigin" type="Node2D" parent="."]
+position = Vector2(0, -23)
+
+[node name="Effects" type="Node2D" parent="."]
 position = Vector2(0, -23)
 
 [connection signal="timeout" from="PlayerManager/AbilitiesManager/DashTimer" to="PlayerManager/AbilitiesManager" method="_on_dash_timer_timeout"]

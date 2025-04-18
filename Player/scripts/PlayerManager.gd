@@ -1,7 +1,7 @@
 class_name PlayerManager extends Node
 
-@export var canMove: bool
-@export var canAttack: bool
+@export var canMove: bool = true
+@export var canAttack: bool = true
 @export var maxHealth: int
 @export var health: int
 @export var speed: float
@@ -10,15 +10,12 @@ var damageMultiplier := 1
 @export var armor: float
 
 var companion: String
-var meterFull: bool = false
-var abilityActive := false
+var dodgeCount: int = 0
 @onready var abilitiesManager: AbilitiesManager = $AbilitiesManager
 @onready var healthBar: ProgressBar = $"../../UI/PlayerUI/StatsContainer/Container/HealthContainer/HealthBar"
 @onready var gaugeMeter: ProgressBar = $"../../UI/PlayerUI/StatsContainer/Container/GaugeContainer/GaugeMeter"
 
 func _ready() -> void:
-	canMove = true
-	canAttack = true
 	gaugeMeter.value = 0
 	gaugeMeter.max_value = 100
 	maxHealth = PlayerData.healthStats["value"]
@@ -31,7 +28,11 @@ func _ready() -> void:
 
 func updateGauge() -> void:
 	if gaugeMeter.value < 100 and $AbilitiesManager/UltimateTimer.is_stopped():
-		var gaugeInc: float = 100 * (1 + abs((health - 100)/200.0))
+		var gaugeInc: float
+		if companion == "Stag":
+			gaugeInc = 10 * (1 + abs((health - maxHealth)/200.0))
+		elif companion == "Wolf":
+			gaugeInc = 100 * (1 + abs((health - maxHealth)/200.0))
 		gaugeMeter.value = clamp(gaugeMeter.value + gaugeInc, gaugeMeter.min_value, gaugeMeter.max_value)
 
 func getSpeed() -> float:
@@ -40,8 +41,7 @@ func getSpeed() -> float:
 		totalMultiplier *= speedMultipliers[key]
 	return speed * totalMultiplier
 
-func damage() -> int:
-		return abilitiesManager.attack["damage"]
+func damage() -> int: return abilitiesManager.attack["damage"]
 
 func useAbility(ability: String) -> void:
 	match ability:

@@ -14,6 +14,7 @@ func _ready() -> void:
 	player.playerManager.canAttack = false
 	player.playerManager.canMove = false
 	Dialogic.start("StagArea")
+	Dialogic.signal_event.connect(onCompleted)
 
 func _process(_delta: float) -> void:
 	player.playerManager.canAttack = Dialogic.VAR.Player.attack
@@ -32,24 +33,28 @@ func _process(_delta: float) -> void:
 		
 	wolfArrival()
 	wolfDefeated()
-	if Dialogic.timeline_ended:
-		GameState.tutorialStep = 2
-		TransitionScreen.transition()
-		await TransitionScreen.transitionFinished
-		get_tree().change_scene_to_file.call_deferred("res://World/scenes/Main.tscn")
 
 func wolfArrival() -> void:
 	if Dialogic.VAR.stagScene.wolfArrival and spawn == false:
-		var wolfScene := load("res://Entities/scenes/wolfBeta.tscn")
+		var wolfScene := load("res://Entities/scenes/WolfBeta.tscn")
 		Dialogic.VAR.Player.attack = true
-		wolfArrival()
+		#wolfArrival()
 		spawn = true
 		Dialogic.paused = true
 		Dialogic.Text.hide_textbox()
 		if wolfScene: wolf.add_child(wolfScene.instantiate())	
 
 func wolfDefeated() -> void:
-	if wolf.get_child(0).dead == true:
+	if !Dialogic.VAR.stagScene.wolfArrival:
+		return
+	if wolf.get_child_count() == 0:
 		Dialogic.VAR.Player.attack = false
 		Dialogic.paused = false
 		Dialogic.Text.show_textbox()
+
+func onCompleted(signalStr: String) -> void:
+	if signalStr == "stagAreaComplete":
+		GameState.stage = 2
+		TransitionScreen.transition()
+		await TransitionScreen.transitionFinished
+		get_parent().get_tree().change_scene_to_file("res://World/scenes/Main.tscn")

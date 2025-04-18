@@ -36,12 +36,15 @@ gdscript/warnings/untyped_declaration=1
 directories/dch_directory={
 "Birdy": "res://dialogic/Birdy.dch",
 "Player": "res://dialogic/Player.dch",
+"Wolf": "res://dialogic/Wolf.dch",
 "stag": "res://dialogic/stag.dch",
 "unit_test_character": "res://Tests/Resources/unit_test_character.dch"
 }
 directories/dtl_directory={
 "Haven": "res://dialogic/Haven.dtl",
 "StagArea": "res://dialogic/StagArea.dtl",
+"WolfArena": "res://dialogic/WolfArena.dtl",
+"WolfCompanion": "res://dialogic/WolfCompanion.dtl",
 "tutorial": "res://dialogic/tutorial.dtl"
 }
 variables={
@@ -85,6 +88,7 @@ enabled=PackedStringArray("res://addons/dialogic/plugin.cfg")
 PlayerAbilities=""
 Health=""
 Player=""
+Enemy=""
 
 [gui]
 

@@ -7,12 +7,14 @@ var follow: bool = false
 var cardinal_direction: Vector2 = Vector2.DOWN
 var direction : Vector2 = Vector2.ZERO
 var distance: float
+var speed : = 40
 
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("Player")
 	
 func _physics_process(_delta: float) -> void:
-	handleMovement()
+	if player.playerManager.companion == "Stag":
+		handleMovement()
 
 func handleMovement() -> void:
 	distance = global_position.distance_to(player.global_position)
@@ -20,9 +22,11 @@ func handleMovement() -> void:
 	if distance > 60:
 		follow = true
 		direction = (player.global_position - global_position).normalized()
-		velocity = direction * 40
-	elif distance > 30 and follow:
+		velocity = direction * player.playerManager.getSpeed()
+	elif distance > 30:
+		follow = true
 		direction = (player.global_position - global_position).normalized()
+		velocity = direction * 50
 	else:
 		follow = false
 		velocity = Vector2.ZERO

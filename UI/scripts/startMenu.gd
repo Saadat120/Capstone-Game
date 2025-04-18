@@ -1,11 +1,11 @@
 extends Control
 
 func _on_play_button_down() -> void:
-	if GameState.tutorialStep == 0:
+	if GameState.stage == 0:
 		TransitionScreen.transition()
 		await TransitionScreen.transitionFinished
 		get_tree().change_scene_to_file.call_deferred("res://World/scenes/Tutorial.tscn")
-	elif GameState.tutorialStep == 1:
+	elif GameState.stage == 1:
 		TransitionScreen.transition()
 		await TransitionScreen.transitionFinished
 		get_tree().change_scene_to_file.call_deferred("res://World/scenes/stagArea.tscn")

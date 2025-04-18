@@ -1,10 +1,11 @@
-[gd_scene load_steps=27 format=4 uid="uid://dtkvgch8g7nbi"]
+[gd_scene load_steps=29 format=4 uid="uid://dtkvgch8g7nbi"]
 
 [ext_resource type="Script" uid="uid://bk48m4fhqiyin" path="res://World/scripts/Main.gd" id="1_yf7im"]
 [ext_resource type="Texture2D" uid="uid://ij75ak0ds87j" path="res://World/assets/TileMap/spritesheet.png" id="2_jj1la"]
 [ext_resource type="Texture2D" uid="uid://cxipdd1gul8x6" path="res://World/assets/TileMap/Isometric_Portal.png" id="3_cnd60"]
 [ext_resource type="PackedScene" uid="uid://cu0dol3wgdf3j" path="res://Player/scenes/player.tscn" id="4_8emot"]
 [ext_resource type="PackedScene" uid="uid://7uv4wjpm161c" path="res://UI/scenes/UI.tscn" id="5_ppc3u"]
+[ext_resource type="PackedScene" uid="uid://b5dppi2m3iofm" path="res://Entities/scenes/birdy.tscn" id="6_jj1la"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yf7im"]
 texture = ExtResource("2_jj1la")
@@ -256,6 +257,9 @@ height = 123.077
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qstex"]
 size = Vector2(51.145, 22.2566)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_jj1la"]
+radius = 24.0
+
 [node name="Haven" type="Node2D"]
 script = ExtResource("1_yf7im")
 
@@ -279,6 +283,7 @@ position = Vector2(971, 496)
 zoom = Vector2(2.6, 2.6)
 
 [node name="WolfPortal" type="StaticBody2D" parent="."]
+visible = false
 position = Vector2(959, 345)
 physics_material_override = SubResource("PhysicsMaterial_oq2s7")
 
@@ -305,6 +310,7 @@ shape = SubResource("RectangleShape2D_s8xrk")
 debug_color = Color(0.970454, 0.0837896, 0.383566, 0.42)
 
 [node name="BadgerPortal" type="StaticBody2D" parent="."]
+visible = false
 position = Vector2(697, 462)
 
 [node name="Portal" type="AnimatedSprite2D" parent="BadgerPortal"]
@@ -328,10 +334,23 @@ debug_color = Color(0.968627, 0.0823529, 0.384314, 0.419608)
 [node name="Companion" type="Node2D" parent="."]
 position = Vector2(941, 528)
 
+[node name="Companion2" type="Node2D" parent="."]
+position = Vector2(1044, 454)
+
 [node name="Player" parent="." instance=ExtResource("4_8emot")]
 position = Vector2(975, 486)
 
 [node name="UI" parent="." instance=ExtResource("5_ppc3u")]
 
+[node name="Birdy" parent="." instance=ExtResource("6_jj1la")]
+position = Vector2(945, 467)
+
+[node name="Range" type="Area2D" parent="Birdy"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Birdy/Range"]
+shape = SubResource("CircleShape2D_jj1la")
+
 [connection signal="body_entered" from="WolfPortal/Portal/Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="BadgerPortal/Portal/Area2D" to="." method="_on_badgerPortal_entered"]
+[connection signal="body_entered" from="Birdy/Range" to="." method="_on_range_body_entered"]
+[connection signal="body_exited" from="Birdy/Range" to="." method="_on_range_body_exited"]

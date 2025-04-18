@@ -1,4 +1,4 @@
-class_name wolfBoss  extends CharacterBody2D
+class_name wolfBoss extends CharacterBody2D
 
 @onready var animationPlayer: AnimationPlayer = $AnimationPlayer
 @onready var hit_flash: AnimationPlayer = $HitFlash
@@ -24,11 +24,13 @@ var wolfDirectionMap := {
 }
 
 func _ready() -> void:
-	stats.initialize(700, 15, 45, 1.2, 80)
+	stats.initialize(700, 15, 45, 1.2, 60)
 	SignalBus.enemyHealthChanged.connect(healthBar._set_health)
+	SignalBus.applyBleed.connect(bleed)
 	healthBar.initHealth(stats.health)
 	aggro = true
 	healthBar.visible = true
+	add_to_group("Enemy")
 	
 	animationPlayer.play("Howl")
 	await animationPlayer.animation_finished
@@ -65,6 +67,17 @@ func setDirection() -> bool:
 	cardinal_direction = closest_direction
 	return true
 
+func bleed() -> void:
+	var player := get_tree().get_first_node_in_group("Player")
+	$BleedTimer.start()
+	while !$BleedTimer.is_stopped():
+		DamageManager.applyBleed(self)
+		player.playerManager.abilitiesManager.lifeSteal(self)
+		SignalBus.playerHealthChanged.emit(player.playerManager.health)
+		SignalBus.enemyHealthChanged.emit(stats.health)
+		hit_flash.play("hitFlash")
+		await get_tree().create_timer(1).timeout
+
 func die() -> void:
 	if dead == true:
 		stateMachine = null
@@ -74,5 +87,6 @@ func die() -> void:
 		updateAnimation("Death")
 		await get_tree().create_timer(1.5).timeout  
 		healthBar.queue_free()
+		get_tree().get_first_node_in_group("Enemy").remove_from_group("Enemy")
 		queue_free()
 		SignalBus.bossDefeated.emit()

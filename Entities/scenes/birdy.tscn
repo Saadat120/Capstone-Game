@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://b5dppi2m3iofm"]
+
+[ext_resource type="Texture2D" uid="uid://divrc2tqsp5rb" path="res://Entities/assets/Birdy/Idle/Idle0.png" id="1_ol1os"]
+[ext_resource type="Texture2D" uid="uid://dh3hk2xbwyshm" path="res://Entities/assets/Birdy/Idle/Idle1.png" id="2_nupkf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4uvqn"]
+atlas = ExtResource("1_ol1os")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m7l1s"]
+atlas = ExtResource("2_nupkf")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yqgba"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4uvqn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m7l1s")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 4.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qyy8l"]
+radius = 5.0
+
+[node name="Birdy" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_yqgba")
+animation = &"Idle"
+autoplay = "Idle"
+frame_progress = 0.0634589
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_qyy8l")
+disabled = true

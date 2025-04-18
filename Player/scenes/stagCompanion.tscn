@@ -1,7 +1,7 @@
 [gd_scene load_steps=36 format=3 uid="uid://b2pcm142bhdx7"]
 
 [ext_resource type="Texture2D" uid="uid://c0npspc30ewyj" path="res://Entities/assets/stag-all.png" id="1_loa12"]
-[ext_resource type="Script" uid="uid://fvbuwx13cgxd" path="res://Player/scripts/Companion.gd" id="1_viimo"]
+[ext_resource type="Script" uid="uid://fvbuwx13cgxd" path="res://Player/scripts/StagCompanion.gd" id="1_viimo"]
 
 [sub_resource type="Animation" id="Animation_0hkni"]
 resource_name = "FollowE"

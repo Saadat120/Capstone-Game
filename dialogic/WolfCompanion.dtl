@@ -1,0 +1,6 @@
+Wolf: I can lead you to the leader of our pack whenever you are ready but like I said, I doubt you can take him on.
+Birdy: Do not worry. Player, at the top right is a portal that will allow you to face others in the wolf pack. Defeat them to gain treats and claws to improve yourself and your companion.
+Birdy: Will you join us in our fight, Wolf?
+Wolf: I will.
+Birdy: Good. Whenever you are ready player, come talk to me and we can face this alpha.
+[signal arg="Wolf"]
