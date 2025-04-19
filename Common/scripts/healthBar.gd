@@ -19,10 +19,11 @@ func _set_health(newHealth: int) -> void:
 func initHealth(_health: int) -> void:
 	if damageBar == null:
 		damageBar = get_node("DamageBar")
-	health = _health
 	max_value = _health
+	health = _health
 	damageBar.max_value = _health
 	damageBar.value = _health
+	custom_minimum_size = Vector2(GameState.healthBarLength,16)
 
 func _on_timer_timeout() -> void:
 	#Damage bar catches up to health bar

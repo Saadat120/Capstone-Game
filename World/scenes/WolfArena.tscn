@@ -311,9 +311,10 @@ shape = SubResource("RectangleShape2D_nyobl")
 position = Vector2(-28, -193)
 
 [node name="Player" parent="." instance=ExtResource("3_slsos")]
-position = Vector2(-1, -166)
+position = Vector2(-3, -219)
 
 [node name="Enemy" type="Node2D" parent="."]
+position = Vector2(-2, 218)
 
 [node name="UI" parent="." instance=ExtResource("5_gbc50")]
 

@@ -20,8 +20,8 @@ shader_parameter/enabled = false
 shader_parameter/tint = Color(1, 1, 1, 1)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t7ik7"]
-radius = 6.14017
-height = 30.6956
+radius = 5.0
+height = 28.0
 
 [sub_resource type="Animation" id="Animation_ifpdv"]
 resource_name = "AttackE"
@@ -72,7 +72,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(50, 3)]
+"values": [Vector2(50, -5)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -172,7 +172,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(60, -15)]
+"values": [Vector2(60, -25)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -260,7 +260,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-50, -15)]
+"values": [Vector2(-50, -20)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -348,7 +348,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(45, 10)]
+"values": [Vector2(50, 0)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -448,7 +448,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-47, 5)]
+"values": [Vector2(-47, 0)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -524,7 +524,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.5, 0.766667),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(6, 5), Vector2(-22, -24), Vector2(6, 5)]
+"values": [Vector2(10, 5), Vector2(-22, -24), Vector2(10, 5)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -548,7 +548,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-47, 5)]
+"values": [Vector2(-47, -5)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -1939,11 +1939,11 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fn2c3"]
-size = Vector2(48.5312, 91)
+size = Vector2(35, 75)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ejbok"]
-radius = 25.43
-height = 95.8
+radius = 22.0
+height = 85.0
 
 [node name="WolfBoss" type="CharacterBody2D"]
 motion_mode = 1
@@ -1952,7 +1952,7 @@ script = ExtResource("1_5vc8q")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_0jlkj")
 position = Vector2(4, 3)
-scale = Vector2(3.5, 3.5)
+scale = Vector2(3, 3)
 texture = ExtResource("8_wcgn3")
 hframes = 15
 vframes = 16

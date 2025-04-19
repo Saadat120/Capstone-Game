@@ -117,6 +117,13 @@ size_flags_horizontal = 4
 texture = ExtResource("1_ltpgq")
 region_rect = Rect2(0, 83, 31, 37)
 
+[node name="StagSelect" type="TextureButton" parent="VBoxContainer/MainHBox/StagTree/PanelContainer"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_default_cursor_shape = 2
+disabled = true
+
 [node name="StagSkillTree" parent="VBoxContainer/MainHBox/StagTree" instance=ExtResource("2_tloc2")]
 layout_mode = 2
 size_flags_vertical = 3
@@ -140,6 +147,12 @@ layout_mode = 2
 size_flags_horizontal = 4
 texture = ExtResource("3_m3yau")
 region_rect = Rect2(333, 591, 37, 34)
+
+[node name="WolfSelect" type="TextureButton" parent="VBoxContainer/MainHBox/WolfTree/PanelContainer"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_default_cursor_shape = 2
 
 [node name="WolfSkillTree" parent="VBoxContainer/MainHBox/WolfTree" instance=ExtResource("6_f7513")]
 layout_mode = 2
@@ -224,3 +237,5 @@ custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 
 [connection signal="timeout" from="VBoxContainer/HBoxContainer/HBoxContainer2/Timer" to="." method="_on_timer_timeout"]
+[connection signal="button_down" from="VBoxContainer/MainHBox/StagTree/PanelContainer/StagSelect" to="." method="_on_stag_select_button_down"]
+[connection signal="button_down" from="VBoxContainer/MainHBox/WolfTree/PanelContainer/WolfSelect" to="." method="_on_wolf_select_button_down"]

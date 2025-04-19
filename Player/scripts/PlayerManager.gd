@@ -18,14 +18,17 @@ var dodgeCount: int = 0
 func _ready() -> void:
 	gaugeMeter.value = 0
 	gaugeMeter.max_value = 100
-	maxHealth = PlayerData.healthStats["value"]
-	health = maxHealth
+	initHealth()
 	speed = PlayerData.agilityStats["value"]
 	armor = PlayerData.armorStats["value"]
 	companion = PlayerData.currentPet
-	healthBar.initHealth(health)
 	SignalBus.playerHealthChanged.connect(healthBar._set_health)
 
+func initHealth() -> void:
+	maxHealth = PlayerData.healthStats["value"]
+	health = maxHealth
+	healthBar.initHealth(health)
+	
 func updateGauge() -> void:
 	if gaugeMeter.value < 100 and $AbilitiesManager/UltimateTimer.is_stopped():
 		var gaugeInc: float
@@ -42,6 +45,7 @@ func getSpeed() -> float:
 	return speed * totalMultiplier
 
 func damage() -> int: return abilitiesManager.attack["damage"]
+func setDamage(newDamage: int) -> void: abilitiesManager.attack["damage"] = newDamage
 
 func useAbility(ability: String) -> void:
 	match ability:

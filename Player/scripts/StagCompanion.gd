@@ -22,7 +22,7 @@ func handleMovement() -> void:
 	if distance > 60:
 		follow = true
 		direction = (player.global_position - global_position).normalized()
-		velocity = direction * player.playerManager.getSpeed()
+		velocity = direction * player.playerManager.speed
 	elif distance > 30:
 		follow = true
 		direction = (player.global_position - global_position).normalized()

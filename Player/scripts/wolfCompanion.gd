@@ -22,30 +22,19 @@ func _physics_process(_delta: float) -> void:
 		handleMovement()
 
 func handleMovement() -> void:
-	if !chaseDown:
-		distance = global_position.distance_to(player.global_position)
-		direction = (player.global_position - global_position).normalized()
-		speed = player.playerManager.getSpeed()
-		if distance > 60:
-			follow = true
-			velocity = direction * player.playerManager.getSpeed()
-		elif distance > 30:
-			follow = true
-			velocity = direction * 50
-		else:
-			follow = false
-			velocity = Vector2.ZERO
+	distance = global_position.distance_to(player.global_position)
+	direction = (player.global_position - global_position).normalized()
+	speed = player.playerManager.getSpeed()
+	if distance > 100:
+		follow = true
+		velocity = direction * player.playerManager.speed
+	elif distance > 70:
+		follow = true
+		velocity = direction * 50
 	else:
-		if !enemy: return
-		distance = global_position.distance_to(enemy.global_position)
-		direction = (enemy.global_position - global_position).normalized()
-		if distance > 20:
-			velocity = direction * 120
-		else:
-			velocity = Vector2.ZERO
-			attacking = true
-			$AttackTimer.start()
-	
+		follow = false
+		velocity = Vector2.ZERO
+
 	if direction != Vector2.ZERO:
 		cardinal_direction = direction
 	

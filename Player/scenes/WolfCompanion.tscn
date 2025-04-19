@@ -775,7 +775,7 @@ advance_expression = "!attacking"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_srf47"]
 advance_mode = 2
-advance_expression = "!follow and !attacking"
+advance_expression = "!follow"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_klmei"]
 advance_mode = 2
@@ -802,7 +802,6 @@ script = ExtResource("1_x3yvo")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_w3ufj")
 position = Vector2(4, 3)
-scale = Vector2(1.25, 1.25)
 texture = ExtResource("3_wkobl")
 hframes = 15
 vframes = 16

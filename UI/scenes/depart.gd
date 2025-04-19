@@ -2,7 +2,6 @@ extends PanelContainer
 
 func _ready() -> void:
 	hide()
-	print(GameState.stage)
 
 func _on_yes_button_down() -> void:
 	if GameState.stage == 3:

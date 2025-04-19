@@ -1540,7 +1540,7 @@ shape = SubResource("RectangleShape2D_1g56r")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 enabled = false
-zoom = Vector2(2.5, 2.5)
+zoom = Vector2(2.75, 2.75)
 
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 4

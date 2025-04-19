@@ -14,6 +14,7 @@ corner_radius_bottom_left = 10
 [node name="SkillButton" type="TextureButton"]
 offset_right = 128.0
 offset_bottom = 128.0
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("1_r8vc3")
 ignore_texture_size = true
 stretch_mode = 0

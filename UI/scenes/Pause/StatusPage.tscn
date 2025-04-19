@@ -135,6 +135,7 @@ text = "1"
 [node name="HlthButton" type="Button" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Vitality/VitalityBox/UpgradeReq/LevelBox"]
 layout_mode = 2
 size_flags_horizontal = 10
+mouse_default_cursor_shape = 2
 icon = ExtResource("2_wp025")
 
 [node name="MarkBox" type="HBoxContainer" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Vitality/VitalityBox/UpgradeReq"]
@@ -196,6 +197,7 @@ text = "1"
 [node name="DmgButton" type="Button" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Damage/DamageBox/UpgradeReq/LevelBox"]
 layout_mode = 2
 size_flags_horizontal = 10
+mouse_default_cursor_shape = 2
 icon = ExtResource("2_wp025")
 
 [node name="MarkBox" type="HBoxContainer" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Damage/DamageBox/UpgradeReq"]
@@ -257,6 +259,7 @@ text = "1"
 [node name="AgilityButton" type="Button" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Agility/AgilityBox/UpgradeReq/LevelBox"]
 layout_mode = 2
 size_flags_horizontal = 10
+mouse_default_cursor_shape = 2
 icon = ExtResource("2_wp025")
 
 [node name="MarkBox" type="HBoxContainer" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Agility/AgilityBox/UpgradeReq"]
@@ -318,6 +321,7 @@ text = "1"
 [node name="ArmorButton" type="Button" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Armor/ArmorBox/HBoxContainer/LevelBox"]
 layout_mode = 2
 size_flags_horizontal = 10
+mouse_default_cursor_shape = 2
 icon = ExtResource("2_wp025")
 
 [node name="MarkBox" type="HBoxContainer" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Armor/ArmorBox/HBoxContainer"]

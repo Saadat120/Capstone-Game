@@ -1,14 +1,18 @@
 extends Node
 
 var intro:bool = true
-var stage := 1
-var challengeBoss: bool = false
+var stage := 5
+var challengeBoss: bool = true
+
+var healthBarLength : int = 400
+var defaultLength : int = 400
 #func _ready() -> void:
 	#loadProgress()
 
 func saveProgress() -> void:
 	var saveData := {
 		"stage": stage,
+		"healthBarLength": healthBarLength,
 		"Treats": PlayerData.animalTreats,
 		"Marks": PlayerData.playerMarks,
 		"Health": PlayerData.healthStats,
@@ -29,6 +33,7 @@ func loadProgress() -> void:
 		var data: Dictionary = JSON.parse_string(file.get_as_text())
 		if data:
 			stage = data.get("stage", stage)
+			healthBarLength = data.get("healthBarLength", healthBarLength)
 			PlayerData.animalTreats = data.get("Treats", PlayerData.animalTreats)
 			PlayerData.playerMarks = data.get("Treats", PlayerData.playerMarks)
 			PlayerData.healthStats = data.get("Health", PlayerData.healthStats)

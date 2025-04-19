@@ -79,7 +79,7 @@ text = "100/100"
 
 [node name="HealthBar" parent="StatsContainer/Container/HealthContainer" instance=ExtResource("3_3nxoe")]
 self_modulate = Color(0.608777, 0.637453, 0.766432, 1)
-custom_minimum_size = Vector2(425, 16)
+custom_minimum_size = Vector2(400, 16)
 layout_mode = 2
 size_flags_horizontal = 0
 rounded = true
