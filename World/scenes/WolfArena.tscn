@@ -317,6 +317,7 @@ position = Vector2(-3, -219)
 position = Vector2(-2, 218)
 
 [node name="UI" parent="." instance=ExtResource("5_gbc50")]
+visible = false
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(7, 33)
@@ -345,6 +346,20 @@ grow_horizontal = 2
 theme_override_font_sizes/font_size = 32
 text = "Returning to Base: "
 horizontal_alignment = 1
+
+[node name="SummonSpots" type="Node2D" parent="."]
+
+[node name="Spot1" type="Marker2D" parent="SummonSpots"]
+position = Vector2(-1, -293)
+
+[node name="Spot2" type="Marker2D" parent="SummonSpots"]
+position = Vector2(-607, 0)
+
+[node name="Spot3" type="Marker2D" parent="SummonSpots"]
+position = Vector2(615, 1)
+
+[node name="Spot4" type="Marker2D" parent="SummonSpots"]
+position = Vector2(1, 291)
 
 [connection signal="timeout" from="EnterTimer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="ReturnTimer" to="." method="_on_return_timer_timeout"]

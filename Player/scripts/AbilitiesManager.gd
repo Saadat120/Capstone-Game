@@ -10,7 +10,7 @@ var bleedTicks: int = 4
 var bleed: bool = false
 
 func _ready() -> void:
-	attack = {"damage": 200, "cooldown": 0.4, "UI": Skill}
+	attack = {"damage": 1000, "cooldown": 0.4, "UI": Skill}
 	dash = {"cooldown": 2, "UI": Skill}
 	special = {"cooldown":5,  "UI": Skill}
 

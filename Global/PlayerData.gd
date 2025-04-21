@@ -39,7 +39,7 @@ func upgradeStat(stat: String, cost: int) -> void:
 		healthStats["level"] += 1
 		if healthStats["level"] == 4:
 			healthStats["value"] += 50
-			var healthBarLength : int = (GameState.defaultLength * (0.1 * 5))
+			var healthBarLength : int = int(GameState.defaultLength * (0.1 * 5))
 			GameState.healthBarLength = GameState.defaultLength + healthBarLength
 		else:
 			healthStats["value"] += (10 * healthStats["level"])

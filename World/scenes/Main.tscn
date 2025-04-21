@@ -257,8 +257,9 @@ height = 123.077
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qstex"]
 size = Vector2(51.145, 22.2566)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_jj1la"]
-radius = 24.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jj1la"]
+radius = 13.0
+height = 42.0
 
 [node name="Haven" type="Node2D"]
 script = ExtResource("1_yf7im")
@@ -348,7 +349,9 @@ position = Vector2(945, 467)
 [node name="Range" type="Area2D" parent="Birdy"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Birdy/Range"]
-shape = SubResource("CircleShape2D_jj1la")
+position = Vector2(5, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_jj1la")
 
 [connection signal="body_entered" from="WolfPortal/Portal/Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="BadgerPortal/Portal/Area2D" to="." method="_on_badgerPortal_entered"]

@@ -11,14 +11,20 @@ extends Node2D
 var isBossDefeated := false
 
 func _ready() -> void:
-	if GameState.challengeBoss:
-		loadBoss("WolfAlpha")
-	else:
-		loadBoss("WolfBoss")
 	SignalBus.bossDefeated.connect(onBossDefeated)
 	returnLabel.visible = false
 	addPet()
 	set_process(false)
+	if GameState.challengeBoss:
+		loadBoss("WolfAlpha")
+		camera_2d.enabled = true
+		playerCam.enabled = false
+		await get_tree().create_timer(2).timeout
+		camera_2d.enabled = false
+		playerCam.enabled = true
+	else:
+		loadBoss("WolfBoss")
+	
 
 func _process(_delta: float) -> void:
 	if isBossDefeated:
