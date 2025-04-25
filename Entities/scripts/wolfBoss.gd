@@ -1,92 +1,151 @@
 class_name wolfBoss extends CharacterBody2D
 
-@onready var animationPlayer: AnimationPlayer = $AnimationPlayer
-@onready var hit_flash: AnimationPlayer = $HitFlash
-@onready var stateMachine: StateMachine = $StateMachine
-@onready var healthBar: ProgressBar = $"BossUI/HUD/HealthBar"
+signal health_changed(new_health: int)
+#References
+@onready var healthBar: ProgressBar = $"../../UI/BossUI/VBoxContainer/Healths/MiniBoss/HealthBar"
+@onready var healthVal: Label = $"../../UI/BossUI/VBoxContainer/Healths/MiniBoss/HealthVal"
+@onready var bossTitle: Label = $"../../UI/BossUI/VBoxContainer/BossTitle"
+@onready var animationTree: AnimationTree = $AnimationTree
 @onready var stats: StatsComponent = $StatsComponent
+@onready var hit_flash: AnimationPlayer = $HitFlash
 @onready var damage_numbers_origin: Node2D = $DamageNumbersOrigin
 @onready var attackTimer: Timer = $AttackTimer
+@onready var ray_cast_right: RayCast2D = $RayCastRight
+@onready var ray_cast_left: RayCast2D = $RayCastLeft
+@onready var player: CharacterBody2D = get_tree().get_first_node_in_group("Player")
 
-var recentHit: bool = false
-var dead := false
-var aggro: bool = false
-var cardinal_direction: Vector2 = Vector2(1, -1)
+#Movement & positioning
 var direction : Vector2 = Vector2.ZERO
+var cardinal_direction: Vector2 = Vector2.DOWN
+var distance: float
+var targetPosition: Vector2
+var repositioning := false
 
-var wolfDirectionMap := {
-	Vector2(1, 0): "E",
-	Vector2(-1, 0): "W",
-	Vector2(1, 1).normalized(): "SE",  # Southeast
-	Vector2(-1, 1).normalized(): "SW", # Southwest
-	Vector2(1, -1).normalized(): "NE", # Northeast
-	Vector2(-1, -1).normalized(): "NW" # Northwest
-}
+#Combat & State Flags
+var dead :bool = false
+var follow: bool = false
+var attacking: bool = false
+var recentHit := false
+var howl: bool = true
+var playerInSafeZone : bool = false
+var boss: bool = true
 
 func _ready() -> void:
-	stats.initialize(700, 15, 45, 1.2, 60)
-	SignalBus.enemyHealthChanged.connect(healthBar._set_health)
-	SignalBus.applyBleed.connect(bleed)
+	if get_tree().get_node_count_in_group("Enemy") > 0:
+		boss = false
+		healthBar = $"../../../UI/BossUI/VBoxContainer/Healths/MiniBoss/HealthBar"
+		healthVal = $"../../../UI/BossUI/VBoxContainer/Healths/MiniBoss/HealthVal"
+		bossTitle = $"../../../UI/BossUI/VBoxContainer/BossTitle"
+	else:
+		boss = true
+		bossTitle.show()
+		bossTitle.text = "Wolf"
+	health_changed.connect(healthBar._set_health)
 	healthBar.initHealth(stats.health)
-	aggro = true
-	healthBar.visible = true
+	healthBar.show()
+	healthVal.show()
+	SignalBus.applyBleed.connect(bleed)
 	add_to_group("Enemy")
-	
-	animationPlayer.play("Howl")
-	await animationPlayer.animation_finished
-	
-	stateMachine.Initialize()
-	stateMachine.changeState(stateMachine.get_node("Chase"))
+	await get_tree().create_timer(1.4).timeout
+	howl = false
 	
 func _physics_process(_delta: float) -> void:
+	handler()
+
+func handler() -> void:
+	if dead: handleDeath()
+	else:
+		if repositioning: handleRepostioning()
+		elif !howl: handleCombatMovement()
+	
+	updateAnimations()
 	move_and_slide()
-	die()
+	
+func handleCombatMovement() -> void:
+	#Handle movement and combat if not attacking or repositioning
+	if attackTimer.is_stopped() and !playerInSafeZone:
+		distance = global_position.distance_to(player.global_position)
+		direction = (player.global_position - global_position).normalized()
+		if distance > 65: #Chase the player
+			velocity = direction * stats.speed
+			recentHit = false
+		elif distance <= 65: #Attack the player
+			attackTimer.start()
+			attacking = true
+			#If already lunged and still in attack phase -> stationary attack
+			if !recentHit: recentHit = true
+			elif recentHit: 
+				velocity = Vector2.ZERO
+				direction = (player.global_position - global_position).normalized()
 
-func updateAnimation(state: String) -> void:
-	animationPlayer.play(state + animationDirection())
+#Make sure wolf reaches position before redirecting back to player
+func handleRepostioning() -> void:
+	distance = global_position.distance_to(targetPosition)
+	if distance > 30:
+		velocity = direction * stats.speed * 1.5
+	else:
+		repositioning = false
 
-func animationDirection() -> String:
-	return wolfDirectionMap.get(cardinal_direction, "NE")
+func handleDeath() -> void:
+	velocity = Vector2.ZERO
+	# Optional: Delay before removal
+	await get_tree().create_timer(2).timeout
+	healthBar.queue_free()
+	bossTitle.hide()
+	healthVal.hide()
+	remove_from_group("Enemy")
+	queue_free()
+	if boss:
+		SignalBus.bossDefeated.emit()
+		PlayerData.addMarks(6)
+		PlayerData.addTreats(2)
+	set_process(false)
 
-func setDirection() -> bool:
-	if direction == Vector2.ZERO:
-		return false
-		
-	var closest_direction := Vector2.ZERO
-	var min_angle := 180
-
-	for dir:Vector2 in wolfDirectionMap.keys():
-		var angle_diff := rad_to_deg(direction.angle_to(dir))
-		if abs(angle_diff) < min_angle:
-			min_angle = abs(angle_diff)
-			closest_direction = dir
-			
-	if closest_direction == cardinal_direction:
-		return false
-
-	cardinal_direction = closest_direction
-	return true
-
+func updateAnimations() -> void:
+	if direction != Vector2.ZERO:
+		cardinal_direction = direction
+	animationTree.set("parameters/Chase/blend_position", cardinal_direction)
+	animationTree.set("parameters/Attack/blend_position", cardinal_direction)
+	animationTree.set("parameters/Death/blend_position", cardinal_direction)
+	
 func bleed() -> void:
-	var player := get_tree().get_first_node_in_group("Player")
 	$BleedTimer.start()
 	while !$BleedTimer.is_stopped():
 		DamageManager.applyBleed(self)
 		player.playerManager.abilitiesManager.lifeSteal(self)
-		SignalBus.playerHealthChanged.emit(player.playerManager.health)
-		SignalBus.enemyHealthChanged.emit(stats.health)
+		health_changed.emit(stats.health)
 		hit_flash.play("hitFlash")
-		await get_tree().create_timer(1).timeout
+		await get_tree().create_timer(1).timeout #Proc bleed every second
 
-func die() -> void:
-	if dead == true:
-		stateMachine = null
-		velocity = Vector2.ZERO
-		# Optional: Delay before removal
-		setDirection()
-		updateAnimation("Death")
-		await get_tree().create_timer(1.5).timeout  
-		healthBar.queue_free()
-		get_tree().get_first_node_in_group("Enemy").remove_from_group("Enemy")
-		queue_free()
-		SignalBus.bossDefeated.emit()
+func _on_attack_timer_timeout() -> void:
+	attacking = false
+
+func _on_safe_zone_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Player") and !repositioning:
+		playerInSafeZone = true
+		if attacking:
+			await attackTimer.timeout
+			if playerInSafeZone:
+				reposition()
+		else:
+			reposition()
+
+func _on_safe_zone_body_exited(body: Node2D) -> void:
+	if body.is_in_group("Player"):
+		playerInSafeZone = false
+
+#Helper Functions
+func reposition() -> void:
+	var can_move_left := not ray_cast_left.is_colliding()
+	var can_move_right := not ray_cast_right.is_colliding()
+	var side := 1
+	
+	if can_move_left and !can_move_right: side = -1
+	elif !can_move_left and can_move_right: side = 1
+	elif can_move_left and can_move_right: side = -1
+
+	var offset := Vector2(1 * side, 1).normalized() * 130
+	targetPosition = global_position + offset
+	direction = (targetPosition - global_position).normalized()
+	distance = global_position.distance_to(targetPosition)
+	repositioning = true

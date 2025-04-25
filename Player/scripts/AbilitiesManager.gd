@@ -10,7 +10,7 @@ var bleedTicks: int = 4
 var bleed: bool = false
 
 func _ready() -> void:
-	attack = {"damage": 1000, "cooldown": 0.4, "UI": Skill}
+	attack = {"damage": PlayerData.damageStats["value"], "cooldown": 0.4, "UI": Skill}
 	dash = {"cooldown": 2, "UI": Skill}
 	special = {"cooldown":5,  "UI": Skill}
 
@@ -90,3 +90,4 @@ func lifeSteal(enemy: CharacterBody2D) -> void:
 	if PlayerData.companionAbilities["Wolf"]["branch1"][0]:
 		var steal := int(enemy.stats.maxHealth * 0.005)
 		playerManager.health = clamp(playerManager.health+steal, 0, playerManager.maxHealth)
+		SignalBus.playerHealthChanged.emit(playerManager.health)

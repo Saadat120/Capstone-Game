@@ -19,9 +19,6 @@ func _ready() -> void:
 		loadBoss("WolfAlpha")
 		camera_2d.enabled = true
 		playerCam.enabled = false
-		await get_tree().create_timer(2).timeout
-		camera_2d.enabled = false
-		playerCam.enabled = true
 	else:
 		loadBoss("WolfBoss")
 	
@@ -34,6 +31,7 @@ func _process(_delta: float) -> void:
 func _on_timer_timeout() -> void:
 	camera_2d.enabled = false
 	playerCam.enabled = true
+	pass
 
 func onBossDefeated() -> void:
 	if GameState.stage == 3:

@@ -11,7 +11,7 @@ stag: What is wrong with you?
 Player: Umm... Sorry?
 stag: Sorry!? Is that all you have to say. You come and strike me for no reason and your sorry?
 [sound path="res://Entities/assets/wolf-howl.mp3" volume="0.0"]
-[wait time="1.0"]
+[wait time="8.0"]
 Player: What was that?
 stag: They're nearby!!
 Birdy: Whose nearby?

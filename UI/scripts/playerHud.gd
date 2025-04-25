@@ -14,13 +14,15 @@ extends Control
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	healthVal.text = str(int(healthBar.value)) + "/" + str(int(healthBar.max_value))
+	
 	gauge_value.text = str(int(gauge_meter.value)) + "/100"
 	treats.text = str(PlayerData.animalTreats)
 	marks.text = str(PlayerData.playerMarks)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
+
 func _process(_delta: float) -> void:
-	healthVal.text = str(int(healthBar.value)) + "/" + str(int(healthBar.max_value))
+	#healthVal.text = str(int(healthBar.value)) + "/" + str(int(healthBar.max_value))
 	gauge_value.text = str(int(gauge_meter.value)) + "/100"
 	treats.text = str(PlayerData.animalTreats)
 	marks.text = str(PlayerData.playerMarks)
@@ -45,3 +47,8 @@ func _process(_delta: float) -> void:
 		stagSkill.hide()
 		gauge_meter.hide()
 		gauge_value.hide()
+
+
+func _on_health_bar_value_changed(value: float) -> void:
+	if healthBar:
+		healthVal.text = str(int(healthBar.value)) + "/" + str(int(healthBar.max_value))

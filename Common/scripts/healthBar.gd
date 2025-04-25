@@ -1,7 +1,7 @@
 extends ProgressBar
 
 @onready var damageBar: ProgressBar = $DamageBar
-@export var timer: Timer
+@onready var timer: Timer = $Timer
 var health := 0: set = _set_health
 
 func _set_health(newHealth: int) -> void:

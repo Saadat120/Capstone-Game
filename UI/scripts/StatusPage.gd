@@ -45,7 +45,7 @@ func update() -> void:
 	healthValue.text = str(int(PlayerData.healthStats["value"]))
 	if PlayerData.healthStats["level"] < 4: 
 		healthInc.text = "+" + str((10 * (PlayerData.healthStats["level"] + 1)))
-		healthMarkCost.text = str(PlayerData.healthStats["level"])
+		healthMarkCost.text = str(int(PlayerData.healthStats["level"]))
 	else:
 		healthInc.hide()
 	
@@ -53,21 +53,21 @@ func update() -> void:
 	damageValue.text = str(int(PlayerData.damageStats["value"]))
 	if PlayerData.damageStats["level"] < 4: 
 		damageInc.text = "+" + str(10 + 5*(PlayerData.damageStats["level"]-1))
-		damageMarkCost.text = str(PlayerData.damageStats["level"])
+		damageMarkCost.text = str(int(PlayerData.damageStats["level"]))
 	else: damageInc.hide()
 	
 	agilityLevel.text = str(int(PlayerData.agilityStats["level"]))
 	agilityValue.text = str(int(PlayerData.agilityStats["value"]))
 	if PlayerData.agilityStats["level"] < 4: 
 		agilityInc.text = "+8"
-		agilityMarkCost.text = str(PlayerData.agilityStats["level"])
+		agilityMarkCost.text = str(int(PlayerData.agilityStats["level"]))
 	else: agilityInc.hide()
 	
 	armorLevel.text = str(int(PlayerData.armorStats["level"]))
 	armorValue.text = str(int(PlayerData.armorStats["value"]))
 	if PlayerData.armorStats["level"] < 4: 
 		armorInc.text = "+10"
-		armorMarkCost.text = str(PlayerData.armorStats["level"])
+		armorMarkCost.text = str(int(PlayerData.armorStats["level"]))
 	else: armorInc.hide()
 	
 	marksHeld.text = str(PlayerData.playerMarks)

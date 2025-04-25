@@ -1,10 +1,13 @@
 class_name wolfBeta extends CharacterBody2D
 
+signal health_changed(new_health: int)
+
 @onready var animationTree: AnimationTree = $AnimationTree
 @onready var stats: StatsComponent = $StatsComponent
 @onready var hit_flash: AnimationPlayer = $HitFlash
 @onready var damage_numbers_origin: Node2D = $DamageNumbersOrigin
 @onready var attackTimer: Timer = $AttackTimer
+@onready var healthBar: ProgressBar = $HealthBar
 
 var player: CharacterBody2D
 var dead :bool = false
@@ -16,6 +19,9 @@ var distance: float
 
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("Player")
+	healthBar.initHealth(stats.health)
+	health_changed.connect(healthBar._set_health)
+	add_to_group("Enemy")
 
 func _physics_process(_delta: float) -> void:
 	handleMovement()
@@ -45,6 +51,7 @@ func die() -> void:
 		animationTree.set("parameters/Death/blend_position", cardinal_direction)
 		# Optional: Delay before removal
 		await get_tree().create_timer(1.5).timeout
+		remove_from_group("Enemy")
 		queue_free()
 
 

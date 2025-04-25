@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://de2s21g531onq" path="res://Common/HitboxComponent.tscn" id="4_bkba4"]
 [ext_resource type="Script" uid="uid://6si8eicwtc82" path="res://scripts/StateMachine/chaseState.gd" id="4_l324x"]
 [ext_resource type="Script" uid="uid://dn4ejr11fg3ew" path="res://scripts/StateMachine/attackState.gd" id="5_bn8dn"]
-[ext_resource type="PackedScene" uid="uid://dxhk63e1mu4t3" path="res://UI/scenes/BossUI.tscn" id="10_iyyxp"]
+[ext_resource type="PackedScene" uid="uid://dxhk63e1mu4t3" path="res://UI/scenes/BossCanvas.tscn" id="10_iyyxp"]
 [ext_resource type="Script" uid="uid://dwao7imboy685" path="res://scripts/StateMachine/burrowState.gd" id="10_tk62j"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tirrx"]

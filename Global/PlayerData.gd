@@ -5,21 +5,21 @@ var damageStats := {"value": 30, "level": 1}
 var agilityStats := {"value": 80, "level": 1}
 var armorStats := {"value": 10, "level": 1}
 
-var playerMarks: int = 20
-var animalTreats: int = 3
+var playerMarks: int = 10
+var animalTreats: int = 0
 
-var currentPet : String = "Wolf"
-var pets: Array = ["Stag", "Wolf"]
+var currentPet : String #= "Stag"
+var pets: Array #= ["Stag", "Wolf"]
 var lockedPets: Array = ["Stag", "Wolf", "Boar", "Badger"]
 var companionAbilities := {
 	"Stag": {
-		"root": [true],
-		"branch1": [true, true],
+		"root": [false],
+		"branch1": [false, false],
 		"branch2": [false, false]
 	},
 	"Wolf": {
-		"root": [true],
-		"branch1": [true, false],
+		"root": [false],
+		"branch1": [false, false],
 		"branch2": [false, false]
 	}
 }

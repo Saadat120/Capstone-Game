@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Tamer"
-run/main_scene="uid://bjbdblue6w0y"
+run/main_scene="uid://dtkvgch8g7nbi"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -89,6 +89,7 @@ PlayerAbilities=""
 Health=""
 Player=""
 Enemy=""
+SummonSpots=""
 
 [gui]
 

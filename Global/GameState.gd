@@ -1,11 +1,12 @@
 extends Node
 
 var intro:bool = true
-var stage := 5
-var challengeBoss: bool = true
+var stage := 3
+var challengeBoss: bool = false
 
 var healthBarLength : int = 400
 var defaultLength : int = 400
+
 #func _ready() -> void:
 	#loadProgress()
 
@@ -35,7 +36,7 @@ func loadProgress() -> void:
 			stage = data.get("stage", stage)
 			healthBarLength = data.get("healthBarLength", healthBarLength)
 			PlayerData.animalTreats = data.get("Treats", PlayerData.animalTreats)
-			PlayerData.playerMarks = data.get("Treats", PlayerData.playerMarks)
+			PlayerData.playerMarks = data.get("Marks", PlayerData.playerMarks)
 			PlayerData.healthStats = data.get("Health", PlayerData.healthStats)
 			PlayerData.damageStats = data.get("Damage", PlayerData.damageStats)
 			PlayerData.agilityStats = data.get("Agility", PlayerData.agilityStats)

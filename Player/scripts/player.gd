@@ -74,7 +74,8 @@ func _on_hitbox_area_entered(hurtbox: Area2D) -> void:
 		playerManager.updateGauge()
 		var entity := hurtbox.get_parent()
 		DamageManager.applyDamageToEnemy(self, entity)
-		SignalBus.enemyHealthChanged.emit(entity.stats.health)
+		#SignalBus.enemyHealthChanged.emit(entity.stats.health)
+		entity.health_changed.emit(entity.stats.health)
 		entity.hit_flash.play("hitFlash")
 		if entity.stats.health <= 0:
 			entity.dead = true

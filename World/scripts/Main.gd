@@ -40,7 +40,7 @@ func dialogic_signal(signalStr: String) -> void:
 		addPet(signalStr)
 	elif signalStr == "end":
 		GameState.stage = 3
-		PlayerData.addMarks(2)
+		PlayerData.addMarks(4)
 		PlayerData.addTreats(2)
 	elif signalStr == "Wolf":
 		addPet(signalStr)

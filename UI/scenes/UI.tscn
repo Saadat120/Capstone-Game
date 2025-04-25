@@ -1,13 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://7uv4wjpm161c"]
+[gd_scene load_steps=5 format=3 uid="uid://7uv4wjpm161c"]
 
 [ext_resource type="PackedScene" uid="uid://bk36qnaychwcp" path="res://UI/scenes/Pause/PauseArea.tscn" id="1_5jtd7"]
 [ext_resource type="PackedScene" uid="uid://doslp77la0i1f" path="res://UI/scenes/PlayerUI.tscn" id="1_qw5j8"]
 [ext_resource type="PackedScene" uid="uid://copbcfr3hi2k1" path="res://UI/scenes/Depart.tscn" id="3_l38d8"]
+[ext_resource type="PackedScene" uid="uid://b7rs82d8itaut" path="res://UI/scenes/BossUI.tscn" id="4_f22kj"]
 
 [node name="UI" type="CanvasLayer"]
 layer = 100
 
 [node name="PlayerUI" parent="." instance=ExtResource("1_qw5j8")]
+
+[node name="BossUI" parent="." instance=ExtResource("4_f22kj")]
 
 [node name="PauseArea" parent="." instance=ExtResource("1_5jtd7")]
 z_index = 2

@@ -260,3 +260,5 @@ layout_mode = 2
 size_flags_horizontal = 10
 theme_override_font_sizes/font_size = 24
 text = "0"
+
+[connection signal="value_changed" from="StatsContainer/Container/HealthContainer/HealthBar" to="." method="_on_health_bar_value_changed"]
