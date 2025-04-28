@@ -1,7 +1,7 @@
 extends Node
 
 var intro:bool = true
-var stage := 3
+var stage := 0
 var challengeBoss: bool = false
 
 var healthBarLength : int = 400

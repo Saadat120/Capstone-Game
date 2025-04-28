@@ -5,7 +5,7 @@ var damageStats := {"value": 30, "level": 1}
 var agilityStats := {"value": 80, "level": 1}
 var armorStats := {"value": 10, "level": 1}
 
-var playerMarks: int = 10
+var playerMarks: int = 0
 var animalTreats: int = 0
 
 var currentPet : String #= "Stag"

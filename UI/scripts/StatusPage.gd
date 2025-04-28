@@ -115,6 +115,7 @@ func _on_armor_button_mouse_exited() -> void:
 	armorInc.hide()
 
 func _on_hlth_button_button_down() -> void:
+	if get_tree().current_scene.name != "Haven": return
 	if PlayerData.healthStats["level"] < 4:
 		if PlayerData.playerMarks > 0 and int(healthMarkCost.text) <= PlayerData.playerMarks:
 			PlayerData.upgradeStat("vitality", int(healthMarkCost.text))
@@ -124,6 +125,7 @@ func _on_hlth_button_button_down() -> void:
 			insufficient.show()
 
 func _on_dmg_button_button_down() -> void:
+	if get_tree().current_scene.name != "Haven": return
 	if PlayerData.damageStats["level"] < 4:
 		if PlayerData.playerMarks > 0 and int(damageMarkCost.text) <= PlayerData.playerMarks:
 			PlayerData.upgradeStat("damage", int(damageMarkCost.text))
@@ -133,6 +135,7 @@ func _on_dmg_button_button_down() -> void:
 			insufficient.show()
 
 func _on_agility_button_button_down() -> void:
+	if get_tree().current_scene.name != "Haven": return
 	if PlayerData.agilityStats["level"] < 4:
 		if PlayerData.playerMarks > 0 and int(agilityMarkCost.text) <= PlayerData.playerMarks:
 			PlayerData.upgradeStat("agility", int(agilityMarkCost.text))
@@ -142,6 +145,7 @@ func _on_agility_button_button_down() -> void:
 			insufficient.show()
 
 func _on_armor_button_button_down() -> void:
+	if get_tree().current_scene.name != "Haven": return
 	if PlayerData.armorStats["level"] < 4:
 		if PlayerData.playerMarks > 0 and int(armorMarkCost.text) <= PlayerData.playerMarks:
 				PlayerData.upgradeStat("armor", int(armorMarkCost.text))

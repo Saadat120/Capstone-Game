@@ -225,7 +225,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_o5ogy")
 [node name="AgilityBox" type="HBoxContainer" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Agility"]
 custom_minimum_size = Vector2(600, 0)
 layout_mode = 2
-theme_override_constants/separation = 297
+theme_override_constants/separation = 280
 
 [node name="Title" type="HBoxContainer" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Agility/AgilityBox"]
 layout_mode = 2
@@ -240,7 +240,7 @@ texture = ExtResource("4_fjcax")
 [node name="Label" type="Label" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Agility/AgilityBox/Title"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
-text = "Speed"
+text = "Agility"
 
 [node name="UpgradeReq" type="HBoxContainer" parent="HBoxContainer/StatsUpgradeVBox/StatsUpgrade/Agility/AgilityBox"]
 layout_mode = 2

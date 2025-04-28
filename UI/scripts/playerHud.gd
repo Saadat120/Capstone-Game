@@ -14,7 +14,6 @@ extends Control
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	healthVal.text = str(int(healthBar.value)) + "/" + str(int(healthBar.max_value))
-	
 	gauge_value.text = str(int(gauge_meter.value)) + "/100"
 	treats.text = str(PlayerData.animalTreats)
 	marks.text = str(PlayerData.playerMarks)

@@ -36,8 +36,7 @@ func unlockRoot(petName: String) -> void:
 			if skill is SkillNode: skill.disabled = false
 
 func _on_button_down() -> void:
-	#if PlayerData.currentPet != companionName and companionName in PlayerData.pets:
-		#PlayerData.currentPet = companionName
+	if get_tree().current_scene.name != "Haven": return
 	if companionName not in PlayerData.pets: return
 		
 	if PlayerData.animalTreats >= skillCost:

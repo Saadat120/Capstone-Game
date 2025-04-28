@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://cdke4eifmnyeq"]
 
 [ext_resource type="PackedScene" uid="uid://dylyolnd82w" path="res://UI/scenes/SkillTree/skillButton.tscn" id="1_bfae8"]
-[ext_resource type="Script" uid="uid://bw8nnusj4rh0k" path="res://UI/scenes/SkillTree/StagSkilltree.gd" id="1_hf2kl"]
+[ext_resource type="Script" uid="uid://bw8nnusj4rh0k" path="res://UI/scripts/StagSkilltree.gd" id="1_hf2kl"]
 [ext_resource type="Texture2D" uid="uid://c6j4dr3f36lqt" path="res://UI/assets/icons/healing.png" id="2_re6c1"]
 [ext_resource type="Texture2D" uid="uid://cuaa5qk7xeqcr" path="res://UI/assets/icons/increasedSpeed.png" id="3_umu33"]
 [ext_resource type="Texture2D" uid="uid://b172qjg8knpaj" path="res://UI/assets/icons/regeneration.png" id="4_hf2kl"]

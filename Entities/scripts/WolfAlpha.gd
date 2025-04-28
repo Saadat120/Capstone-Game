@@ -145,7 +145,6 @@ func handleDeath() -> void:
 	remove_from_group("Enemy")
 	queue_free()
 	SignalBus.bossDefeated.emit()
-	
 	set_process(false)
 
 func updateAnimations() -> void:
@@ -211,3 +210,5 @@ func bleed() -> void:
 		health_changed.emit(stats.health)
 		hit_flash.play("hitFlash")
 		await get_tree().create_timer(1).timeout #Proc bleed every second
+		if stats.health <= 0:
+			dead = true

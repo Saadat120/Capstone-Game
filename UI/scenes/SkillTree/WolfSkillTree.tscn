@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://rrkeeacqdfv2"]
 
-[ext_resource type="Script" uid="uid://c5ovo5ksh1ept" path="res://UI/scenes/SkillTree/WolfSkilltree.gd" id="1_72q0v"]
+[ext_resource type="Script" uid="uid://c5ovo5ksh1ept" path="res://UI/scripts/WolfSkilltree.gd" id="1_72q0v"]
 [ext_resource type="PackedScene" uid="uid://dylyolnd82w" path="res://UI/scenes/SkillTree/skillButton.tscn" id="1_la7tg"]
 [ext_resource type="Texture2D" uid="uid://de5v1effpgbbn" path="res://UI/assets/icons/blood.png" id="2_xm54j"]
 [ext_resource type="Texture2D" uid="uid://bea4su18m1yaa" path="res://UI/assets/icons/lifesteal.png" id="4_pa2rs"]

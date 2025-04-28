@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://bo8xoqaotlp3t"]
 
-[ext_resource type="Script" uid="uid://b43r0owcx3nl4" path="res://UI/scenes/Pause/companionPage.gd" id="1_arv77"]
+[ext_resource type="Script" uid="uid://b43r0owcx3nl4" path="res://UI/scripts/companionPage.gd" id="1_arv77"]
 [ext_resource type="Texture2D" uid="uid://c0npspc30ewyj" path="res://Entities/assets/stag-all.png" id="1_ltpgq"]
 [ext_resource type="Texture2D" uid="uid://das5clqw0bcfd" path="res://UI/assets/icons/bone.png" id="2_f7513"]
 [ext_resource type="PackedScene" uid="uid://cdke4eifmnyeq" path="res://UI/scenes/SkillTree/StagSkillTree.tscn" id="2_tloc2"]

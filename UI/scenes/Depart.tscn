@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://copbcfr3hi2k1"]
+[gd_scene load_steps=7 format=3 uid="uid://copbcfr3hi2k1"]
 
-[ext_resource type="Script" uid="uid://bwmsqdb6o7gpu" path="res://UI/scenes/depart.gd" id="1_u0ekm"]
+[ext_resource type="Script" uid="uid://bwmsqdb6o7gpu" path="res://UI/scripts/depart.gd" id="1_u0ekm"]
+[ext_resource type="Texture2D" uid="uid://c8ydosnmahghv" path="res://Entities/assets/wolf-all.png" id="2_bb736"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_agska"]
 bg_color = Color(0, 0, 0, 1)
@@ -8,6 +9,13 @@ corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q6x4w"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u0ekm"]
 bg_color = Color(0, 0, 0, 1)
@@ -31,8 +39,8 @@ anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -286.0
 offset_top = 97.0
-offset_right = 287.0
-offset_bottom = 247.0
+offset_right = 164.0
+offset_bottom = 663.0
 grow_horizontal = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_agska")
 script = ExtResource("1_u0ekm")
@@ -40,6 +48,51 @@ script = ExtResource("1_u0ekm")
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
 theme_override_constants/separation = 20
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="Enemy" type="NinePatchRect" parent="VBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(400, 250)
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("2_bb736")
+region_rect = Rect2(332, 588, 42, 37)
+patch_margin_top = 6
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_q6x4w")
+
+[node name="Stats" type="VBoxContainer" parent="VBoxContainer/VBoxContainer2/PanelContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 15
+
+[node name="Health" type="Label" parent="VBoxContainer/VBoxContainer2/PanelContainer/Stats"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Health:"
+
+[node name="Damage" type="Label" parent="VBoxContainer/VBoxContainer2/PanelContainer/Stats"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Damage:"
+
+[node name="Agility" type="Label" parent="VBoxContainer/VBoxContainer2/PanelContainer/Stats"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Agility:"
+
+[node name="Armor" type="Label" parent="VBoxContainer/VBoxContainer2/PanelContainer/Stats"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Armor:"
 
 [node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
