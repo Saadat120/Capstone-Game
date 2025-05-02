@@ -7,8 +7,8 @@ var challengeBoss: bool = false
 var healthBarLength : int = 400
 var defaultLength : int = 400
 
-#func _ready() -> void:
-	#loadProgress()
+func _ready() -> void:
+	loadProgress()
 
 func saveProgress() -> void:
 	var saveData := {

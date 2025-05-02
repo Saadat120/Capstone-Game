@@ -1,10 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://rrkeeacqdfv2"]
+[gd_scene load_steps=9 format=3 uid="uid://rrkeeacqdfv2"]
 
 [ext_resource type="Script" uid="uid://c5ovo5ksh1ept" path="res://UI/scripts/WolfSkilltree.gd" id="1_72q0v"]
 [ext_resource type="PackedScene" uid="uid://dylyolnd82w" path="res://UI/scenes/SkillTree/skillButton.tscn" id="1_la7tg"]
 [ext_resource type="Texture2D" uid="uid://de5v1effpgbbn" path="res://UI/assets/icons/blood.png" id="2_xm54j"]
 [ext_resource type="Texture2D" uid="uid://bea4su18m1yaa" path="res://UI/assets/icons/lifesteal.png" id="4_pa2rs"]
-[ext_resource type="Texture2D" uid="uid://bvqqjs7wi3hjb" path="res://Player/assets/redslash.png" id="5_0ep4i"]
 [ext_resource type="Texture2D" uid="uid://cncvh86x1ww1n" path="res://UI/assets/icons/wolfhowl.png" id="5_r010w"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_72q0v"]
@@ -14,12 +13,6 @@ bg_color = Color(0, 0, 0, 1)
 bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pa2rs"]
-bg_color = Color(0, 0, 0, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r010w"]
-bg_color = Color(0, 0, 0, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ep4i"]
 bg_color = Color(0, 0, 0, 1)
 
 [node name="WolfSkillTree" type="Control"]
@@ -51,9 +44,7 @@ branchName = "root"
 
 [node name="SkTree1" parent="Panel/BaseSkill" instance=ExtResource("1_la7tg")]
 layout_mode = 0
-offset_left = -96.0
 offset_top = 192.0
-offset_right = 32.0
 offset_bottom = 320.0
 disabled = true
 texture_normal = ExtResource("4_pa2rs")
@@ -65,30 +56,9 @@ layout_mode = 0
 offset_top = 192.0
 offset_bottom = 320.0
 disabled = true
-texture_normal = ExtResource("5_0ep4i")
+texture_normal = ExtResource("5_r010w")
 companionName = "Wolf"
 branchName = "branch1"
-branchIndex = 1
-
-[node name="SkTree2" parent="Panel/BaseSkill" instance=ExtResource("1_la7tg")]
-layout_mode = 0
-offset_left = 104.0
-offset_top = 192.0
-offset_right = 232.0
-offset_bottom = 320.0
-disabled = true
-texture_normal = ExtResource("5_r010w")
-companionName = "Wolf"
-branchName = "branch2"
-
-[node name="Sk2Tree2" parent="Panel/BaseSkill/SkTree2" instance=ExtResource("1_la7tg")]
-layout_mode = 0
-offset_top = 192.0
-offset_bottom = 320.0
-disabled = true
-texture_normal = ExtResource("5_r010w")
-companionName = "Wolf"
-branchName = "branch2"
 branchIndex = 1
 
 [node name="BaseSkillDetails" type="PanelContainer" parent="."]
@@ -112,9 +82,9 @@ autowrap_mode = 2
 visible = false
 z_index = 1
 layout_mode = 0
-offset_left = 176.0
+offset_left = 272.0
 offset_top = 216.0
-offset_right = 486.0
+offset_right = 582.0
 offset_bottom = 297.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_k5li4")
 
@@ -129,9 +99,9 @@ autowrap_mode = 2
 visible = false
 z_index = 1
 layout_mode = 0
-offset_left = 176.0
+offset_left = 272.0
 offset_top = 408.0
-offset_right = 486.0
+offset_right = 582.0
 offset_bottom = 489.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_pa2rs")
 
@@ -139,41 +109,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_pa2rs")
 custom_minimum_size = Vector2(280, 50)
 layout_mode = 2
 size_flags_horizontal = 4
-text = "Basic Attacks does steals 1% of Enemy's remaining Health"
-autowrap_mode = 2
-
-[node name="Tree2Sk1" type="PanelContainer" parent="."]
-visible = false
-z_index = 1
-layout_mode = 0
-offset_left = 376.0
-offset_top = 216.0
-offset_right = 686.0
-offset_bottom = 297.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_r010w")
-
-[node name="Label" type="Label" parent="Tree2Sk1"]
-custom_minimum_size = Vector2(280, 50)
-layout_mode = 2
-size_flags_horizontal = 4
-text = "Upon Ability Activation, Summon two wolves to Assist until Abilty Deactivation"
-autowrap_mode = 2
-
-[node name="Tree2Sk2" type="PanelContainer" parent="."]
-visible = false
-z_index = 1
-layout_mode = 0
-offset_left = 376.0
-offset_top = 408.0
-offset_right = 686.0
-offset_bottom = 489.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_0ep4i")
-
-[node name="Label" type="Label" parent="Tree2Sk2"]
-custom_minimum_size = Vector2(280, 50)
-layout_mode = 2
-size_flags_horizontal = 4
-text = "Summoned Wolves persist even after Ability Ends."
+text = "Summon Wolves to Help you Fight"
 autowrap_mode = 2
 
 [connection signal="mouse_entered" from="Panel/BaseSkill" to="." method="_on_base_skill_mouse_entered"]
@@ -182,7 +118,3 @@ autowrap_mode = 2
 [connection signal="mouse_exited" from="Panel/BaseSkill/SkTree1" to="." method="_on_sk_tree_1_mouse_exited"]
 [connection signal="mouse_entered" from="Panel/BaseSkill/SkTree1/SK2Tree1" to="." method="_on_sk_2_tree_1_mouse_entered"]
 [connection signal="mouse_exited" from="Panel/BaseSkill/SkTree1/SK2Tree1" to="." method="_on_sk_2_tree_1_mouse_exited"]
-[connection signal="mouse_entered" from="Panel/BaseSkill/SkTree2" to="." method="_on_sk_tree_2_mouse_entered"]
-[connection signal="mouse_exited" from="Panel/BaseSkill/SkTree2" to="." method="_on_sk_tree_2_mouse_exited"]
-[connection signal="mouse_entered" from="Panel/BaseSkill/SkTree2/Sk2Tree2" to="." method="_on_sk_2_tree_2_mouse_entered"]
-[connection signal="mouse_exited" from="Panel/BaseSkill/SkTree2/Sk2Tree2" to="." method="_on_sk_2_tree_2_mouse_exited"]

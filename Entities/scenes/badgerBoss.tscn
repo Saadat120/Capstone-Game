@@ -1,16 +1,11 @@
-[gd_scene load_steps=74 format=3 uid="uid://crrx0ak4hnwai"]
+[gd_scene load_steps=115 format=3 uid="uid://crrx0ak4hnwai"]
 
 [ext_resource type="Script" uid="uid://boyyjl3r1r1t" path="res://Entities/scripts/badgerBoss.gd" id="1_7a7vq"]
 [ext_resource type="Shader" uid="uid://bgafj0yghf2qm" path="res://Player/assets/hitFlash.tres" id="1_csnwt"]
 [ext_resource type="Texture2D" uid="uid://b07yx1fjcsdqq" path="res://Entities/assets/badger-all.png" id="1_qxd1y"]
-[ext_resource type="PackedScene" uid="uid://dm13bkfdseof0" path="res://Common/HurtboxComponent.tscn" id="2_imhgb"]
 [ext_resource type="Script" uid="uid://dern71du8kkuy" path="res://Common/scripts/StatsComponent.gd" id="3_5hucg"]
-[ext_resource type="Script" uid="uid://cp1t6qhxhtqsg" path="res://scripts/StateMachine/StateMachine.gd" id="3_e1vsv"]
 [ext_resource type="PackedScene" uid="uid://de2s21g531onq" path="res://Common/HitboxComponent.tscn" id="4_bkba4"]
-[ext_resource type="Script" uid="uid://6si8eicwtc82" path="res://scripts/StateMachine/chaseState.gd" id="4_l324x"]
-[ext_resource type="Script" uid="uid://dn4ejr11fg3ew" path="res://scripts/StateMachine/attackState.gd" id="5_bn8dn"]
-[ext_resource type="PackedScene" uid="uid://dxhk63e1mu4t3" path="res://UI/scenes/BossCanvas.tscn" id="10_iyyxp"]
-[ext_resource type="Script" uid="uid://dwao7imboy685" path="res://scripts/StateMachine/burrowState.gd" id="10_tk62j"]
+[ext_resource type="Script" uid="uid://c0ki3y801iyn7" path="res://Entities/scripts/hurtbox.gd" id="5_03vt2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tirrx"]
 resource_local_to_scene = true
@@ -192,6 +187,7 @@ animations = [{
 [sub_resource type="Animation" id="Animation_w4gc0"]
 resource_name = "AttackE"
 length = 1.2
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -316,6 +312,7 @@ tracks/9/keys = {
 [sub_resource type="Animation" id="Animation_81niy"]
 resource_name = "AttackNE"
 length = 1.2
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -565,6 +562,7 @@ tracks/9/keys = {
 [sub_resource type="Animation" id="Animation_qlboq"]
 resource_name = "AttackSE"
 length = 1.2
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -689,6 +687,7 @@ tracks/9/keys = {
 [sub_resource type="Animation" id="Animation_bvsq2"]
 resource_name = "AttackSW"
 length = 1.2
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -813,6 +812,7 @@ tracks/9/keys = {
 [sub_resource type="Animation" id="Animation_nm3xo"]
 resource_name = "AttackW"
 length = 1.2
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -3792,6 +3792,228 @@ _data = {
 &"moveW": SubResource("Animation_sg4ku")
 }
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_v2j7l"]
+animation = &"AttackSW"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_owj8s"]
+animation = &"AttackW"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_orxjr"]
+animation = &"AttackNW"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_f8ihl"]
+animation = &"AttackNE"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3vsn3"]
+animation = &"AttackE"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_d4mvg"]
+animation = &"AttackSE"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_03vt2"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_v2j7l")
+blend_point_0/pos = Vector2(-1, 1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_owj8s")
+blend_point_1/pos = Vector2(-1, 0)
+blend_point_2/node = SubResource("AnimationNodeAnimation_orxjr")
+blend_point_2/pos = Vector2(-1, -1)
+blend_point_3/node = SubResource("AnimationNodeAnimation_f8ihl")
+blend_point_3/pos = Vector2(1, -1)
+blend_point_4/node = SubResource("AnimationNodeAnimation_3vsn3")
+blend_point_4/pos = Vector2(1, 0)
+blend_point_5/node = SubResource("AnimationNodeAnimation_d4mvg")
+blend_point_5/pos = Vector2(1, 1)
+blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_03vt2"]
+animation = &"BurrowSW"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7li3d"]
+animation = &"BurrowW"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qco2o"]
+animation = &"BurrowNW"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ul01n"]
+animation = &"BurrowNE"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ft1y7"]
+animation = &"BurrowE"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6qxlb"]
+animation = &"BurrowSE"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_v2j7l"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_03vt2")
+blend_point_0/pos = Vector2(-1, 1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_7li3d")
+blend_point_1/pos = Vector2(-1, 0)
+blend_point_2/node = SubResource("AnimationNodeAnimation_qco2o")
+blend_point_2/pos = Vector2(-1, -1)
+blend_point_3/node = SubResource("AnimationNodeAnimation_ul01n")
+blend_point_3/pos = Vector2(1, -1)
+blend_point_4/node = SubResource("AnimationNodeAnimation_ft1y7")
+blend_point_4/pos = Vector2(1, 0)
+blend_point_5/node = SubResource("AnimationNodeAnimation_6qxlb")
+blend_point_5/pos = Vector2(1, 1)
+blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5x5mb"]
+animation = &"moveSW"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_yvyq0"]
+animation = &"moveSE"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_u3y7r"]
+animation = &"moveE"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5ll6j"]
+animation = &"moveNE"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_p8iwk"]
+animation = &"moveNW"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mote7"]
+animation = &"moveW"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_7li3d"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_5x5mb")
+blend_point_0/pos = Vector2(-1, 1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_yvyq0")
+blend_point_1/pos = Vector2(1, 1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_u3y7r")
+blend_point_2/pos = Vector2(1, 0)
+blend_point_3/node = SubResource("AnimationNodeAnimation_5ll6j")
+blend_point_3/pos = Vector2(1, -1)
+blend_point_4/node = SubResource("AnimationNodeAnimation_p8iwk")
+blend_point_4/pos = Vector2(-1, -1)
+blend_point_5/node = SubResource("AnimationNodeAnimation_mote7")
+blend_point_5/pos = Vector2(-1, 0)
+blend_mode = 1
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_owj8s"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ecqwl"]
+animation = &"UnburrowSW"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kpov6"]
+animation = &"UnburrowSE"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hy85l"]
+animation = &"UnburrowE"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5iyfk"]
+animation = &"UnburrowNE"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2l3dp"]
+animation = &"UnburrowNW"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xydyu"]
+animation = &"UnburrowW"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_orxjr"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_ecqwl")
+blend_point_0/pos = Vector2(-1, 1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_kpov6")
+blend_point_1/pos = Vector2(1, 1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_hy85l")
+blend_point_2/pos = Vector2(1, 0)
+blend_point_3/node = SubResource("AnimationNodeAnimation_5iyfk")
+blend_point_3/pos = Vector2(1, -1)
+blend_point_4/node = SubResource("AnimationNodeAnimation_2l3dp")
+blend_point_4/pos = Vector2(-1, -1)
+blend_point_5/node = SubResource("AnimationNodeAnimation_xydyu")
+blend_point_5/pos = Vector2(-1, 0)
+blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lnlps"]
+animation = &"BurrowMoveSW"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tvjsi"]
+animation = &"BurrowMoveSE"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lmf1a"]
+animation = &"BurrowMoveE"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8ox74"]
+animation = &"BurrowMoveNE"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_h4lda"]
+animation = &"BurrowMoveNW"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qiei4"]
+animation = &"BurrowMoveW"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_f8ihl"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_lnlps")
+blend_point_0/pos = Vector2(-1, 1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_tvjsi")
+blend_point_1/pos = Vector2(1, 0.9)
+blend_point_2/node = SubResource("AnimationNodeAnimation_lmf1a")
+blend_point_2/pos = Vector2(1, 0)
+blend_point_3/node = SubResource("AnimationNodeAnimation_8ox74")
+blend_point_3/pos = Vector2(1, -1)
+blend_point_4/node = SubResource("AnimationNodeAnimation_h4lda")
+blend_point_4/pos = Vector2(-1, -1)
+blend_point_5/node = SubResource("AnimationNodeAnimation_qiei4")
+blend_point_5/pos = Vector2(-1, 0)
+blend_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qco2o"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_03vt2"]
+advance_mode = 2
+advance_expression = "attacking"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5x5mb"]
+switch_mode = 2
+advance_mode = 2
+advance_expression = "!attacking"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3vsn3"]
+advance_mode = 2
+advance_expression = "burrow and !follow"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_d4mvg"]
+switch_mode = 2
+advance_mode = 2
+advance_expression = "!burrow and follow"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_oxyps"]
+switch_mode = 2
+advance_mode = 2
+advance_expression = "burrow and follow"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tl26m"]
+advance_mode = 2
+advance_expression = "!burrow and !follow"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_n2tfr"]
+advance_mode = 2
+advance_expression = "dead"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_c1nkp"]
+advance_mode = 2
+advance_expression = "dead"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_03vt2"]
+states/Attack/node = SubResource("AnimationNodeBlendSpace2D_03vt2")
+states/Attack/position = Vector2(344.719, 221.974)
+states/Burrow/node = SubResource("AnimationNodeBlendSpace2D_v2j7l")
+states/Burrow/position = Vector2(523.58, 99.625)
+states/Chase/node = SubResource("AnimationNodeBlendSpace2D_7li3d")
+states/Chase/position = Vector2(344.812, 99.25)
+states/Death/node = SubResource("AnimationNodeBlendSpace2D_owj8s")
+states/Death/position = Vector2(171.14, 221.948)
+states/Start/position = Vector2(159, 99.625)
+states/Unburrow/node = SubResource("AnimationNodeBlendSpace2D_orxjr")
+states/Unburrow/position = Vector2(597.83, 221.897)
+states/burrowChase/node = SubResource("AnimationNodeBlendSpace2D_f8ihl")
+states/burrowChase/position = Vector2(713.08, 98.9625)
+transitions = ["Start", "Chase", SubResource("AnimationNodeStateMachineTransition_qco2o"), "Chase", "Attack", SubResource("AnimationNodeStateMachineTransition_03vt2"), "Attack", "Chase", SubResource("AnimationNodeStateMachineTransition_5x5mb"), "Chase", "Burrow", SubResource("AnimationNodeStateMachineTransition_3vsn3"), "Unburrow", "Chase", SubResource("AnimationNodeStateMachineTransition_d4mvg"), "Burrow", "burrowChase", SubResource("AnimationNodeStateMachineTransition_oxyps"), "burrowChase", "Unburrow", SubResource("AnimationNodeStateMachineTransition_tl26m"), "Chase", "Death", SubResource("AnimationNodeStateMachineTransition_n2tfr"), "Attack", "Death", SubResource("AnimationNodeStateMachineTransition_c1nkp")]
+graph_offset = Vector2(91.1401, 30.9)
+
 [sub_resource type="Animation" id="Animation_3xfjc"]
 length = 0.001
 tracks/0/type = "value"
@@ -3853,6 +4075,7 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_7oiff")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
 position = Vector2(182, -21.5)
 scale = Vector2(2.52381, 2.59375)
 sprite_frames = SubResource("SpriteFrames_43fk2")
@@ -3862,6 +4085,17 @@ animation = &"new_animation"
 libraries = {
 &"": SubResource("AnimationLibrary_32n17")
 }
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_03vt2")
+advance_expression_base_node = NodePath("..")
+anim_player = NodePath("../AnimationPlayer")
+parameters/Attack/blend_position = Vector2(0, 0)
+parameters/Burrow/blend_position = Vector2(-0.962963, 0.897321)
+parameters/Chase/blend_position = Vector2(0, 0)
+parameters/Death/blend_position = Vector2(0, 0)
+parameters/Unburrow/blend_position = Vector2(-0.974457, 0.919643)
+parameters/burrowChase/blend_position = Vector2(-0.979566, 0.946429)
 
 [node name="HitFlash" type="AnimationPlayer" parent="."]
 libraries = {
@@ -3877,9 +4111,10 @@ position = Vector2(1, 0)
 shape = SubResource("RectangleShape2D_uwd8a")
 disabled = true
 
-[node name="Hurtbox" parent="." instance=ExtResource("2_imhgb")]
-collision_layer = 0
-collision_mask = 4
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("5_03vt2")
 
 [node name="Hurtbox" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2(-17, 2)
@@ -3889,29 +4124,14 @@ debug_color = Color(0.772549, 0, 0, 0.419608)
 
 [node name="StatsComponent" type="Node" parent="."]
 script = ExtResource("3_5hucg")
-maxHealth = 700
-health = 700
+maxHealth = 1500
+health = 1500
 damage = 30
-attackSpeed = 1.15
-attackRange = 40.0
-
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("entity")]
-script = ExtResource("3_e1vsv")
-entity = NodePath("..")
-
-[node name="Chase" type="Node" parent="StateMachine"]
-script = ExtResource("4_l324x")
-
-[node name="Attack" type="Node" parent="StateMachine" node_paths=PackedStringArray("stats")]
-script = ExtResource("5_bn8dn")
-stats = NodePath("../../StatsComponent")
-
-[node name="Burrow" type="Node" parent="StateMachine"]
-script = ExtResource("10_tk62j")
+defence = 20
+speed = 45.0
 
 [node name="DamageNumbersOrigin" type="Node2D" parent="."]
 position = Vector2(-19, -31)
 
-[node name="BossUI" parent="." instance=ExtResource("10_iyyxp")]
-
-[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
+[node name="AttackTimer" type="Timer" parent="."]
+one_shot = true

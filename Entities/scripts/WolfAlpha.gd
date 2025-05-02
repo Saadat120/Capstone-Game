@@ -13,6 +13,7 @@ signal health_changed(new_health: int)
 @onready var attackTimer: Timer = $AttackTimer
 @onready var ray_cast_right: RayCast2D = $RayCastRight
 @onready var ray_cast_left: RayCast2D = $RayCastLeft
+@onready var howl_sfx: AudioStreamPlayer = $HowlSFX
 @onready var player: CharacterBody2D = get_tree().get_first_node_in_group("Player")
 const EnemyScene := preload("res://Entities/scenes/WolfBeta.tscn")
 const largeMinionscene := preload("res://Entities/scenes/WolfBoss.tscn")
@@ -45,8 +46,10 @@ func _ready() -> void:
 	healthVal.show()
 	add_to_group("Enemy")
 	SignalBus.applyBleed.connect(bleed)
-	await get_tree().create_timer(1.4).timeout
+	howl_sfx.play()
+	await get_tree().create_timer(2).timeout
 	howl = false
+	howl_sfx.stop()
 
 func _physics_process(_delta: float) -> void:
 	handler()
@@ -63,8 +66,6 @@ func handler() -> void:
 				handleSummons()
 			elif !howl:
 				handleCombatMovement()
-			
-	
 	updateAnimations()
 	move_and_slide()
 	
@@ -103,8 +104,9 @@ func handleSummons() -> void:
 		velocity = Vector2.ZERO
 		direction = (player.global_position - global_position).normalized()
 		howl = true
+		howl_sfx.play()
 		if phase == 1:
-			for spot in howl_spots:
+			for spot: Node in howl_spots:
 				if spot.global_position.distance_to(global_position) < 30:
 					continue  # skip the boss's location
 				if summonedWolves >= 3:
@@ -119,8 +121,9 @@ func handleSummons() -> void:
 					howl = false
 					phase = 2
 					summonedWolves = 0
+					howl_sfx.stop()
 		elif phase == 2:
-			for spot in howl_spots:
+			for spot: Node in howl_spots:
 				if spot.global_position.distance_to(global_position) < 30:
 					continue  # skip the boss's location
 				if summonedWolves >= 1:
@@ -134,6 +137,7 @@ func handleSummons() -> void:
 					summoning = false
 					howl = false
 					phase = 3
+					howl_sfx.stop()
 
 func handleDeath() -> void:
 	velocity = Vector2.ZERO

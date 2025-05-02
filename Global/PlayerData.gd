@@ -14,13 +14,11 @@ var lockedPets: Array = ["Stag", "Wolf", "Boar", "Badger"]
 var companionAbilities := {
 	"Stag": {
 		"root": [false],
-		"branch1": [false, false],
-		"branch2": [false, false]
+		"branch1": [false, false]
 	},
 	"Wolf": {
 		"root": [false],
-		"branch1": [false, false],
-		"branch2": [false, false]
+		"branch1": [false, false]
 	}
 }
 

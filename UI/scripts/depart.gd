@@ -19,6 +19,10 @@ func _on_yes_button_down() -> void:
 		TransitionScreen.transition()
 		await TransitionScreen.transitionFinished
 		get_tree().change_scene_to_file.call_deferred("res://World/scenes/WolfArena.tscn")
+	elif GameState.stage == 7:
+		TransitionScreen.transition()
+		await TransitionScreen.transitionFinished
+		get_tree().change_scene_to_file.call_deferred("res://World/scenes/badgerArena.tscn")
 
 func _on_no_button_down() -> void:
 	self.hide()
@@ -35,3 +39,8 @@ func enemyDisplay() -> void:
 		damage.text = "Damage: 50"
 		agility.text = "Agility: 90"
 		armor.text = "Armor: 0"
+	elif GameState.stage == 5:
+		health.text = "Health: 1500"
+		damage.text = "Damage: 30"
+		agility.text = "Agility: 40"
+		armor.text = "Armor: 20"

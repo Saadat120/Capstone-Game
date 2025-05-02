@@ -1,13 +1,14 @@
 extends Node2D
 
-@onready var playerCam = $Player/Camera2D
+@onready var playerCam := $Player/Camera2D
 @onready var camera_2d: Camera2D = $Camera2D
 @onready var enterTimer: Timer = $EnterTimer
 @onready var returnTimer: Timer = $ReturnTimer
 @onready var returnLabel: Label = $CanvasLayer/ReturnLabel
 @onready var companion: Node2D = $Companion
+@onready var player: Player = $Player
 
-var isBossDefeated = false
+var isBossDefeated := false
 
 func _ready() -> void:
 	SignalBus.bossDefeated.connect(onBossDefeated)
@@ -15,26 +16,27 @@ func _ready() -> void:
 	addPet()
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if isBossDefeated:
 		returnLabel.visible = true
-		returnLabel.text = "Return to Base: " + str(int(returnTimer.time_left))
+		returnLabel.text = "Returning to Base In: " + str(int(returnTimer.time_left))
 
 func _on_enter_timer_timeout() -> void:
 	camera_2d.enabled = false
 	playerCam.enabled = true
 	pass # Replace with function body.
 
-func onBossDefeated():
+func onBossDefeated() -> void:
 	returnTimer.start()
 	isBossDefeated = true
 
 func _on_return_timer_timeout() -> void:
-	get_parent().get_tree().change_scene_to_file("res://World/Areas/Main.tscn")
-	pass # Replace with function body.
+	set_process(false)
+	TransitionScreen.transition()
+	await TransitionScreen.transitionFinished
+	get_parent().get_tree().change_scene_to_file("res://World/scenes/Main.tscn")
 
-func addPet():
-	var companionScene = load("res://Player/scenes/stagCompanion.tscn")
+func addPet() -> void:
+	var companionScene := load("res://Player/scenes/%sCompanion.tscn" %player.playerManager.companion)
 	if companionScene:
-		var companionInstance = companionScene.instantiate()
-		companion.add_child(companionInstance)
+		companion.add_child(companionScene.instantiate())

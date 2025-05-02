@@ -16,6 +16,9 @@ func _ready() -> void:
 	elif GameState.stage == 4:
 		Dialogic.start("WolfCompanion")
 		Dialogic.signal_event.connect(dialogic_signal)
+	elif GameState.stage == 6:
+		Dialogic.start("AlphaDefeated")
+		Dialogic.signal_event.connect(dialogic_signal)
 	if GameState.stage > 3:
 		wolfPortal.show()
 	loadPets()
@@ -47,11 +50,16 @@ func dialogic_signal(signalStr: String) -> void:
 		GameState.stage = 5
 		player.playerManager.canMove = true
 		player.playerManager.canAttack = true
+	elif signalStr == "endGame":
+		GameState.stage = 6
 		
 func addPet(pet: String) -> void:
 	PlayerData.unlockPet(pet)
 	PlayerData.currentPet = pet
-	$UI/PauseArea/CompanionPage/VBoxContainer/MainHBox/StagTree/StagSkillTree/Panel/BaseSkill.unlockRoot(pet)
+	if pet == "Stag":
+		$UI/PauseArea/CompanionPage/VBoxContainer/MainHBox/StagTree/StagSkillTree/Panel/BaseSkill.unlockRoot(pet)
+	elif pet == "Wolf":
+		$UI/PauseArea/CompanionPage/VBoxContainer/MainHBox/WolfTree/WolfSkillTree/Panel/BaseSkill.unlockRoot(pet)
 	player.playerManager.companion = pet
 	var companionScene := load("res://Player/scenes/" + pet + "Companion.tscn")
 	if companionScene:

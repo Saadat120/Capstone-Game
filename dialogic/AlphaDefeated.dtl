@@ -1,0 +1,7 @@
+Player: That was tough!
+Birdy: You were amazing! I knew you could it.
+Player: Our job isn't done yet. With the alpha gone there will be a power struggle and it won't be easy for our wolf companion to get them under him.
+Birdy: We can continue hunting other wolves to help stabilize the region.
+Wolf: You would do that?
+Player: Sure. We can continue helping you as we continue hunting the other escaped animals.
+[signal arg="endGame"]

@@ -26,7 +26,7 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if isBossDefeated:
 		returnLabel.visible = true
-		returnLabel.text = "Return to Base: " + str(int(returnTimer.time_left))
+		returnLabel.text = "Returning to Base In: " + str(int(returnTimer.time_left))
 
 func _on_timer_timeout() -> void:
 	camera_2d.enabled = false
@@ -38,6 +38,8 @@ func onBossDefeated() -> void:
 		Dialogic.start("WolfArena")
 		await Dialogic.timeline_ended
 		GameState.stage = 4
+	elif GameState.stage == 5:
+		GameState.stage = 6
 	set_process(true)
 	returnTimer.start()
 	isBossDefeated = true

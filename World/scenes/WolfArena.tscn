@@ -323,7 +323,7 @@ position = Vector2(7, 33)
 zoom = Vector2(1.5, 1.5)
 
 [node name="EnterTimer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 2.4
 one_shot = true
 autostart = true
 

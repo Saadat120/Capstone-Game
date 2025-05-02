@@ -1,82 +1,112 @@
 class_name badgerBoss extends CharacterBody2D
 
-@onready var animationPlayer: AnimationPlayer = $AnimationPlayer
-@onready var hit_flash: AnimationPlayer = $HitFlash
-@onready var stateMachine: StateMachine = $StateMachine
-@onready var healthBar: ProgressBar = $"BossUI/HUD/HealthBar"
+signal health_changed(new_health: int)
+
+#References
+@onready var healthBar: ProgressBar = $"../UI/BossUI/VBoxContainer/Healths/Boss/HealthBar"
+@onready var healthVal: Label = $"../UI/BossUI/VBoxContainer//Healths/Boss/HealthVal"
+@onready var bossTitle: Label = $"../UI/BossUI/VBoxContainer/BossTitle"
+@onready var animationTree: AnimationTree = $AnimationTree
 @onready var stats: StatsComponent = $StatsComponent
+@onready var hit_flash: AnimationPlayer = $HitFlash
 @onready var damage_numbers_origin: Node2D = $DamageNumbersOrigin
+@onready var attackTimer: Timer = $AttackTimer
+@onready var player: CharacterBody2D = get_tree().get_first_node_in_group("Player")
 
-var dead: bool = false
-var aggro: bool = false
-var attacking: bool = false
-var burrowed: bool = false
-
-var cardinal_direction: Vector2 = Vector2(1, -1)
+#Movement & positioning
 var direction : Vector2 = Vector2.ZERO
-var badgerDirectionMap := {
-	Vector2(1, 0): "E",
-	Vector2(-1, 0): "W",
-	Vector2(1, 1).normalized(): "SE",  # Southeast
-	Vector2(-1, 1).normalized(): "SW", # Southwest
-	Vector2(1, -1).normalized(): "NE", # Northeast
-	Vector2(-1, -1).normalized(): "NW" # Northwest
-}
+var cardinal_direction: Vector2 = Vector2.DOWN
+var distance: float
+var targetPosition: Vector2
+var repositioning := false
+var howl_spots : Array
 
+#Combat & State Flags
+var dead :bool = false
+var follow: bool = false
+var attacking: bool = false
+var recentHit := false
+var burrow : bool = false
 func _ready() -> void:
-	
-	SignalBus.enemyHealthChanged.connect(healthBar._set_health)
+	health_changed.connect(healthBar._set_health)
 	healthBar.initHealth(stats.health)
-	healthBar.visible = true
-	aggro = true
-	
-	stateMachine.changeState(stateMachine.get_node("Chase"))
-	stateMachine.Initialize()
+	healthBar.show()
+	bossTitle.text = "Badger"
+	bossTitle.show()
+	healthVal.show()
+	add_to_group("Enemy")
+
 func _physics_process(_delta: float) -> void:
+	handler()
+
+func handler() -> void:
+	if dead:
+		handleDeath()
+	else:
+		if !burrow:
+			handleCombatMovement()
+		else: handleBurrow()
+	updateAnimations()
 	move_and_slide()
-	die()
 
-func updateAnimation(state: String) -> void:
-	animationPlayer.play(state + animationDirection())
+func handleCombatMovement() -> void:
+	#Handle movement and combat if not attacking or repositioning
+	if attackTimer.is_stopped():
+		distance = global_position.distance_to(player.global_position)
+		direction = (player.global_position - global_position).normalized()
+		if distance > 70: #Chase the player
+			velocity = direction * stats.speed
+			recentHit = false
+			if distance > 150:
+				burrow = true
+				follow = false
+		elif distance <= 70: #Attack the player
+			attackTimer.start()
+			attacking = true
+			#If already lunged and still in attack phase -> stationary attack
+			if !recentHit: recentHit = true
+			elif recentHit: 
+				velocity = Vector2.ZERO
+				direction = (player.global_position - global_position).normalized()
 
-func animationDirection() -> String:
-	return badgerDirectionMap.get(cardinal_direction, "NE")
-
-func setDirection() -> bool:
-	if direction == Vector2.ZERO:
-		return false
-		
-	var closest_direction := Vector2.ZERO
-	var min_angle := 180
-
-	for dir:Vector2 in badgerDirectionMap.keys():
-		var angle_diff := rad_to_deg(direction.angle_to(dir))
-		if abs(angle_diff) < min_angle:
-			min_angle = abs(angle_diff)
-			closest_direction = dir
-			
-	if closest_direction == cardinal_direction:
-		return false
-
-	cardinal_direction = closest_direction
-	return true
-
-func die() -> void:
-	if dead == true:
-		stateMachine = null
+func handleBurrow() -> void:
+	if burrow and !follow:
 		velocity = Vector2.ZERO
-		# Optional: Delay before removal
-		setDirection()
-		updateAnimation("Burrow")
-		await get_tree().create_timer(2.6).timeout
-		healthBar.visible = false
-		queue_free()
+		await get_tree().create_timer(2.45).timeout
+		follow = true
+	elif burrow and follow:
+		distance = global_position.distance_to(player.global_position)
+		direction = (player.global_position - global_position).normalized()
+		if distance > 30: #Chase the player
+			velocity = direction * stats.speed * 2
+		elif distance <= 30:
+			burrow = false
+			follow = false
+			velocity = Vector2.ZERO
+			await get_tree().create_timer(2.45).timeout
+			follow = true
 
-func _on_hurtbox_area_entered(hitbox: Area2D) -> void:
-	if hitbox is Hitbox:
-		DamageManager.applyDamageToEnemy(hitbox.get_parent(), self)
-		SignalBus.enemyHealthChanged.emit(stats.health)
-		hit_flash.play("hitFlash")
-		if stats.health <= 0:
-			dead = true
-	pass # Replace with function body.
+func handleDeath() -> void:
+	velocity = Vector2.ZERO
+	# Optional: Delay before removal
+	await get_tree().create_timer(2).timeout
+	healthBar.queue_free()
+	healthVal.hide()
+	bossTitle.hide()
+	remove_from_group("Enemy")
+	queue_free()
+	SignalBus.bossDefeated.emit()
+	set_process(false)
+
+func updateAnimations() -> void:
+	if direction != Vector2.ZERO:
+		cardinal_direction = direction
+	animationTree.set("parameters/Chase/blend_position", cardinal_direction)
+	animationTree.set("parameters/Attack/blend_position", cardinal_direction)
+	animationTree.set("parameters/Burrow/blend_position", cardinal_direction)
+	animationTree.set("parameters/burrowChase/blend_position", cardinal_direction)
+	animationTree.set("parameters/Unburrow/blend_position", cardinal_direction)
+	animationTree.set("parameters/Death/blend_position", cardinal_direction)
+
+func delay() -> void:
+	velocity = Vector2.ZERO

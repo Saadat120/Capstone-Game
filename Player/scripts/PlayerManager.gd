@@ -35,7 +35,7 @@ func updateGauge() -> void:
 		if companion == "Stag":
 			gaugeInc = 10 * (1 + abs((health - maxHealth)/200.0))
 		elif companion == "Wolf":
-			gaugeInc = 100 * (1 + abs((health - maxHealth)/200.0))
+			gaugeInc = 8 * (1 + abs((health - maxHealth)/200.0))
 		gaugeMeter.value = clamp(gaugeMeter.value + gaugeInc, gaugeMeter.min_value, gaugeMeter.max_value)
 
 func getSpeed() -> float:
