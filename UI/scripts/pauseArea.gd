@@ -39,7 +39,6 @@ func pause() -> void:
 	paused = true
 	player.playerManager.canMove = false
 	player.playerManager.canAttack = false
-	#get_tree().paused = true
 
 func _on_status_button_down() -> void:
 	mainMenu.hide()
@@ -55,8 +54,6 @@ func _on_companion_button_down() -> void:
 	
 func _on_exit_button_down() -> void:
 	GameState.saveProgress()
-	get_tree().change_scene_to_file("res://World/scenes/startMenu.tscn")
-	#get_tree().quit()
-	#if Dialogic.timeline_started:
-		#Dialogic.end_timeline()
-	#get_tree().change_scene_to_file("res://World/scenes/startMenu.tscn")
+	Dialogic.end_timeline()
+	await Dialogic.timeline_ended
+	get_parent().get_tree().change_scene_to_file.call_deferred("res://World/scenes/startMenu.tscn")

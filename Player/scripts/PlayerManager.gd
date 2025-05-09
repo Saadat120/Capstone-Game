@@ -10,7 +10,7 @@ var damageMultiplier := 1
 @export var armor: float
 
 var companion: String
-var dodgeCount: int = 0
+var dodgeCount: int
 @onready var abilitiesManager: AbilitiesManager = $AbilitiesManager
 @onready var healthBar: ProgressBar = $"../../UI/PlayerUI/StatsContainer/Container/HealthContainer/HealthBar"
 @onready var gaugeMeter: ProgressBar = $"../../UI/PlayerUI/StatsContainer/Container/GaugeContainer/GaugeMeter"
@@ -23,6 +23,7 @@ func _ready() -> void:
 	armor = PlayerData.armorStats["value"]
 	companion = PlayerData.currentPet
 	SignalBus.playerHealthChanged.connect(healthBar._set_health)
+	dodgeCount = 0
 
 func initHealth() -> void:
 	maxHealth = PlayerData.healthStats["value"]

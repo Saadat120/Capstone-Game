@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=3 uid="uid://m7c11xmobi3y"]
+[gd_scene load_steps=76 format=3 uid="uid://m7c11xmobi3y"]
 
 [ext_resource type="Script" uid="uid://dujs3v8qlj81p" path="res://Entities/scripts/wolfBoss.gd" id="1_5vc8q"]
 [ext_resource type="Shader" uid="uid://bgafj0yghf2qm" path="res://Player/assets/hitFlash.tres" id="2_txir4"]
@@ -346,7 +346,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(55, 0)]
+"values": [Vector2(50, 0)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -2443,7 +2443,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fn2c3"]
-size = Vector2(35, 75)
+size = Vector2(40.5, 81.5)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ejbok"]
 radius = 22.0
@@ -2451,6 +2451,9 @@ height = 85.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_di1p8"]
 size = Vector2(35, 15)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h87ii"]
+size = Vector2(45, 15)
 
 [node name="WolfBoss" type="CharacterBody2D"]
 motion_mode = 1
@@ -2516,6 +2519,10 @@ debug_color = Color(0.772549, 0, 0, 0.419608)
 position = Vector2(-3, -28)
 shape = SubResource("RectangleShape2D_di1p8")
 
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="SafeZone"]
+position = Vector2(0, 33)
+shape = SubResource("RectangleShape2D_h87ii")
+
 [node name="StatsComponent" type="Node" parent="."]
 script = ExtResource("5_llpr2")
 maxHealth = 700
@@ -2535,10 +2542,10 @@ wait_time = 5.0
 one_shot = true
 
 [node name="RayCastRight" type="RayCast2D" parent="."]
-target_position = Vector2(150, 150)
+target_position = Vector2(75, 75)
 
 [node name="RayCastLeft" type="RayCast2D" parent="."]
-target_position = Vector2(-150, 150)
+target_position = Vector2(-75, 75)
 
 [connection signal="body_entered" from="SafeZone" to="." method="_on_safe_zone_body_entered"]
 [connection signal="body_exited" from="SafeZone" to="." method="_on_safe_zone_body_exited"]

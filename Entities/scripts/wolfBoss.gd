@@ -97,7 +97,7 @@ func handleDeath() -> void:
 	queue_free()
 	if boss:
 		SignalBus.bossDefeated.emit()
-		PlayerData.addMarks(6)
+		PlayerData.addMarks(3)
 		PlayerData.addTreats(2)
 	set_process(false)
 
@@ -146,7 +146,7 @@ func reposition() -> void:
 	elif !can_move_left and can_move_right: side = 1
 	elif can_move_left and can_move_right: side = -1
 
-	var offset := Vector2(1 * side, 1).normalized() * 130
+	var offset := Vector2(1 * side, 1).normalized() * 75
 	targetPosition = global_position + offset
 	direction = (targetPosition - global_position).normalized()
 	distance = global_position.distance_to(targetPosition)

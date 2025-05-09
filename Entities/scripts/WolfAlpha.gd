@@ -185,8 +185,9 @@ func reposition() -> void:
 	if can_move_left and !can_move_right: side = -1
 	elif !can_move_left and can_move_right: side = 1
 	elif can_move_left and can_move_right: side = -1
+	elif !can_move_left and !can_move_right: return
 
-	var offset := Vector2(1 * side, 1).normalized() * 130
+	var offset := Vector2(1 * side, 1).normalized() * 85
 	targetPosition = global_position + offset
 	direction = (targetPosition - global_position).normalized()
 	distance = global_position.distance_to(targetPosition)

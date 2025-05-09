@@ -64,12 +64,6 @@ func stagAbility() -> void:
 
 func wolfAbility() -> void:
 	SignalBus.applyBleed.emit()
-	if PlayerData.companionAbilities["Wolf"]["branch1"][0]:
-		#playerManager.speedMultipliers["Ability"] = 1.5
-		if PlayerData.companionAbilities["Wolf"]["branch1"][1]: 
-			playerManager.dodgeCount = 3
-	elif PlayerData.companionAbilities["Wolf"]["branch2"][0]:
-		playerManager.speedMultipliers["Ability"] = 0.5
 
 func endAbility() -> void:
 	if playerManager.companion == "Stag":
@@ -80,7 +74,6 @@ func endAbility() -> void:
 
 func endStagAbility() -> void:
 	playerManager.speedMultipliers["Ability"] = 1
-	playerManager.dodgeCount = 0
 
 func endWolfAbility() -> void:
 	bleed = false

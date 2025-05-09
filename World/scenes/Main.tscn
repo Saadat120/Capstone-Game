@@ -258,8 +258,8 @@ height = 123.077
 size = Vector2(51.145, 22.2566)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jj1la"]
-radius = 17.0
-height = 52.0
+radius = 23.0
+height = 62.0
 
 [node name="Haven" type="Node2D"]
 script = ExtResource("1_yf7im")
@@ -339,7 +339,7 @@ position = Vector2(941, 528)
 position = Vector2(1044, 454)
 
 [node name="Player" parent="." instance=ExtResource("4_8emot")]
-position = Vector2(975, 486)
+position = Vector2(990, 488)
 
 [node name="UI" parent="." instance=ExtResource("5_ppc3u")]
 

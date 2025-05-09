@@ -7,7 +7,7 @@ var armorStats := {"value": 10, "level": 1}
 
 var playerMarks: int = 0
 var animalTreats: int = 0
-
+var totalTreats: int = 0
 var currentPet : String #= "Stag"
 var pets: Array #= ["Stag", "Wolf"]
 var lockedPets: Array = ["Stag", "Wolf", "Boar", "Badger"]
@@ -28,7 +28,10 @@ func unlockPet(petName: String) -> void:
 		lockedPets.erase(petName)
 		companionAbilities[petName]["root"][0] = true
 
-func addTreats(treats: int) -> void: animalTreats += treats
+func addTreats(treats: int) -> void:
+	if totalTreats < 4:
+		animalTreats += treats
+		totalTreats += treats
 func addMarks(marks: int) -> void: playerMarks += marks
 
 func upgradeStat(stat: String, cost: int) -> void:

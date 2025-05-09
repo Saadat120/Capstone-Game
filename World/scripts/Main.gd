@@ -9,6 +9,8 @@ extends Node2D
 @onready var wolfPortal: StaticBody2D = $WolfPortal
 @onready var badgerPortal: StaticBody2D = $BadgerPortal
 
+@onready var label: Label = $UI/Label
+
 func _ready() -> void:
 	if GameState.stage == 2:
 		Dialogic.start("Haven")
@@ -23,12 +25,15 @@ func _ready() -> void:
 		wolfPortal.show()
 	loadPets()
 	playerCam.enabled = false
+	if GameState.stage == 7:
+		label.show()
 	
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player") and GameState.stage > 4:
 		TransitionScreen.transition()
 		await TransitionScreen.transitionFinished
 		get_tree().change_scene_to_file.call_deferred("res://World/scenes/WolfArena.tscn")
+		label.hide()
 
 #BadgerPortal entered
 func _on_badgerPortal_entered(body: Node2D) -> void:
@@ -43,7 +48,7 @@ func dialogic_signal(signalStr: String) -> void:
 		addPet(signalStr)
 	elif signalStr == "end":
 		GameState.stage = 3
-		PlayerData.addMarks(4)
+		PlayerData.addMarks(3)
 		PlayerData.addTreats(2)
 	elif signalStr == "Wolf":
 		addPet(signalStr)
@@ -51,7 +56,8 @@ func dialogic_signal(signalStr: String) -> void:
 		player.playerManager.canMove = true
 		player.playerManager.canAttack = true
 	elif signalStr == "endGame":
-		GameState.stage = 6
+		GameState.stage = 7
+		label.show()
 		
 func addPet(pet: String) -> void:
 	PlayerData.unlockPet(pet)
@@ -74,6 +80,7 @@ func loadPets() -> void:
 func _on_range_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player") and GameState.stage > 2:
 		depart.show()
+		depart.enemyDisplay()
 
 func _on_range_body_exited(body: Node2D) -> void:
 	if body.is_in_group("Player") and GameState.stage > 2:

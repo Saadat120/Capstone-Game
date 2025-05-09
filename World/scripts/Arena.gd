@@ -38,8 +38,9 @@ func onBossDefeated() -> void:
 		Dialogic.start("WolfArena")
 		await Dialogic.timeline_ended
 		GameState.stage = 4
-	elif GameState.stage == 5:
+	elif GameState.stage == 5 and GameState.challengeBoss:
 		GameState.stage = 6
+	if GameState.challengeBoss: GameState.challengeBoss = false
 	set_process(true)
 	returnTimer.start()
 	isBossDefeated = true
